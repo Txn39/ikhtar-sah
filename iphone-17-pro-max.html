@@ -272,7 +272,18 @@
     }
 }
 
- </style>
+ 
+/* الهوية الفاتحة لمشروع اختَر صح */
+body{background:#F3F4F6;color:#21152f}header,footer{background:#fff;border-color:#e5e7eb}.logo,h2{color:#7545ce}a,.label,.spec-name{color:#7545ce}.subtitle,ul,.verdict,footer{color:#5e6070}.chip,.specs,.analysis-card,.verdict{background:#fff;border-color:#e5e7eb;color:#21152f}.spec-row,.analysis-card li{border-color:#ececf2}.analysis-card:hover{box-shadow:0 12px 30px #30244a16}.good h3,.analysis-card.good h3{color:#16865d}.bad h3,.analysis-card.bad h3{color:#bb6538}.verdict{border-right-color:#7545ce}.hero{gap:30px}.phone-photo{width:100%;max-width:350px;height:300px;object-fit:contain}.photo-fallback{display:none;min-height:230px;align-items:center;justify-content:center;flex-direction:column;background:#ede7fb;border:1px dashed #c9b8ee;border-radius:20px;color:#7545ce;gap:12px}.photo-fallback .symbol{font-size:65px}.photo-fallback small{font-size:12px;text-align:center;padding:0 15px}.source-link{font-size:12px;margin-top:12px;display:inline-block}.verdict p{margin-bottom:0}@media(max-width:768px){.phone-photo{height:270px}}
+
+/* تحسينات متناسقة للصفحات القديمة */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:36px;padding:48px 0 34px}
+.hero>div{min-width:0}.hero img{width:100%;max-width:350px;height:300px;object-fit:contain;filter:drop-shadow(0 14px 22px rgba(50,35,80,.10))}
+.chip{border-radius:12px;padding:10px 14px}.specs{box-shadow:0 8px 28px rgba(50,35,80,.035)}
+.analysis-card{border-radius:18px}.verdict{border-radius:16px}
+@media(max-width:768px){.hero{grid-template-columns:1fr!important;gap:20px!important;padding-top:30px}.hero>div{grid-column:auto!important;grid-row:auto!important}.hero img{height:270px!important}.spec-row{grid-template-columns:110px minmax(0,1fr)}}
+
+</style>
 </head>
 
 <body>
@@ -286,7 +297,7 @@
 
   <main class="container">
 
-    <div class="hero" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;" direction: rt1;>
+    <div class="hero">
   <div>
       <div class="label"> apple / iphone series </div>
 
@@ -315,7 +326,6 @@ alt="iphone 17 pro max"
 >
          </div>
        </div>
-      </div>
 
     <section>
       <h2>المواصفات التقنية</h2>

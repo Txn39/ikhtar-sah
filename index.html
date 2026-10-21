@@ -14,11 +14,11 @@
     :root {
       --bg: #0b0d15;
       --surface: #141824;
-      --border: #292e40;
-      --text: #c7cb62;
+      --border: #6a2ae0;
+      --text: #e0ec36;
       --muted: #a4a9bb;
-      --blue: #512bce;
-      --purple: #4927b9;
+      --blue: #29a5c7;
+      --purple: #c8c3d8;
       --orange: #896613;
     }
 
@@ -28,7 +28,7 @@
 
     body {
       margin: 0;
-      background: var(--bg);
+background: #0e2546;
       color: var(--text);
       font-family: "Cairo", sans-serif;
       font-size: 14px;
@@ -483,6 +483,129 @@
         flex-direction: column;
       }
     }
+    .compare-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 16px;
+  max-width: 400px;
+width: 100%;
+box-sizing: border-box;
+  background: #3e8ab0;
+  border: 1px solid #6c85b6;
+  border-radius: 13px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.compare-card:hover {
+  border-color: #7545ce;
+  transform: translateY(-3px);
+}
+
+.compare-icon {
+  font-size: 30px;
+  background: #e2dfdc;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.compare-info {
+  flex: 1;
+}
+
+.compare-info h3 {
+  color: #eaf133;
+  margin: 0 0 6px;
+}
+
+.compare-info p {
+  color: #fcfbfa;
+  font-size: 13px;
+  margin: 0;
+}
+
+.compare-arrow {
+  color: #7545ce;
+  font-size: 25px;
+}
+
+/* اختَر صح — الهوية الفاتحة للصفحة الرئيسية */
+:root {
+  --bg: #F3F4F6;
+  --surface: #FFFFFF;
+  --border: #E5E7EB;
+  --text: #21152F;
+  --muted: #65616F;
+  --blue: #7545CE;
+  --purple: #7545CE;
+  --orange: #C48B18;
+}
+body { background: var(--bg); color: var(--text); }
+header { background: #FFFFFF; border-bottom-color: var(--border); }
+.brand-icon { background: linear-gradient(135deg, #7545CE, #9B79E2); }
+nav a:hover { color: var(--blue); }
+.hero {
+  background: radial-gradient(circle at 15% 30%, rgba(117,69,206,.07), transparent 40%),
+              radial-gradient(circle at 85% 65%, rgba(117,69,206,.05), transparent 42%);
+  border-bottom-color: var(--border);
+}
+h1 span { color: var(--blue); }
+.search-box input { background: #FFFFFF; border-color: #DADCE3; color: var(--text); }
+.search-box input::placeholder { color: #898595; }
+.search-box button { background: var(--blue); color: #FFFFFF; }
+.search-box button:hover { background: #6036B6; }
+#result a { color: var(--blue) !important; }
+.art-glow { background: #A78BFA; opacity: .15; }
+.phone { border-color: #A39AB9; box-shadow: 18px 25px 55px rgba(41,25,78,.12); }
+.float-card { background: #FFFFFF; border-color: var(--border); box-shadow: 0 12px 28px rgba(41,25,78,.09); }
+.float-one b, .float-two b { color: var(--blue); }
+.service { background: #FFFFFF; border-color: var(--border); box-shadow: 0 6px 24px rgba(41,25,78,.035); }
+.service:hover { border-color: #A78BFA; }
+.service-number { color: #777184; }
+.note { background: #FFFFFF; border-color: var(--border); border-right: 3px solid var(--blue); }
+footer { border-top-color: var(--border); color: var(--muted); }
+.compare-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 18px;
+  max-width: 490px;
+  width: 100%;
+  margin: 20px 0 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 13px;
+  box-shadow: 0 8px 26px rgba(41,25,78,.06);
+}
+.compare-content { display: flex; align-items: center; gap: 13px; }
+.compare-icon { display: grid; place-items: center; flex: 0 0 48px; width: 48px; height: 48px; background: #F0E9FF; color: #7545CE; font-size: 25px; border-radius: 13px; padding: 0; }
+.compare-info { flex: 1; min-width: 0; }
+.compare-info h3 { color: #21152F; margin: 0 0 4px; font-size: 16px; }
+.compare-info p { color: #65616F; font-size: 12px; line-height: 1.8; margin: 0; }
+.compare-button { display: block; background: #7545CE; color: #FFFFFF; text-align: center; padding: 10px 14px; border-radius: 11px; font-weight: 800; font-size: 14px; }
+.compare-card:hover { border-color: #7545CE; transform: translateY(-2px); }
+.compare-card:hover .compare-button { background: #6036B6; }
+@media (max-width: 480px) {
+  .compare-card { max-width: 100%; }
+  .hero { padding: 45px 0; }
+}
+
+
+/* واجهة هاتف واحدة، محسّنة ومرتّبة */
+.hero-art { width:100%; max-width:390px; min-height:370px; margin-inline:auto; isolation:isolate; }
+.art-glow { width:235px; height:265px; opacity:.13; }
+.phone { width:178px; height:322px; border:5px solid #30254e; border-radius:33px; transform:rotate(-7deg); background:linear-gradient(150deg,#181e3c 5%,#373075 49%,#10162d 100%); box-shadow:12px 20px 35px rgba(39,25,83,.18), inset 0 0 0 2px #8378a7; overflow:hidden; z-index:1; }
+.phone::before { top:13px; width:56px; height:15px; border-radius:12px; background:#080d20; box-shadow:0 0 0 2px rgba(255,255,255,.08); z-index:2; }
+.phone::after { width:145px; height:145px; top:93px; left:11px; border-radius:50%; border:1px solid rgba(206,189,255,.65); background:radial-gradient(circle at 36% 35%,rgba(183,150,255,.55),rgba(125,87,216,.22) 45%,transparent 73%); box-shadow:0 0 0 23px rgba(165,134,247,.09),0 0 0 50px rgba(165,134,247,.035); }
+.float-card { background:#fff; border:1px solid #e9e3f3; box-shadow:0 9px 25px rgba(41,25,78,.09); padding:12px 15px; min-width:125px; }
+.float-one { top:78px; right:0; }
+.float-two { bottom:73px; left:0; }
+@media(max-width:800px){.hero-art{max-width:350px;min-height:340px}.phone{transform:rotate(-7deg) scale(.9)}.float-one{right:0;top:70px}.float-two{left:0;bottom:62px}}
+@media(max-width:400px){.hero-art{max-width:300px}.float-card{min-width:108px;padding:10px;font-size:10px}.float-one{right:0}.float-two{left:0}}
+
   </style>
 </head>
 
@@ -540,6 +663,16 @@
 
           <div id="result" aria-live="polite"></div>
 
+          <a href="compare.html" class="compare-card">
+            <div class="compare-content">
+              <div class="compare-icon">📱</div>
+              <div class="compare-info">
+                <h3>مقارنة الهواتف</h3>
+                <p>محتار بين هاتفين؟ قارن المواصفات واختَر الأنسب إلك.</p>
+              </div>
+            </div>
+            <span class="compare-button">قارن الآن ←</span>
+          </a>
         </div>
 
         <div class="hero-art">
@@ -630,8 +763,17 @@
   </footer>
 
   <script>
-    // بيانات البحث تأتي من phones.json بدلاً من شروط ثابتة لكل هاتف.
-    let phonesDatabase = [];
+    // الهواتف الثمانية المعتمدة في مشروع اختَر صح.
+    const phonesDatabase = [
+      { name: "Xiaomi 17 Ultra", model: "17 Ultra", brand: "Xiaomi", page: "xiaomi-17-ultra.html", aliases: ["شاومي 17 الترا", "شاومي 17 الترا"] },
+      { name: "vivo X300 Ultra", model: "X300 Ultra", brand: "vivo", page: "vivo-x300-ultra.html", aliases: ["فيفو اكس 300 الترا", "فيفو x300 ultra"] },
+      { name: "HONOR Magic8 Pro", model: "Magic8 Pro", brand: "HONOR", page: "honor-magic8-pro.html", aliases: ["هونر ماجيك 8 برو", "هونر ماجيك8 برو"] },
+      { name: "POCO F9 Ultra", model: "F9 Ultra", brand: "POCO", page: "poco-f9-ultra.html", aliases: ["بوكو اف 9 الترا", "بوكو f9 ultra"] },
+      { name: "realme GT8 Pro", model: "GT8 Pro", brand: "realme", page: "realme-gt8-pro.html", aliases: ["ريلمي جي تي 8 برو", "ريلمي gt8 pro"] },
+      {"name": "Xiaomi 14T", "model": "14T", "brand": "Xiaomi", "page": "xiaomi-14t.html", "aliases": ["شاومي 14t", "شاومي14تي", "xiaomi14t"]},
+      {"name": "Samsung Galaxy S25 Ultra", "model": "Galaxy S25 Ultra", "brand": "Samsung", "page": "samsung-s25-ultra.html", "aliases": ["سامسونج s25 ultra", "اس 25 الترا", "s25ultra", "galaxy s25 ultra"]},
+      {"name": "iPhone 17 Pro Max", "model": "iPhone 17 Pro Max", "brand": "Apple", "page": "iphone-17-pro-max.html", "aliases": ["ايفون 17 برو ماكس", "آيفون 17 برو ماكس", "iphone17promax", "17promax"]}
+    ];
     const resultElement = document.getElementById("result");
     const searchInput = document.getElementById("phoneSearch");
 
@@ -640,25 +782,10 @@
         .replace(/[أإآ]/g, "ا").replace(/ى/g, "ي");
     }
 
-    async function loadPhonesDatabase() {
-      try {
-        const response = await fetch("phones.json", { cache: "no-store" });
-        if (!response.ok) throw new Error("Failed to load phones.json");
-        phonesDatabase = await response.json();
-      } catch (error) {
-        resultElement.textContent = "تعذر تحميل بيانات الهواتف. افتح الموقع باستخدام Live Server.";
-        console.error(error);
-      }
-    }
-
     function searchPhone() {
       const query = normalizePhoneName(searchInput.value.trim());
       if (!query) {
         resultElement.textContent = "اكتب اسم الهاتف أولاً.";
-        return;
-      }
-      if (!phonesDatabase.length) {
-        resultElement.textContent = "قاعدة البيانات غير محملة حالياً.";
         return;
       }
       const matches = phonesDatabase.filter(phone =>
@@ -678,7 +805,7 @@
         const link = document.createElement("a");
         link.href = phone.page;
         link.textContent = phone.name;
-        link.style.cssText = "display:block;color:#d6c9ff;padding:7px;text-decoration:underline";
+        link.style.cssText = "display:block;color:#7545CE;padding:7px;text-decoration:underline";
         resultElement.appendChild(link);
       });
     }
@@ -686,14 +813,7 @@
     searchInput.addEventListener("keydown", event => {
       if (event.key === "Enter") searchPhone();
     });
-    loadPhonesDatabase();
   </script>
-<a href="xiaomi-14t.html"
-   style="display:block; width:fit-content; margin:25px auto;
-   padding:15px 30px; background:hsl(270, 94%, 53%); color:rgb(249, 248, 247);
-   border-radius:12px; font-size:16px; font-weight:bold;
-   text-decoration:none;">
-   شاهد مواصفات Xiaomi 14T
-</a>
+
 </body>
 </html>
