@@ -1,0 +1,699 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اختَر صح | دليلك لاختيار الهاتف</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0d15;
+      --surface: #141824;
+      --border: #292e40;
+      --text: #c7cb62;
+      --muted: #a4a9bb;
+      --blue: #512bce;
+      --purple: #4927b9;
+      --orange: #896613;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Cairo", sans-serif;
+      font-size: 14px;
+    }
+
+    button, input {
+      font-family: inherit;
+    }
+
+    .container {
+      width: min(960px, 90%);
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(11, 13, 21, .95);
+    }
+
+    .navbar {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .brand-icon {
+      width: 39px;
+      height: 39px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #4bc8ec, #8863df);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .brand-name {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .brand-caption {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      transition: color .2s;
+    }
+
+    nav a:hover {
+      color: var(--blue);
+    }
+
+    .hero {
+      position: relative;
+      padding: 88px 0 76px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      background:
+        radial-gradient(circle at 15% 30%, rgba(102, 74, 175, .14), transparent 38%),
+        radial-gradient(circle at 85% 65%, rgba(55, 149, 204, .10), transparent 40%);
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.65;
+      letter-spacing: -.5px;
+      margin: 0 0 16px;
+      font-weight: 800;
+    }
+
+    h1 span {
+      color: var(--blue);
+    }
+
+    .hero-description {
+      color: var(--muted);
+      line-height: 2.1;
+      max-width: 490px;
+      margin: 0;
+      font-size: 13px;
+    }
+
+    .search-box {
+      display: flex;
+      gap: 9px;
+      margin-top: 27px;
+      max-width: 490px;
+    }
+
+    .search-box input {
+      flex: 1;
+      min-width: 0;
+      background: #191e2c;
+      border: 1px solid #353b50;
+      border-radius: 10px;
+      padding: 12px 15px;
+      color: #fff;
+      outline: none;
+      font-size: 12px;
+    }
+
+    .search-box input:focus {
+      border-color: var(--blue);
+    }
+
+    .search-box button {
+      border: none;
+      background: var(--blue);
+      color: #0b1720;
+      border-radius: 10px;
+      padding: 10px 23px;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .search-box button:hover {
+      background: #8ee4f8;
+    }
+
+    #result {
+      color: var(--blue);
+      font-size: 12px;
+      margin-top: 12px;
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 320px;
+      display: grid;
+      place-items: center;
+    }
+
+    .art-glow {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: #6856d7;
+      opacity: .14;
+      filter: blur(65px);
+    }
+
+    .phone {
+      width: 160px;
+      height: 290px;
+      border-radius: 29px;
+      border: 6px solid #353a4c;
+      background: linear-gradient(155deg, #253f6b, #28204b 65%, #141a2a);
+      box-shadow: 18px 25px 55px rgba(0, 0, 0, .4);
+      transform: rotate(-10deg);
+      position: relative;
+    }
+
+    .phone::before {
+      content: "";
+      position: absolute;
+      top: 9px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 42px;
+      height: 11px;
+      background: #080a10;
+      border-radius: 20px;
+    }
+
+    .phone::after {
+      content: "";
+      position: absolute;
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      border: 1px solid rgba(140, 210, 255, .3);
+      top: 85px;
+      left: 25px;
+      box-shadow:
+        0 0 0 22px rgba(120, 130, 240, .08),
+        0 0 0 48px rgba(120, 130, 240, .04);
+    }
+
+    .float-card {
+      position: absolute;
+      background: rgba(27, 32, 49, .95);
+      border: 1px solid #42475f;
+      border-radius: 12px;
+      padding: 12px 16px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, .2);
+      font-size: 11px;
+      font-weight: 700;
+      z-index: 2;
+    }
+
+    .float-card small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 400;
+    }
+
+    .float-one {
+      top: 45px;
+      right: 0;
+    }
+
+    .float-two {
+      bottom: 45px;
+      left: 0;
+    }
+
+    .float-one b {
+      color: var(--blue);
+    }
+
+    .float-two b {
+      color: var(--orange);
+    }
+
+    .section {
+      padding: 70px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 28px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      color: var(--purple);
+      font-weight: 700;
+    }
+
+    h2 {
+      margin: 7px 0 5px;
+      font-size: 25px;
+      font-weight: 800;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .service {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 25px 22px;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .service:hover {
+      border-color: #555b80;
+      transform: translateY(-3px);
+    }
+
+    .service-icon {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      margin-bottom: 17px;
+      font-size: 21px;
+      font-weight: 800;
+    }
+
+    .icon-blue {
+      background: rgba(81, 201, 237, .12);
+      color: var(--blue);
+    }
+
+    .icon-purple {
+      background: rgba(165, 139, 250, .12);
+      color: var(--purple);
+    }
+
+    .icon-orange {
+      background: rgba(246, 161, 110, .12);
+      color: var(--orange);
+    }
+
+    .service h3 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .service p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 2;
+      color: var(--muted);
+    }
+
+    .service-number {
+      display: block;
+      margin-top: 18px;
+      color: #697088;
+      font-size: 10px;
+    }
+
+    .note {
+      margin-top: 35px;
+      background: #121725;
+      border: 1px solid #28334a;
+      border-right: 3px solid var(--blue);
+      border-radius: 10px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .note strong {
+      font-size: 13px;
+    }
+
+    .note p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .note-tag {
+      color: var(--blue);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 23px 0;
+      color: #82899e;
+      font-size: 11px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    @media (max-width: 800px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .hero {
+        padding: 55px 0;
+      }
+
+      .hero-art {
+        min-height: 260px;
+      }
+
+      .phone {
+        transform: rotate(-7deg) scale(.8);
+      }
+
+      .float-one {
+        right: 10%;
+      }
+
+      .float-two {
+        left: 10%;
+      }
+
+      .services {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 10px;
+      }
+
+      .brand-name {
+        font-size: 17px;
+      }
+
+      .brand-caption {
+        font-size: 9px;
+      }
+
+      h1 {
+        font-size: 29px;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .search-box button {
+        padding: 12px;
+      }
+
+      .note {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container navbar">
+
+      <div class="brand">
+        <div class="brand-icon">✓</div>
+        <div>
+          <div class="brand-name">اختَر صح</div>
+          <div class="brand-caption">قرارك يبدأ بالمعلومة</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#home">الرئيسية</a>
+        <a href="#services">عن الموقع</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="container hero-layout">
+
+        <div class="hero-content">
+
+          <div class="eyebrow">
+            دليلك لاختيار الهاتف المناسب
+          </div>
+
+          <h1>
+            مو كل هاتف غالي<br>
+            يعني هو <span>الأفضل إلك.</span>
+          </h1>
+
+          <p class="hero-description">
+            نساعدك تفهم مواصفات الهواتف، وتقارن بين الخيارات،
+            وتعرف نقاط القوة والضعف قبل ما تصرف فلوسك.
+            بدون مبالغة أو تطبيل.
+          </p>
+
+          <div class="search-box">
+            <input
+              id="phoneSearch"
+              type="text"
+              placeholder="ابحث عن هاتف..."
+            >
+            <button onclick="searchPhone()">بحث</button>
+          </div>
+
+          <div id="result" aria-live="polite"></div>
+
+        </div>
+
+        <div class="hero-art">
+
+          <div class="art-glow"></div>
+
+          <div class="phone"></div>
+
+          <div class="float-card float-one">
+            <b>مواصفات واضحة</b>
+            <small>اعرف التفاصيل المهمة</small>
+          </div>
+
+          <div class="float-card float-two">
+            <b>قرار أذكى</b>
+            <small>اختار حسب احتياجك</small>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-label">شنو نقدم؟</div>
+          <h2>المعلومة قبل قرار الشراء</h2>
+          <p>ثلاث خطوات تساعدك توصل للهاتف المناسب.</p>
+        </div>
+
+        <div class="services">
+
+          <article class="service">
+            <div class="service-icon icon-blue">▤</div>
+            <h3>مواصفات مفهومة</h3>
+            <p>
+              مو مجرد أرقام بجدول. نشرحلك شنو تعني
+              المواصفات، وشنو تأثيرها على استخدامك اليومي.
+            </p>
+            <span class="service-number">01 — افهم</span>
+          </article>
+
+          <article class="service">
+            <div class="service-icon icon-purple">⇄</div>
+            <h3>مقارنات عادلة</h3>
+            <p>
+              نقارن الهواتف من ناحية الأداء والكاميرات
+              والبطارية والسعر، حسب احتياجك الفعلي.
+            </p>
+            <span class="service-number">02 — قارن</span>
+          </article>
+
+          <article class="service">
+            <div class="service-icon icon-orange">✓</div>
+            <h3>قرار بدون ندم</h3>
+            <p>
+              نوضحلك لمن يناسب الهاتف، ولمن ما يناسب،
+              حتى تعرف إذا يستحق سعره فعلًا.
+            </p>
+            <span class="service-number">03 — قرر</span>
+          </article>
+
+        </div>
+
+        <div class="note">
+          <div>
+            <strong>ليش اختَر صح؟</strong>
+            <p>
+              لأن الهاتف الأفضل بالمواصفات مو بالضرورة
+              يكون الأفضل بالنسبة إلك.
+            </p>
+          </div>
+          <span class="note-tag">اختيار مبني على احتياجك ←</span>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© اختَر صح — دليلك للهواتف</span>
+      <span>المعلومة الواضحة تصنع قرار أفضل.</span>
+    </div>
+  </footer>
+
+  <script>
+    // بيانات البحث تأتي من phones.json بدلاً من شروط ثابتة لكل هاتف.
+    let phonesDatabase = [];
+    const resultElement = document.getElementById("result");
+    const searchInput = document.getElementById("phoneSearch");
+
+    function normalizePhoneName(value) {
+      return value.toLocaleLowerCase().replace(/[\s\-_]+/g, "")
+        .replace(/[أإآ]/g, "ا").replace(/ى/g, "ي");
+    }
+
+    async function loadPhonesDatabase() {
+      try {
+        const response = await fetch("phones.json", { cache: "no-store" });
+        if (!response.ok) throw new Error("Failed to load phones.json");
+        phonesDatabase = await response.json();
+      } catch (error) {
+        resultElement.textContent = "تعذر تحميل بيانات الهواتف. افتح الموقع باستخدام Live Server.";
+        console.error(error);
+      }
+    }
+
+    function searchPhone() {
+      const query = normalizePhoneName(searchInput.value.trim());
+      if (!query) {
+        resultElement.textContent = "اكتب اسم الهاتف أولاً.";
+        return;
+      }
+      if (!phonesDatabase.length) {
+        resultElement.textContent = "قاعدة البيانات غير محملة حالياً.";
+        return;
+      }
+      const matches = phonesDatabase.filter(phone =>
+        [phone.name, phone.model, phone.brand + ' ' + phone.model, ...(phone.aliases || [])]
+          .some(label => normalizePhoneName(label).includes(query))
+      );
+      if (matches.length === 1 && matches[0].page) {
+        window.location.href = matches[0].page;
+        return;
+      }
+      if (!matches.length) {
+        resultElement.textContent = "ما لقينا هذا الهاتف حالياً، راح نضيفه قريباً.";
+        return;
+      }
+      resultElement.replaceChildren();
+      matches.forEach(phone => {
+        const link = document.createElement("a");
+        link.href = phone.page;
+        link.textContent = phone.name;
+        link.style.cssText = "display:block;color:#d6c9ff;padding:7px;text-decoration:underline";
+        resultElement.appendChild(link);
+      });
+    }
+
+    searchInput.addEventListener("keydown", event => {
+      if (event.key === "Enter") searchPhone();
+    });
+    loadPhonesDatabase();
+  </script>
+<a href="xiaomi-14t.html"
+   style="display:block; width:fit-content; margin:25px auto;
+   padding:15px 30px; background:hsl(270, 94%, 53%); color:rgb(249, 248, 247);
+   border-radius:12px; font-size:16px; font-weight:bold;
+   text-decoration:none;">
+   شاهد مواصفات Xiaomi 14T
+</a>
+</body>
+</html>
