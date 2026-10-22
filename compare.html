@@ -24,9 +24,48 @@
 .analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.analysis-card{border:1px solid var(--line);border-radius:14px;padding:14px;background:#faf9fd}
 .analysis-card h3{margin:0 0 8px;color:var(--purple)}.analysis-card ul{padding-right:20px;margin:0;line-height:2}
 @media(max-width:600px){.analysis-grid{grid-template-columns:1fr}.insights{padding:12px}}
+
+@media (max-width: 600px) {
+  .comparison {
+    overflow-x: hidden;
+  }
+
+  .comparison table {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+  }
+
+  .comparison th,
+  .comparison td {
+    padding: 7px 3px;
+    font-size: 10px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .comparison th:first-child,
+  .comparison td:first-child {
+    width: 22%;
+    font-size: 10px;
+  }
+
+  .comparison .phone-photo,
+  .comparison .phone-placeholder {
+    height: 75px;
+  }
+
+  .comparison .phone-link {
+    font-size: 11px;
+  }
+}
+
 </style>
+<link rel="stylesheet" href="motion-background.css">
 </head>
 <body>
+<div class="ik-motion" aria-hidden="true"><span class="ik-motion__halo ik-motion__halo--one"></span><span class="ik-motion__halo ik-motion__halo--two"></span><span class="ik-motion__point ik-motion__point--1"></span><span class="ik-motion__point ik-motion__point--2"></span><span class="ik-motion__point ik-motion__point--3"></span><span class="ik-motion__point ik-motion__point--4"></span></div>
 <header><div class="wrap top"><a class="logo" href="index.html">✓ اختَر صح</a><a class="back" href="index.html">← الرئيسية</a></div></header>
 <main class="wrap">
 <h1>مقارنة الهواتف</h1><p class="subtitle">اختَر هاتفين من الأجهزة الثمانية وشوف مواصفاتهم وتحليل الفروقات.</p>
@@ -111,5 +150,22 @@ function renderInsights(a,b){
 button.addEventListener('click',compare);
 const phonesData=[{"id":"xiaomi-17-ultra","name":"Xiaomi 17 Ultra","model":"Xiaomi 17 Ultra","page":"xiaomi-17-ultra.html","image":"xiaomi-17-ultra.png","specs":{"المعالج":"Snapdragon 8 Elite Gen 5 — 3nm","الشاشة":"Xiaomi HyperRGB OLED — 6.9 بوصة، 1–120Hz","الدقة":"2608 × 1200","الذاكرة":"16GB LPDDR5X","التخزين":"512GB / 1TB — UFS 4.1","الكاميرا الرئيسية":"50MP — Light Fusion 1050L، مستشعر 1 بوصة، OIS","التقريب":"200MP Leica — بعد بؤري 75–100mm، OIS","الواسعة جداً":"50MP — زاوية 115°","السيلفي":"50MP — تركيز تلقائي","البطارية":"6000mAh — شحن 90W سلكي و50W لاسلكي","الحماية":"IP68"},"strengths":["مستشعر رئيسي كبير بقياس بوصة واحدة","تقريب بصري مرن وكاميرا تقريب 200MP","معالج رائد وذاكرة UFS 4.1","تصوير فيديو متقدم بدعم 4K و8K"],"weaknesses":["حجم الشاشة الكبير لا يناسب الجميع","دقة الشاشة أقل رقمياً من بعض المنافسين QHD+","الشاحن غير مرفق في بعض الأسواق"]},{"id":"vivo-x300-ultra","name":"vivo X300 Ultra","model":"vivo X300 Ultra","page":"vivo-x300-ultra.html","image":"vivo-x300-ultra.png","specs":{"المعالج":"Snapdragon 8 Elite Gen 5 — 3nm","الشاشة":"AMOLED — 6.82 بوصة، 1–144Hz","الدقة":"3168 × 1440","الذاكرة":"16GB LPDDR5X Ultra Pro","التخزين":"512GB / 1TB — UFS 4.1","الكاميرا الرئيسية":"200MP — عدسة 35mm، OIS","التقريب":"200MP ZEISS APO — عدسة 85mm","الواسعة جداً":"50MP — عدسة واسعة جداً 14mm","السيلفي":"50MP","البطارية":"6600mAh — 100W سلكي و40W لاسلكي","الحماية":"IP68 / IP69"},"strengths":["كاميرا رئيسية 200MP مع عدسات ZEISS","كاميرا تقريب 200MP بتركيز على التصوير البعيد","شاشة عالية الدقة وتردد 144Hz","بطارية 6600mAh وشحن 100W"],"weaknesses":["الوزن يصل إلى 237 غراماً حسب اللون","وحدة الكاميرات الكبيرة قد لا تناسب بعض المستخدمين","سعة التخزين غير قابلة للتوسعة ببطاقة ذاكرة"]},{"id":"honor-magic8-pro","name":"HONOR Magic8 Pro","model":"HONOR Magic8 Pro","page":"honor-magic8-pro.html","image":"honor-magic8-pro.png","specs":{"المعالج":"Snapdragon 8 Elite Gen 5","الشاشة":"شاشة OLED — راجع اختلاف الحجم حسب المنطقة","الدقة":"تختلف الدقة حسب الإصدار والسوق","الذاكرة":"12GB RAM (نسخة الموقع البريطاني)","التخزين":"512GB (نسخة الموقع البريطاني)","الكاميرا الرئيسية":"50MP — مستشعر 1/1.3 بوصة، OIS","التقريب":"200MP — تقريب بصري 3.7×، OIS","الواسعة جداً":"50MP — زاوية 122°","السيلفي":"يرجى الرجوع لصفحة المواصفات الإقليمية","البطارية":"تختلف سعة البطارية والشحن حسب السوق؛ راجع النسخة المحلية","الحماية":"راجع شهادة الحماية للنسخة المحلية"},"strengths":["معالج رائد Snapdragon 8 Elite Gen 5","تقريب بصري 3.7× مع OIS","كاميرا رئيسية 50MP بمستشعر كبير","كاميرا واسعة جداً بزاوية 122°"],"weaknesses":["المواصفات الإقليمية قد تختلف","لا توجد لدينا بيانات موثقة عن سعره العراقي","لا يمكن استنتاج جودة التصوير من الدقة وحدها"]},{"id":"poco-f9-ultra","name":"POCO F9 Ultra","model":"POCO F9 Ultra","page":"poco-f9-ultra.html","image":"poco-f9-ultra.png","specs":{"المعالج":"Snapdragon 8 Elite Gen 5 — 3nm + VisionBoost D8","الشاشة":"AMOLED — 6.9 بوصة، حتى 185Hz","الدقة":"2608 × 1200","الذاكرة":"12GB / 16GB LPDDR5X","التخزين":"256GB / 512GB / 1TB — UFS 4.1","الكاميرا الرئيسية":"200MP — OIS","التقريب":"50MP بيريسكوب — تقريب بصري 5×، OIS","الواسعة جداً":"50MP","السيلفي":"32MP","البطارية":"8050mAh — 100W سلكي و50W لاسلكي","الحماية":"IP68"},"strengths":["شاشة حتى 185Hz في التطبيقات والألعاب المدعومة","بطارية كبيرة جداً بسعة 8050mAh","معالج رائد مع شريحة رسومية إضافية","نظام صوت 2.1 مضبوط من Bose"],"weaknesses":["وزن يقارب 235 غراماً","185Hz غير متاح في كل التطبيقات والألعاب","الحجم الكبير قد يزعج محبي الأجهزة الصغيرة"]},{"id":"realme-gt8-pro","name":"realme GT8 Pro","model":"realme GT8 Pro","page":"realme-gt8-pro.html","image":"realme-gt8-pro.png","specs":{"المعالج":"Snapdragon 8 Elite Gen 5","الشاشة":"AMOLED — 6.79 بوصة، حتى 144Hz","الدقة":"3136 × 1440","الذاكرة":"حتى 16GB RAM","التخزين":"حتى 512GB (تختلف النسخ حسب السوق)","الكاميرا الرئيسية":"50MP — نظام تصوير RICOH GR","التقريب":"200MP بيريسكوب — 65mm، OIS","الواسعة جداً":"50MP","السيلفي":"راجع مواصفات النسخة الإقليمية","البطارية":"7000mAh — 120W سلكي و50W لاسلكي","الحماية":"راجع شهادة الحماية للنسخة المحلية"},"strengths":["معالج رائد قوي","شاشة QHD+ بتردد 144Hz","بطارية 7000mAh وشحن 120W","كاميرا تقريب 200MP مع OIS"],"weaknesses":["قد يكون كبير الحجم للاستخدام بيد واحدة","سرعة الشحن الفعلية تختلف حسب الظروف","التوفر والذاكرة يختلفان بين الأسواق"]},{"id":"xiaomi-14t","brand":"Xiaomi","model":"14T","name":"Xiaomi 14T","aliases":["شاومي 14t","شاومي14تي","xiaomi14t"],"page":"xiaomi-14t.html","image":"xiaomi-14t.png","specs":{"المعالج":"MediaTek Dimensity 8300-Ultra — 4nm","الشاشة":"AMOLED — 6.67 إنچ — 144Hz","الدقة":"2712 × 1220","الذاكرة":"12GB RAM — LPDDR5X","التخزين":"256GB / 512GB — UFS 4.0","الكاميرا الرئيسية":"50MP — Sony IMX906 — OIS","التقريب":"50MP Telephoto — 2x بصري","الواسعة جداً":"12MP Ultra-wide","السيلفي":"32MP","البطارية":"5000mAh — شحن سلكي 67W","الحماية":"IP68 لمقاومة الماء والغبار"},"price_iqd":null,"price_note":"لم يُضف السعر بعد"},{"id":"samsung-s25-ultra","brand":"Samsung","model":"Galaxy S25 Ultra","name":"Samsung Galaxy S25 Ultra","aliases":["سامسونج s25 ultra","اس 25 الترا","s25ultra","galaxy s25 ultra"],"page":"samsung-s25-ultra.html","image":"samsung-s25-ultra.png","specs":{"المعالج":"Snapdragon 8 Elite for Galaxy — 3nm","الشاشة":"Dynamic AMOLED 2X — 6.9 إنچ — 120Hz","الدقة":"1440 × 3120","الذاكرة":"12GB RAM","التخزين":"256GB / 512GB / 1TB — UFS 4.0","الكاميرا الرئيسية":"200MP — OIS","التقريب":"10MP — 3x / 50MP — 5x","الواسعة جداً":"50MP Ultra-wide","السيلفي":"12MP","البطارية":"5000mAh — شحن سلكي 45W","الحماية":"IP68 لمقاومة الماء والغبار"},"price_iqd":null,"price_note":"لم يُضف السعر بعد"},{"id":"iphone-17-pro-max","brand":"Apple","model":"iPhone 17 Pro Max","name":"iPhone 17 Pro Max","aliases":["ايفون 17 برو ماكس","آيفون 17 برو ماكس","iphone17promax","17promax"],"page":"iphone-17-pro-max.html","image":"iphone-17-pro-max.png","specs":{"المعالج":"A19PRO 3nm","الشاشة":"LTPO Super retina XDR OLED 120hz","الدقة":"2868 x 1320 p 6.9","الذاكرة":"RAM:12GB","التخزين":"2TB-1TB-512GB","الكاميرا الرئيسية":"48MP","التقريب":"48MP - بيرسكوب 4X","الواسعة جداً":"48MP","السيلفي":"18MP","البطارية":"4823mah-5088mah-45w سلكي و 25wلا سلكي","الحماية":"IP68 -مع مقاومه ماء تحت عمق 6 امتار لمده 30 دقيقة"},"price_iqd":null,"price_note":"لم يُضف السعر بعد"}];
 phones=phonesData;msg.textContent='متوفر '+phones.length+' هواتف. اختَر هاتفين للبدء.';
+
+window.addEventListener("load", () => {
+  const phoneId = new URLSearchParams(
+    window.location.search
+  ).get("phone");
+
+  if (!phoneId) return;
+
+  const phone = phones.find(p =>
+    p.id === phoneId || p.page === phoneId + ".html"
+  );
+
+  if (phone) {
+    pick(0, phone);
+  }
+});
+
 </script>
 </body></html>

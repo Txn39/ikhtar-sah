@@ -284,9 +284,11 @@ body{background:#F3F4F6;color:#21152f}header,footer{background:#fff;border-color
 @media(max-width:768px){.hero{grid-template-columns:1fr!important;gap:20px!important;padding-top:30px}.hero>div{grid-column:auto!important;grid-row:auto!important}.hero img{height:270px!important}.spec-row{grid-template-columns:110px minmax(0,1fr)}}
 
 </style>
+<link rel="stylesheet" href="motion-background.css">
 </head>
 
 <body>
+<div class="ik-motion" aria-hidden="true"><span class="ik-motion__halo ik-motion__halo--one"></span><span class="ik-motion__halo ik-motion__halo--two"></span><span class="ik-motion__point ik-motion__point--1"></span><span class="ik-motion__point ik-motion__point--2"></span><span class="ik-motion__point ik-motion__point--3"></span><span class="ik-motion__point ik-motion__point--4"></span></div>
 
   <header>
     <div class="container nav">
@@ -294,6 +296,112 @@ body{background:#F3F4F6;color:#21152f}header,footer{background:#fff;border-color
       <a class="back" href="index.html">→ الرئيسية</a>
     </div>
   </header>
+
+<div class="phone-actions">
+  <input
+    type="search"
+    id="quickPhoneSearch"
+    placeholder="ابحث عن هاتف..."
+    aria-label="ابحث عن هاتف"
+  >
+
+  <button type="button" onclick="quickSearchPhone()">
+    بحث
+  </button>
+
+  <a href="compare.html?phone=iphone-17-pro-max" class="quick-compare">
+    قارن هذا الهاتف ⇄
+  </a>
+</div>
+
+<style>
+.phone-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 22px 0;
+}
+
+.phone-actions input {
+  flex: 1;
+  min-width: 170px;
+  padding: 12px 14px;
+  border: 1px solid #ded8e9;
+  border-radius: 11px;
+  font-family: Cairo, sans-serif;
+  background: #fff;
+  color: #21152f;
+}
+
+.phone-actions button,
+.quick-compare {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 11px;
+  background: #7545ce;
+  color: white;
+  font: 700 13px Cairo, sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.quick-compare {
+  background: #f0e9ff;
+  color: #7545ce;
+  border: 1px solid #d9c7fa;
+}
+
+@media (max-width: 480px) {
+  .phone-actions input {
+    flex-basis: 100%;
+  }
+
+  .phone-actions button,
+  .quick-compare {
+    flex: 1;
+  }
+}
+</style>
+
+<script>
+const quickPhones = {
+  "xiaomi 17 ultra": "xiaomi-17-ultra.html",
+  "vivo x300 ultra": "vivo-x300-ultra.html",
+  "honor magic8 pro": "honor-magic8-pro.html",
+  "poco f9 ultra": "poco-f9-ultra.html",
+  "realme gt8 pro": "realme-gt8-pro.html",
+  "xiaomi 14t": "xiaomi-14t.html",
+  "samsung s25 ultra": "samsung-s25-ultra.html",
+  "iphone 17 pro max": "iphone-17-pro-max.html"
+};
+
+function quickSearchPhone() {
+  const input = document.getElementById("quickPhoneSearch");
+  const query = input.value.trim().toLowerCase();
+
+  if (!query) {
+    alert("اكتب اسم الهاتف أولاً");
+    return;
+  }
+
+  const match = Object.entries(quickPhones).find(
+    ([name]) => name.includes(query)
+  );
+
+  if (match) {
+    window.location.href = match[1];
+  } else {
+    alert("هذا الهاتف غير موجود حالياً");
+  }
+}
+
+document.getElementById("quickPhoneSearch")
+  .addEventListener("keydown", function(event) {
+    if (event.key === "Enter") quickSearchPhone();
+  });
+</script>
 
   <main class="container">
 
@@ -325,6 +433,86 @@ alt="iphone 17 pro max"
   style="width: 100%; max-width: 350px; height: 300px; object-fit: contain;"
 >
          </div>
+         
+<div class="phone-colors">
+  <p>الألوان المتوفرة</p>
+
+  <div class="color-options">
+    <button class="color-dot active"
+      style="--phone-color:#F77D42"
+      data-name="البرتقالي الكوني"
+      aria-label="البرتقالي الكوني"></button>
+
+    <button class="color-dot"
+      style="--phone-color:#D8DCE4"
+      data-name="الفضي"
+      aria-label="الفضي"></button>
+
+    <button class="color-dot"
+      style="--phone-color:#253F70"
+      data-name="الأزرق العميق"
+      aria-label="الأزرق العميق"></button>
+  </div>
+
+  <span id="selectedColor">البرتقالي الكوني</span>
+</div>
+
+<style>
+.phone-colors {
+  margin: 20px 0;
+  text-align: center;
+  font-family: Cairo, sans-serif;
+}
+
+.phone-colors p {
+  font-weight: 700;
+  color: #21152f;
+}
+
+.color-options {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 12px 0;
+}
+
+.color-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--phone-color);
+  border: 3px solid white;
+  box-shadow: 0 0 0 1px #ccc;
+  cursor: pointer;
+}
+
+.color-dot.active {
+  box-shadow: 0 0 0 2px #7545ce;
+  transform: scale(1.12);
+}
+
+#selectedColor {
+  color: #7545ce;
+  font-weight: 700;
+  font-size: 13px;
+}
+</style>
+
+<script>
+document.querySelectorAll(".color-dot").forEach(dot => {
+  dot.addEventListener("click", () => {
+    document.querySelectorAll(".color-dot").forEach(
+      item => item.classList.remove("active")
+    );
+
+    dot.classList.add("active");
+
+    document.getElementById("selectedColor").textContent =
+      dot.dataset.name;
+  });
+});
+</script>
+
        </div>
 
     <section>

@@ -275,9 +275,118 @@
 /* الهوية الفاتحة لمشروع اختَر صح */
 body{background:#F3F4F6;color:#21152f}header,footer{background:#fff;border-color:#e5e7eb}.logo,h2{color:#7545ce}a,.label,.spec-name{color:#7545ce}.subtitle,ul,.verdict,footer{color:#5e6070}.chip,.specs,.analysis-card,.verdict{background:#fff;border-color:#e5e7eb;color:#21152f}.spec-row,.analysis-card li{border-color:#ececf2}.analysis-card:hover{box-shadow:0 12px 30px #30244a16}.good h3,.analysis-card.good h3{color:#16865d}.bad h3,.analysis-card.bad h3{color:#bb6538}.verdict{border-right-color:#7545ce}.hero{gap:30px}.phone-photo{width:100%;max-width:350px;height:300px;object-fit:contain}.photo-fallback{display:none;min-height:230px;align-items:center;justify-content:center;flex-direction:column;background:#ede7fb;border:1px dashed #c9b8ee;border-radius:20px;color:#7545ce;gap:12px}.photo-fallback .symbol{font-size:65px}.photo-fallback small{font-size:12px;text-align:center;padding:0 15px}.source-link{font-size:12px;margin-top:12px;display:inline-block}.verdict p{margin-bottom:0}@media(max-width:768px){.phone-photo{height:270px}}
 </style>
+<link rel="stylesheet" href="motion-background.css">
 </head>
 <body>
+<div class="ik-motion" aria-hidden="true"><span class="ik-motion__halo ik-motion__halo--one"></span><span class="ik-motion__halo ik-motion__halo--two"></span><span class="ik-motion__point ik-motion__point--1"></span><span class="ik-motion__point ik-motion__point--2"></span><span class="ik-motion__point ik-motion__point--3"></span><span class="ik-motion__point ik-motion__point--4"></span></div>
 <header>
+  
+<div class="phone-actions">
+  <input
+    type="search"
+    id="quickPhoneSearch"
+    placeholder="ابحث عن هاتف..."
+    aria-label="ابحث عن هاتف"
+  >
+
+  <button type="button" onclick="quickSearchPhone()">
+    بحث
+  </button>
+
+  <a href="compare.html?phone=honor-magic8-pro" class="quick-compare">
+    قارن هذا الهاتف ⇄
+  </a>
+</div>
+
+<style>
+.phone-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 22px 0;
+}
+
+.phone-actions input {
+  flex: 1;
+  min-width: 170px;
+  padding: 12px 14px;
+  border: 1px solid #ded8e9;
+  border-radius: 11px;
+  font-family: Cairo, sans-serif;
+  background: #fff;
+  color: #21152f;
+}
+
+.phone-actions button,
+.quick-compare {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 11px;
+  background: #7545ce;
+  color: white;
+  font: 700 13px Cairo, sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.quick-compare {
+  background: #f0e9ff;
+  color: #7545ce;
+  border: 1px solid #d9c7fa;
+}
+
+@media (max-width: 480px) {
+  .phone-actions input {
+    flex-basis: 100%;
+  }
+
+  .phone-actions button,
+  .quick-compare {
+    flex: 1;
+  }
+}
+</style>
+
+<script>
+const quickPhones = {
+  "xiaomi 17 ultra": "xiaomi-17-ultra.html",
+  "vivo x300 ultra": "vivo-x300-ultra.html",
+  "honor magic8 pro": "honor-magic8-pro.html",
+  "poco f9 ultra": "poco-f9-ultra.html",
+  "realme gt8 pro": "realme-gt8-pro.html",
+  "xiaomi 14t": "xiaomi-14t.html",
+  "samsung s25 ultra": "samsung-s25-ultra.html",
+  "iphone 17 pro max": "iphone-17-pro-max.html"
+};
+
+function quickSearchPhone() {
+  const input = document.getElementById("quickPhoneSearch");
+  const query = input.value.trim().toLowerCase();
+
+  if (!query) {
+    alert("اكتب اسم الهاتف أولاً");
+    return;
+  }
+
+  const match = Object.entries(quickPhones).find(
+    ([name]) => name.includes(query)
+  );
+
+  if (match) {
+    window.location.href = match[1];
+  } else {
+    alert("هذا الهاتف غير موجود حالياً");
+  }
+}
+
+document.getElementById("quickPhoneSearch")
+  .addEventListener("keydown", function(event) {
+    if (event.key === "Enter") quickSearchPhone();
+  });
+</script>
+
 <div class="container nav">
 <div class="logo">✓ اختَر صح</div>
 <a class="back" href="index.html">→ الرئيسية</a>
@@ -299,6 +408,138 @@ body{background:#F3F4F6;color:#21152f}header,footer{background:#fff;border-color
 <div style="text-align: center; grid-column: 2; grid-row: 1;">
 <img alt="صورة HONOR Magic8 Pro" class="phone-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" referrerpolicy="no-referrer" src="https://www-file.honor.com/content/dam/honor/common/tech/honor-ai/2025/imgs/1205/honormagic8pro.png" style="width: 100%; max-width: 350px; height: 300px; object-fit: contain;"/><div class="photo-fallback"><span class="symbol">▯</span><small>تعذر تحميل الصورة. تحقق من اتصال الإنترنت.</small></div>
 </div>
+
+<div class="phone-colors">
+  <p>الألوان المتوفرة</p>
+  <div class="color-options" id="phoneColorOptions"></div>
+  <span id="selectedColor"></span>
+</div>
+
+<style>
+.phone-colors {
+  margin: 20px 0;
+  text-align: center;
+  font-family: Cairo, sans-serif;
+}
+
+.phone-colors p {
+  font-weight: 700;
+  color: #21152f;
+}
+
+.color-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 12px 0;
+}
+
+.color-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--phone-color);
+  border: 3px solid white;
+  box-shadow: 0 0 0 1px #ccc;
+  cursor: pointer;
+}
+
+.color-dot.active {
+  box-shadow: 0 0 0 2px #7545ce;
+  transform: scale(1.12);
+}
+
+#selectedColor {
+  color: #7545ce;
+  font-weight: 700;
+  font-size: 13px;
+}
+</style>
+
+<script>
+(() => {
+  const phoneColors = {
+    "samsung-s25-ultra": [
+      ["تيتانيوم أزرق فضي", "#8C9DB1"],
+      ["تيتانيوم أسود", "#363638"],
+      ["تيتانيوم رمادي", "#898986"],
+      ["تيتانيوم أبيض فضي", "#E3E3DF"],
+      ["تيتانيوم أسود داكن", "#171719"],
+      ["تيتانيوم أخضر يشمي", "#A9BBAA"],
+      ["تيتانيوم وردي ذهبي", "#D8B7AA"]
+    ],
+
+    "xiaomi-14t": [
+      ["رمادي تيتانيوم", "#777C84"],
+      ["أزرق تيتانيوم", "#617A9A"],
+      ["أسود تيتانيوم", "#25262A"],
+      ["أخضر ليموني", "#A7C66D"]
+    ],
+
+    "xiaomi-17-ultra": [
+      ["الأسود", "#202124"],
+      ["الأبيض", "#F0EFEC"],
+      ["الأخضر النجمي", "#477D65"]
+    ],
+
+    "vivo-x300-ultra": [
+      ["الأخضر", "#8EAC8D"],
+      ["الأسود", "#242527"],
+      ["الأبيض", "#ECEBE7"]
+    ],
+
+    "honor-magic8-pro": [
+      ["الذهبي الشروقي", "#D8B78B"],
+      ["السماوي", "#A2D4D5"],
+      ["الأسود", "#252527"]
+    ],
+
+    "poco-f9-ultra": [
+      ["الكرزي الداكن", "#652B42"],
+      ["الأسود", "#242428"]
+    ]
+  };
+
+  const page = location.pathname
+    .split("/")
+    .pop()
+    .replace(/\.html$/i, "");
+
+  const colors = phoneColors[page] || [];
+  const container = document.querySelector(".phone-colors");
+  const options = container.querySelector(".color-options");
+  const label = container.querySelector("#selectedColor");
+
+  if (!colors.length) {
+    container.hidden = true;
+    return;
+  }
+
+  colors.forEach(([name, hex], index) => {
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = "color-dot";
+    button.style.setProperty("--phone-color", hex);
+    button.setAttribute("aria-label", name);
+    button.title = name;
+
+    button.addEventListener("click", () => {
+      options.querySelectorAll(".color-dot")
+        .forEach(dot => dot.classList.remove("active"));
+
+      button.classList.add("active");
+      label.textContent = name;
+    });
+
+    options.appendChild(button);
+
+    if (index === 0) button.click();
+  });
+})();
+</script>
+
 </div>
 <section>
 <h2>المواصفات التقنية</h2>
