@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<script>try{const t=localStorage.getItem('siteTheme');document.documentElement.dataset.theme=(t==='dark'||t==='light')?t:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){document.documentElement.dataset.theme='light'}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> iphon 17 pro max | اختَر صح</title>
@@ -285,6 +286,7 @@ body{background:#F3F4F6;color:#21152f}header,footer{background:#fff;border-color
 
 </style>
 <link rel="stylesheet" href="motion-background.css">
+<link rel="stylesheet" href="theme.css">
 </head>
 
 <body>
@@ -294,6 +296,7 @@ body{background:#F3F4F6;color:#21152f}header,footer{background:#fff;border-color
     <div class="container nav">
       <div class="logo">✓ اختَر صح</div>
       <a class="back" href="index.html">→ الرئيسية</a>
+<button id="themeToggle" type="button" aria-label="تبديل الوضع الليلي" title="تبديل الوضع">🌙</button>
     </div>
   </header>
 
@@ -309,9 +312,7 @@ body{background:#F3F4F6;color:#21152f}header,footer{background:#fff;border-color
     بحث
   </button>
 
-  <a href="compare.html?phone=iphone-17-pro-max" class="quick-compare">
-    قارن هذا الهاتف ⇄
-  </a>
+  <a href="compare.html?phone=iphone-17-pro-max" class="quick-compare">قارن</a>
 </div>
 
 <style>
@@ -402,6 +403,8 @@ document.getElementById("quickPhoneSearch")
     if (event.key === "Enter") quickSearchPhone();
   });
 </script>
+
+  <link rel="stylesheet" href="phone-pages.css">
 
   <main class="container">
 
@@ -636,5 +639,6 @@ Galaxy S26 Ultra.
     </div>
   </footer>
 
+<script src="theme.js" defer></script>
 </body>
 </html>

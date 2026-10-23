@@ -1,0 +1,298 @@
+:root {
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #10121e;
+  --card: #202538;
+  --ink: #f1edfa;
+  --muted: #b5b6c9;
+  --purple: #b18aff;
+  --line: #45405d;
+}
+
+/* Page background, without flattening every content container */
+html[data-theme="dark"] body,
+html[data-theme="dark"] main {
+  background-color: #10121e !important;
+  color: #f1edfa !important;
+}
+
+/* توهجات الخلفية */
+html[data-theme="dark"] .ik-motion {
+  opacity: .13 !important;
+}
+
+html[data-theme="dark"] .ik-motion__halo,
+html[data-theme="dark"] .ik-motion__point {
+  opacity: .08 !important;
+}
+
+/* الهيدر */
+html[data-theme="dark"] header {
+  background: #171b2b !important;
+  border-color: #34394d !important;
+}
+
+html[data-theme="dark"] .logo,
+html[data-theme="dark"] header a {
+  color: #f1edfa !important;
+}
+
+/* بطاقات الموقع */
+html[data-theme="dark"] .service,
+html[data-theme="dark"] .float-card,
+html[data-theme="dark"] .note,
+html[data-theme="dark"] .compare-card {
+  background: #202538 !important;
+  color: #f1edfa !important;
+  border: 1px solid #50416f !important;
+  box-shadow: 0 0 15px rgba(150, 100, 255, .09) !important;
+}
+
+/* العناوين والنصوص */
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] .service h3,
+html[data-theme="dark"] .service p,
+html[data-theme="dark"] .note p {
+  color: #f1edfa !important;
+}
+
+/* النصوص الثانوية */
+html[data-theme="dark"] .subtitle,
+html[data-theme="dark"] .service small {
+  color: #b5b6c9 !important;
+}
+
+/* حقل البحث */
+html[data-theme="dark"] .search-box input {
+  background: #202538 !important;
+  color: #f1edfa !important;
+  border-color: #50416f !important;
+}
+
+html[data-theme="dark"] .search-box input::placeholder {
+  color: #999bb1;
+}
+
+/* أزرار الهيدر */
+html[data-theme="dark"] header a.back,
+html[data-theme="dark"] #themeToggle {
+  background: #202538 !important;
+  color: #d2baff !important;
+  border-color: #66508f !important;
+}
+
+/* زر المقارنة */
+html[data-theme="dark"] a.compare-card {
+  color: #d2baff !important;
+}
+#themeToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  flex-shrink: 0;
+  border-radius: 15px;
+  font-size: 21px;
+  cursor: pointer;
+}
+
+html[data-theme="dark"] #themeToggle {
+  background: #202538 !important;
+  border: 1px solid #66508f !important;
+  color: #d2baff !important;
+}
+/* الوضع الليلي - صفحة المقارنة */
+
+html[data-theme="dark"] .picker,
+html[data-theme="dark"] .comparison,
+html[data-theme="dark"] .insights,
+html[data-theme="dark"] .analysis-card {
+  background: #202538 !important;
+  color: #f1edfa !important;
+  border-color: #50416f !important;
+}
+
+html[data-theme="dark"] .picker input {
+  background: #171b2b !important;
+  color: #f1edfa !important;
+  border-color: #50416f !important;
+}
+
+html[data-theme="dark"] .picker input::placeholder {
+  color: #999bb1;
+}
+
+html[data-theme="dark"] .option {
+  background: #252a3d !important;
+  color: #f1edfa !important;
+  border-color: #50416f !important;
+}
+
+html[data-theme="dark"] .option:hover {
+  background: #373052 !important;
+}
+
+html[data-theme="dark"] .comparison th {
+  background: #292d42 !important;
+  color: #f1edfa !important;
+}
+
+html[data-theme="dark"] .comparison td,
+html[data-theme="dark"] .comparison th {
+  border-color: #45405d !important;
+}
+
+html[data-theme="dark"] .spec-winner {
+  background: #183d32 !important;
+  color: #8ce3ad !important;
+  box-shadow: inset 0 0 0 1px #397c60 !important;
+}
+
+html[data-theme="dark"] .message,
+html[data-theme="dark"] .hint,
+html[data-theme="dark"] .insights p {
+  color: #b5b6c9 !important;
+}
+/* الوضع الليلي - صفحات الهواتف */
+
+html[data-theme="dark"] .phone-actions input,
+html[data-theme="dark"] .chip {
+  background: #202538 !important;
+  color: #f1edfa !important;
+  border-color: #50416f !important;
+}
+
+html[data-theme="dark"] .phone-actions input::placeholder {
+  color: #a9abc0 !important;
+}
+
+html[data-theme="dark"] .quick-compare {
+  background: #202538 !important;
+  color: #c5a5ff !important;
+  border-color: #8545ff !important;
+  box-shadow: 0 0 14px rgba(133, 69, 255, .15) !important;
+}
+
+html[data-theme="dark"] .specs,
+html[data-theme="dark"] .analysis,
+html[data-theme="dark"] .analysis-card,
+html[data-theme="dark"] .verdict {
+  background: #202538 !important;
+  color: #f1edfa !important;
+  border-color: #50416f !important;
+}
+html[data-theme="dark"] body:has(.phone-actions) .hero {
+  background: #1b2030 !important;
+  border: 1px solid #50416f !important;
+  border-radius: 24px !important;
+  padding: 28px !important;
+  box-shadow: 0 0 20px rgba(133, 69, 255, 0.08);
+}
+
+/* بطاقة الهاتف */
+html[data-theme="dark"] body:has(.phone-actions) .hero {
+  background: #1b2030 !important;
+  border: 1px solid #50416f !important;
+  border-radius: 24px !important;
+}
+
+/* إخفاء التدرجات الفاتحة بالخلفية */
+html[data-theme="dark"] .ik-motion {
+  display: none !important;
+}
+/* تذييل الصفحة بالوضع الليلي */
+html[data-theme="dark"] footer {
+  background: #10121e !important;
+  color: #b5b6c9 !important;
+  border-top: 1px solid #34394d !important;
+}
+
+html[data-theme="dark"] footer * {
+  color: #b5b6c9 !important;
+}
+/* Phone header: logo right, actions left (RTL). */
+header .nav {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+header .nav .back {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+}
+header .nav #themeToggle { margin: 0 !important; }
+
+/* تنسيق نقاط القوة والضعف */
+html[data-theme="dark"] .analysis {
+  background: transparent !important;
+}
+
+html[data-theme="dark"] .analysis-card {
+  background: #202538 !important;
+  border: 1px solid #50416f !important;
+  border-radius: 22px !important;
+  padding: 24px !important;
+}
+
+html[data-theme="dark"] .analysis-card,
+html[data-theme="dark"] .analysis-card p,
+html[data-theme="dark"] .analysis-card li,
+html[data-theme="dark"] .analysis-card span {
+  color: #d5d4e3 !important;
+}
+
+html[data-theme="dark"] .analysis-card h2,
+html[data-theme="dark"] .analysis-card h3 {
+  color: #f1edfa !important;
+}
+/* Specific dark-mode refinements without changing light mode. */
+html[data-theme="dark"] .hero-content,
+html[data-theme="dark"] .hero-layout,
+html[data-theme="dark"] .container { color: #f1edfa; }
+html[data-theme="dark"] .hero-description,
+html[data-theme="dark"] .brand-caption,
+html[data-theme="dark"] .eyebrow { color: #b5b6c9 !important; }
+html[data-theme="dark"] .spec-row,
+html[data-theme="dark"] .spec-row *,
+html[data-theme="dark"] .specs p,
+html[data-theme="dark"] .verdict p { color: #e1dfec; }
+html[data-theme="dark"] .specs h2,
+html[data-theme="dark"] .verdict h2 { color: #f1edfa; }
+html[data-theme="dark"] .spec-row { border-color: #45405d !important; }
+#themeToggle { background: #fff; color: #5c348d; border: 1px solid #ddd4ec; }
+@media (max-width: 600px) {
+  header .nav { flex-wrap: nowrap; }
+  header .nav #themeToggle { width: 42px; height: 42px; }
+}
+
+/* Theme polish */
+@media (prefers-reduced-motion: no-preference) {
+ body, header, .service, .float-card, .note, .compare-card, .picker, .comparison, .insights, .analysis-card, .specs, .verdict, .hero, #themeToggle {
+   transition: background-color .22s ease, border-color .22s ease, color .22s ease;
+ }
+}
+/* Consistent right-hand brand and left-hand actions in RTL phone headers */
+header .nav { justify-content: flex-start !important; }
+header .nav .brand { flex-shrink: 0; }
+header .nav .back { margin-right: auto !important; }
+html[data-theme="dark"] .phone-placeholder { background: #292d42 !important; color: #d2baff !important; }
+html[data-theme="dark"] .comparison .phone-link { color: #c5a5ff !important; }
+/* إصلاح أزرار الهيدر بالوضع الليلي */
+html[data-theme="dark"] header nav a {
+    background: #252a40 !important;
+    color: #f1edfa !important;
+    border: 1px solid #45405d !important;
+}
+
+html[data-theme="dark"] header nav a:hover {
+    background: #353b58 !important;
+    color: #ffffff !important;
+}

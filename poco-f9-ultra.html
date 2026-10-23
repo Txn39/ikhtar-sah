@@ -3,6 +3,7 @@
 
 <html dir="rtl" lang="ar">
 <head>
+<script>try{const t=localStorage.getItem('siteTheme');document.documentElement.dataset.theme=(t==='dark'||t==='light')?t:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){document.documentElement.dataset.theme='light'}</script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>POCO F9 Ultra | اختَر صح</title>
@@ -276,6 +277,7 @@
 body{background:#F3F4F6;color:#21152f}header,footer{background:#fff;border-color:#e5e7eb}.logo,h2{color:#7545ce}a,.label,.spec-name{color:#7545ce}.subtitle,ul,.verdict,footer{color:#5e6070}.chip,.specs,.analysis-card,.verdict{background:#fff;border-color:#e5e7eb;color:#21152f}.spec-row,.analysis-card li{border-color:#ececf2}.analysis-card:hover{box-shadow:0 12px 30px #30244a16}.good h3,.analysis-card.good h3{color:#16865d}.bad h3,.analysis-card.bad h3{color:#bb6538}.verdict{border-right-color:#7545ce}.hero{gap:30px}.phone-photo{width:100%;max-width:350px;height:300px;object-fit:contain}.photo-fallback{display:none;min-height:230px;align-items:center;justify-content:center;flex-direction:column;background:#ede7fb;border:1px dashed #c9b8ee;border-radius:20px;color:#7545ce;gap:12px}.photo-fallback .symbol{font-size:65px}.photo-fallback small{font-size:12px;text-align:center;padding:0 15px}.source-link{font-size:12px;margin-top:12px;display:inline-block}.verdict p{margin-bottom:0}@media(max-width:768px){.phone-photo{height:270px}}
 </style>
 <link rel="stylesheet" href="motion-background.css">
+<link rel="stylesheet" href="theme.css">
 </head>
 <body>
 <div class="ik-motion" aria-hidden="true"><span class="ik-motion__halo ik-motion__halo--one"></span><span class="ik-motion__halo ik-motion__halo--two"></span><span class="ik-motion__point ik-motion__point--1"></span><span class="ik-motion__point ik-motion__point--2"></span><span class="ik-motion__point ik-motion__point--3"></span><span class="ik-motion__point ik-motion__point--4"></span></div>
@@ -283,6 +285,7 @@ body{background:#F3F4F6;color:#21152f}header,footer{background:#fff;border-color
 <div class="container nav">
 <div class="logo">✓ اختَر صح</div>
 <a class="back" href="index.html">→ الرئيسية</a>
+<button id="themeToggle" type="button" aria-label="تبديل الوضع الليلي" title="تبديل الوضع">🌙</button>
 </div>
 </header>
 
@@ -298,9 +301,7 @@ body{background:#F3F4F6;color:#21152f}header,footer{background:#fff;border-color
     بحث
   </button>
 
-  <a href="compare.html?phone=poco-f9-ultra" class="quick-compare">
-    قارن هذا الهاتف ⇄
-  </a>
+  <a href="compare.html?phone=poco-f9-ultra" class="quick-compare">قارن</a>
 </div>
 
 <style>
@@ -392,7 +393,9 @@ document.getElementById("quickPhoneSearch")
   });
 </script>
 
-<main class="container">
+<link rel="stylesheet" href="phone-pages.css">
+
+  <main class="container">
 <div class="hero" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center">
 <div>
 <div class="label">بوكو / F Ultra</div>
@@ -614,5 +617,6 @@ document.getElementById("quickPhoneSearch")
       اختَر صح — المواصفات حسب بيانات الشركة المصنعة.
     </div>
 </footer>
+<script src="theme.js" defer></script>
 </body>
 </html>

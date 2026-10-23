@@ -6,17 +6,11 @@ body { isolation: isolate; background: transparent !important; min-height: 100vh
 .ik-motion__halo { position:absolute; width:75vmax; height:75vmax; border-radius:50%; filter:blur(55px); will-change:transform; }
 .ik-motion__halo--one { top:-48vmax; right:-27vmax; background:radial-gradient(circle,rgba(164,121,242,.42) 0%,rgba(209,187,255,.30) 44%,transparent 72%); animation:ik-drift-a 19s ease-in-out infinite alternate; }
 .ik-motion__halo--two { bottom:-50vmax; left:-30vmax; background:radial-gradient(circle,rgba(151,104,235,.40) 0%,rgba(206,180,255,.29) 44%,transparent 72%); animation:ik-drift-b 23s ease-in-out infinite alternate; }
-.ik-motion__point { position:absolute; border-radius:50%; background:rgba(126,75,215,.56); box-shadow:0 0 15px 8px rgba(153,108,233,.23),0 0 34px 16px rgba(180,147,246,.12); animation:ik-float 12s ease-in-out infinite alternate; }
-.ik-motion__point--1 { width:8px;height:8px;top:17%;left:16%; }
-.ik-motion__point--2 { width:11px;height:11px;top:36%;left:76%;animation-delay:-4s; }
-.ik-motion__point--3 { width:7px;height:7px;top:68%;left:24%;animation-delay:-7s; }
-.ik-motion__point--4 { width:9px;height:9px;top:84%;left:80%;animation-delay:-9s; }
 body > header,body > main,body > footer { position:relative; z-index:1; }
 /* نترك البطاقات البيضاء كما هي؛ نزيل فقط الخلفية الثابتة لقسم المقدمة */
 body .hero { background: transparent; }
 @keyframes ik-drift-a { to {transform:translate(-12%,16%) scale(1.12);} }
 @keyframes ik-drift-b { to {transform:translate(14%,-13%) scale(1.12);} }
-@keyframes ik-float { to {transform:translate(18px,-25px);} }
 @media (max-width: 700px) {
  .ik-motion__halo { width:135vw;height:135vw;filter:blur(25px); }
  .ik-motion__halo--one {top:-16vw;right:-63vw;background:radial-gradient(circle,rgba(160,113,244,.58),rgba(199,174,255,.39) 45%,transparent 76%);}
@@ -26,4 +20,4 @@ body .hero { background: transparent; }
  .ik-motion__point--3 {width:9px;height:9px;}
  .ik-motion__point--4 {width:11px;height:11px;}
 }
-@media (prefers-reduced-motion: reduce) { .ik-motion__halo,.ik-motion__point { animation:none !important; will-change:auto; } }
+@media (prefers-reduced-motion: reduce) { .ik-motion__halo { animation:none !important; will-change:auto; } }

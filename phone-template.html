@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<script>try{const t=localStorage.getItem('siteTheme');document.documentElement.dataset.theme=(t==='dark'||t==='light')?t:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){document.documentElement.dataset.theme='light'}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>اسم الهاتف | اختَر صح</title>
@@ -274,6 +275,7 @@
 
  </style>
 <link rel="stylesheet" href="motion-background.css">
+<link rel="stylesheet" href="theme.css">
 </head>
 
 <body>
@@ -283,6 +285,7 @@
     <div class="container nav">
       <div class="logo">✓ اختَر صح</div>
       <a class="back" href="index.html">→ الرئيسية</a>
+<button id="themeToggle" type="button" aria-label="تبديل الوضع الليلي" title="تبديل الوضع">🌙</button>
     </div>
   </header>
 
@@ -308,7 +311,7 @@
 </div>
  <div style="text-align: center; grid-column: 2; grid-row: 1;">
     <img
-  src="phone-image.png"
+  src="phone-placeholder.svg"
 alt="صورة الهاتف"
   style="width: 100%; max-width: 350px; height: 300px; object-fit: contain;"
 >
@@ -430,5 +433,6 @@ alt="صورة الهاتف"
     </div>
   </footer>
 
+<script src="theme.js" defer></script>
 </body>
 </html>

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<script>try{const t=localStorage.getItem('siteTheme');document.documentElement.dataset.theme=(t==='dark'||t==='light')?t:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){document.documentElement.dataset.theme='light'}</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>مقارنة الهواتف | اختَر صح</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
 :root{--bg:#f3f4f6;--card:#fff;--ink:#21152f;--muted:#65616f;--purple:#7545ce;--line:#e5e7eb}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Cairo,sans-serif;font-size:14px}a{color:var(--purple)}header{background:#fff;border-bottom:1px solid var(--line)}.wrap{max-width:980px;width:92%;margin:auto}.top{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:12px}.logo{font-weight:800;font-size:21px;text-decoration:none;color:var(--ink)}.back{text-decoration:none;font-weight:700}main{padding:40px 0 70px}h1{font-size:clamp(24px,4vw,34px);margin:0 0 6px}.subtitle{color:var(--muted);margin:0 0 24px}.pickers{display:grid;grid-template-columns:1fr 1fr;gap:16px}.picker{background:#fff;padding:20px;border:1px solid var(--line);border-radius:18px;min-width:0}.picker label{font-weight:800;display:block;margin-bottom:9px}.picker input{width:100%;padding:13px;border:1px solid #cfd2d9;border-radius:10px;font:inherit;outline:none}.picker input:focus{border-color:var(--purple)}.options{max-height:180px;overflow:auto;margin-top:8px}.option{display:block;width:100%;text-align:right;background:#faf9fd;border:0;border-bottom:1px solid var(--line);padding:10px;cursor:pointer;font:inherit;color:var(--ink)}.option:hover{background:#f0e9ff}.chosen{margin-top:10px;color:var(--purple);font-weight:700;min-height:25px}.action{margin:18px 0 22px;border:0;background:var(--purple);color:white;border-radius:12px;padding:12px 26px;font:700 15px Cairo;cursor:pointer}.action:disabled{opacity:.5;cursor:not-allowed}.message{color:var(--muted);min-height:24px}.comparison{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:18px}.comparison table{width:100%;min-width:560px;border-collapse:collapse;table-layout:fixed}.comparison th,.comparison td{border-bottom:1px solid var(--line);padding:14px;text-align:right;vertical-align:top;overflow-wrap:anywhere}.comparison th{background:#f8f6fd;font-size:15px}.comparison th:first-child,.comparison td:first-child{width:23%;font-weight:700}.comparison tr:last-child td{border-bottom:0}.comparison td{line-height:1.8}.comparison .phone-link{font-weight:800;text-decoration:none}.hint{font-size:12px;color:var(--muted);margin-top:12px}@media(max-width:600px){.pickers{grid-template-columns:1fr}main{padding-top:25px}.picker{padding:15px}.comparison th,.comparison td{padding:10px}}
@@ -60,27 +62,56 @@
     font-size: 11px;
   }
 }
+.spec-winner {
+  background: #e8f8ed !important;
+  color: #176b38 !important;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 1px #a8dfb7;
+}
+.pickers[hidden],
+.action[hidden],
+#newCompare[hidden],
+.comparison[hidden],
+.insights[hidden] {
+  display: none !important;
+}
+.top {
+  justify-content: space-between;
+}
 
+.top .back {
+  margin-right: auto;
+  margin-left: 12px;
+}
+
+.top #themeToggle {
+  flex-shrink: 0;
+}
 </style>
 <link rel="stylesheet" href="motion-background.css">
+<link rel="stylesheet" href="theme.css">
 </head>
 <body>
-<div class="ik-motion" aria-hidden="true"><span class="ik-motion__halo ik-motion__halo--one"></span><span class="ik-motion__halo ik-motion__halo--two"></span><span class="ik-motion__point ik-motion__point--1"></span><span class="ik-motion__point ik-motion__point--2"></span><span class="ik-motion__point ik-motion__point--3"></span><span class="ik-motion__point ik-motion__point--4"></span></div>
-<header><div class="wrap top"><a class="logo" href="index.html">✓ اختَر صح</a><a class="back" href="index.html">← الرئيسية</a></div></header>
+  <div class="ik-motion" aria-hidden="true"><span class="ik-motion__halo ik-motion__halo--one"></span><span class="ik-motion__halo ik-motion__halo--two"></span><span class="ik-motion__point ik-motion__point--1"></span><span class="ik-motion__point ik-motion__point--2"></span><span class="ik-motion__point ik-motion__point--3"></span><span class="ik-motion__point ik-motion__point--4"></span></div>
+<header><div class="wrap top"><a class="logo" href="index.html">✓ اختَر صح</a><a class="back" href="index.html">← الرئيسية</a> <button id="themeToggle" type="button" aria-label="تبديل الوضع الليلي">
+  🌙
+</button></div></header>
 <main class="wrap">
 <h1>مقارنة الهواتف</h1><p class="subtitle">اختَر هاتفين من الأجهزة الثمانية وشوف مواصفاتهم وتحليل الفروقات.</p>
 <div class="pickers">
 <section class="picker"><label for="search1">الهاتف الأول</label><input id="search1" type="search" autocomplete="off" placeholder="اكتب اسم الهاتف الأول..." aria-controls="options1"><div class="options" id="options1"></div><div class="chosen" id="chosen1"></div></section>
 <section class="picker"><label for="search2">الهاتف الثاني</label><input id="search2" type="search" autocomplete="off" placeholder="اكتب اسم الهاتف الثاني..." aria-controls="options2"><div class="options" id="options2"></div><div class="chosen" id="chosen2"></div></section>
 </div>
-<button id="compareButton" class="action" disabled>اعرض المقارنة</button><p id="message" class="message" role="status">اختَر هاتفين من القائمة للبدء.</p><div id="comparison" class="comparison" hidden></div>
+<button id="compareButton" class="action" disabled>اعرض المقارنة</button><p id="message" class="message" role="status">اختَر هاتفين من القائمة للبدء.</p><button id="newCompare" class="action" hidden>
+  ⇄ مقارنة جديدة
+</button><div id="comparison" class="comparison" hidden></div>
 <section class="insights" id="insights" hidden></section><p class="hint">المواصفات مأخوذة من صفحات الهواتف الثمانية داخل المشروع. بعض التفاصيل تختلف حسب السوق؛ لا تعتبر الأرقام وحدها حكماً على الجودة.</p>
 </main>
 <script>
 let phones=[];const selected=[null,null];const button=document.getElementById('compareButton');const msg=document.getElementById('message');const result=document.getElementById('comparison');
 const normalize=s=>String(s||'').toLocaleLowerCase().replace(/[\s\-_]+/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي');
 function pick(i,p){selected[i]=p;document.getElementById('search'+(i+1)).value=p.name;document.getElementById('chosen'+(i+1)).textContent='✓ '+p.name;document.getElementById('options'+(i+1)).replaceChildren();button.disabled=!(selected[0]&&selected[1]);result.hidden=true;document.getElementById('insights').hidden=true;msg.textContent='';}
-function setup(i){const input=document.getElementById('search'+(i+1)),list=document.getElementById('options'+(i+1));input.addEventListener('input',()=>{selected[i]=null;button.disabled=true;result.hidden=true;document.getElementById('insights').hidden=true;document.getElementById('chosen'+(i+1)).textContent='';list.replaceChildren();const q=normalize(input.value.trim());if(!q)return;const matches=phones.filter(p=>[p.name,p.model,p.brand+' '+p.model,...(p.aliases||[])].some(s=>normalize(s).includes(q))).slice(0,12);if(!matches.length){list.textContent='ما لقينا هاتف بهذا الاسم';return;}matches.forEach(p=>{const b=document.createElement('button');b.type='button';b.className='option';b.textContent=p.name;b.addEventListener('click',()=>pick(i,p));list.appendChild(b);});});}
+function setup(i){const input=document.getElementById('search'+(i+1)),list=document.getElementById('options'+(i+1));input.addEventListener('input',()=>{selected[i]=null;button.disabled=true;result.hidden=true;document.getElementById('insights').hidden=true;document.getElementById('chosen'+(i+1)).textContent='';list.replaceChildren();const q=normalize(input.value.trim());if(!q)return;const matches=phones.filter(p=>[p.name,p.model,(p.brand || '')+' '+p.model,...(p.aliases||[])].some(s=>normalize(s).includes(q))).slice(0,12);if(!matches.length){list.textContent='ما لقينا هاتف بهذا الاسم';return;}matches.forEach(p=>{const b=document.createElement('button');b.type='button';b.className='option';b.textContent=p.name;b.addEventListener('click',()=>pick(i,p));list.appendChild(b);});});}
 setup(0);setup(1);
 function td(text,tag='td'){const el=document.createElement(tag);el.textContent=text;return el;}
 function compare(){const [a,b]=selected;if(!a||!b)return;if(a.id===b.id){msg.textContent='اختَر هاتفين مختلفين حتى نقارن بينهم.';return;}msg.textContent='';const table=document.createElement('table');const head=document.createElement('tr');head.appendChild(td('المواصفة','th'));for(const p of [a,b]){
@@ -88,16 +119,79 @@ function compare(){const [a,b]=selected;if(!a||!b)return;if(a.id===b.id){msg.tex
  const photo=document.createElement('img');
  photo.className='phone-photo';photo.alt='صورة '+p.name;photo.loading='lazy';
  const placeholder=document.createElement('div');placeholder.className='phone-placeholder';placeholder.textContent='📱';
- // نستخدم فقط مسارات صور محلية معروفة، ولا نجلب صوراً عشوائية من الإنترنت.
- const knownImages={'xiaomi 14t':'xiaomi-14t.png','samsung galaxy s25 ultra':'samsung-s25-ultra.png','iphone 17 pro max':'iphone-17-pro-max.png'};
- const imagePath=knownImages[String(p.name||'').trim().toLowerCase()];
- if(imagePath){photo.src=imagePath;photo.onerror=()=>photo.replaceWith(placeholder);th.appendChild(photo);}
- else th.appendChild(placeholder);
+ const imagePath = p.image || '';
+ if (imagePath) {
+   photo.src = imagePath;
+   photo.onerror = () => { photo.onerror = null; photo.src = 'phone-placeholder.svg'; };
+   th.appendChild(photo);
+ } else { th.appendChild(placeholder); }
  const link=document.createElement('a');link.className='phone-link';link.textContent=p.name;link.href=p.page||'index.html';
  th.appendChild(link);head.appendChild(th);
 }table.appendChild(head);
-const keys=[...new Set([...Object.keys(a.specs||{}),...Object.keys(b.specs||{})])];keys.forEach(key=>{const tr=document.createElement('tr');tr.append(td(key),td(a.specs?.[key]||'غير متوفر'),td(b.specs?.[key]||'غير متوفر'));table.appendChild(tr);});const price=p=>p.price_iqd!=null?Number(p.price_iqd).toLocaleString('ar-IQ')+' د.ع':(p.price_note||'لم يُضف السعر بعد');const tr=document.createElement('tr');tr.append(td('السعر في العراق'),td(price(a)),td(price(b)));table.appendChild(tr);result.replaceChildren(table);result.hidden=false;renderInsights(a,b);result.scrollIntoView({behavior:'smooth',block:'nearest'});}
+const keys = [...new Set([
+  ...Object.keys(a.specs || {}),
+  ...Object.keys(b.specs || {})
+])];
 
+function getCompareValue(key, value) {
+  if (!value || typeof value !== 'string') return null;
+
+  const text = value.replace(/,/g, '');
+
+  if (key === 'البطارية') {
+    const m = text.match(/(\d{4,5})\s*mAh/i);
+    return m ? Number(m[1]) : null;
+  }
+
+  if (key === 'الشاشة') {
+    const matches = [...text.matchAll(/(\d{2,3})\s*Hz/gi)];
+    return matches.length
+      ? Math.max(...matches.map(m => Number(m[1])))
+      : null;
+  }
+
+  if (key === 'الدقة') {
+    const m = text.match(/(\d{3,4})\s*[×xX]\s*(\d{3,4})/);
+    return m ? Number(m[1]) * Number(m[2]) : null;
+  }
+
+  if (key === 'الذاكرة') {
+    const m = text.match(/(\d+)\s*GB/i);
+    return m ? Number(m[1]) : null;
+  }
+
+  if (key === 'التخزين') {
+    const sizes = [...text.matchAll(/(\d+)\s*(TB|GB)/gi)]
+      .map(m => Number(m[1]) * (m[2].toUpperCase() === 'TB' ? 1024 : 1));
+    return sizes.length ? Math.max(...sizes) : null;
+  }
+
+  return null;
+}
+
+keys.forEach(key => {
+  const tr = document.createElement('tr');
+
+  const valueA = a.specs?.[key] || 'غير متوفر';
+  const valueB = b.specs?.[key] || 'غير متوفر';
+
+  const cellA = td(valueA);
+  const cellB = td(valueB);
+
+  const numA = getCompareValue(key, valueA);
+  const numB = getCompareValue(key, valueB);
+
+  if (numA !== null && numB !== null && numA !== numB) {
+    if (numA > numB) {
+      cellA.classList.add('spec-winner');
+    } else {
+      cellB.classList.add('spec-winner');
+    }
+  }
+
+  tr.append(td(key), cellA, cellB);
+  table.appendChild(tr);
+});
 // درجات تقنية تقديرية محسوبة بقواعد معلنة، وليست نتائج اختبارات فعلية.
 const metrics=['الأداء','الشاشة','الكاميرات','البطارية','الشحن'];
 const clamp=n=>Math.max(0,Math.min(10,n));
@@ -147,10 +241,27 @@ function renderInsights(a,b){
  const note=document.createElement('p');note.textContent='مهم: الدرجات تقريبية وفق قواعد ثابتة وليست مراجعة مخبرية. تقييم الكاميرات يعكس تجهيزاتها فقط، وليس جودة الصور. عند غياب أي معلومة نترك درجتها غير محسوبة بدلاً من اختراع رقم. القيمة مقابل السعر تحتاج أسعاراً عراقية موثوقة.';area.appendChild(note);
 }
 
-button.addEventListener('click',compare);
-const phonesData=[{"id":"xiaomi-17-ultra","name":"Xiaomi 17 Ultra","model":"Xiaomi 17 Ultra","page":"xiaomi-17-ultra.html","image":"xiaomi-17-ultra.png","specs":{"المعالج":"Snapdragon 8 Elite Gen 5 — 3nm","الشاشة":"Xiaomi HyperRGB OLED — 6.9 بوصة، 1–120Hz","الدقة":"2608 × 1200","الذاكرة":"16GB LPDDR5X","التخزين":"512GB / 1TB — UFS 4.1","الكاميرا الرئيسية":"50MP — Light Fusion 1050L، مستشعر 1 بوصة، OIS","التقريب":"200MP Leica — بعد بؤري 75–100mm، OIS","الواسعة جداً":"50MP — زاوية 115°","السيلفي":"50MP — تركيز تلقائي","البطارية":"6000mAh — شحن 90W سلكي و50W لاسلكي","الحماية":"IP68"},"strengths":["مستشعر رئيسي كبير بقياس بوصة واحدة","تقريب بصري مرن وكاميرا تقريب 200MP","معالج رائد وذاكرة UFS 4.1","تصوير فيديو متقدم بدعم 4K و8K"],"weaknesses":["حجم الشاشة الكبير لا يناسب الجميع","دقة الشاشة أقل رقمياً من بعض المنافسين QHD+","الشاحن غير مرفق في بعض الأسواق"]},{"id":"vivo-x300-ultra","name":"vivo X300 Ultra","model":"vivo X300 Ultra","page":"vivo-x300-ultra.html","image":"vivo-x300-ultra.png","specs":{"المعالج":"Snapdragon 8 Elite Gen 5 — 3nm","الشاشة":"AMOLED — 6.82 بوصة، 1–144Hz","الدقة":"3168 × 1440","الذاكرة":"16GB LPDDR5X Ultra Pro","التخزين":"512GB / 1TB — UFS 4.1","الكاميرا الرئيسية":"200MP — عدسة 35mm، OIS","التقريب":"200MP ZEISS APO — عدسة 85mm","الواسعة جداً":"50MP — عدسة واسعة جداً 14mm","السيلفي":"50MP","البطارية":"6600mAh — 100W سلكي و40W لاسلكي","الحماية":"IP68 / IP69"},"strengths":["كاميرا رئيسية 200MP مع عدسات ZEISS","كاميرا تقريب 200MP بتركيز على التصوير البعيد","شاشة عالية الدقة وتردد 144Hz","بطارية 6600mAh وشحن 100W"],"weaknesses":["الوزن يصل إلى 237 غراماً حسب اللون","وحدة الكاميرات الكبيرة قد لا تناسب بعض المستخدمين","سعة التخزين غير قابلة للتوسعة ببطاقة ذاكرة"]},{"id":"honor-magic8-pro","name":"HONOR Magic8 Pro","model":"HONOR Magic8 Pro","page":"honor-magic8-pro.html","image":"honor-magic8-pro.png","specs":{"المعالج":"Snapdragon 8 Elite Gen 5","الشاشة":"شاشة OLED — راجع اختلاف الحجم حسب المنطقة","الدقة":"تختلف الدقة حسب الإصدار والسوق","الذاكرة":"12GB RAM (نسخة الموقع البريطاني)","التخزين":"512GB (نسخة الموقع البريطاني)","الكاميرا الرئيسية":"50MP — مستشعر 1/1.3 بوصة، OIS","التقريب":"200MP — تقريب بصري 3.7×، OIS","الواسعة جداً":"50MP — زاوية 122°","السيلفي":"يرجى الرجوع لصفحة المواصفات الإقليمية","البطارية":"تختلف سعة البطارية والشحن حسب السوق؛ راجع النسخة المحلية","الحماية":"راجع شهادة الحماية للنسخة المحلية"},"strengths":["معالج رائد Snapdragon 8 Elite Gen 5","تقريب بصري 3.7× مع OIS","كاميرا رئيسية 50MP بمستشعر كبير","كاميرا واسعة جداً بزاوية 122°"],"weaknesses":["المواصفات الإقليمية قد تختلف","لا توجد لدينا بيانات موثقة عن سعره العراقي","لا يمكن استنتاج جودة التصوير من الدقة وحدها"]},{"id":"poco-f9-ultra","name":"POCO F9 Ultra","model":"POCO F9 Ultra","page":"poco-f9-ultra.html","image":"poco-f9-ultra.png","specs":{"المعالج":"Snapdragon 8 Elite Gen 5 — 3nm + VisionBoost D8","الشاشة":"AMOLED — 6.9 بوصة، حتى 185Hz","الدقة":"2608 × 1200","الذاكرة":"12GB / 16GB LPDDR5X","التخزين":"256GB / 512GB / 1TB — UFS 4.1","الكاميرا الرئيسية":"200MP — OIS","التقريب":"50MP بيريسكوب — تقريب بصري 5×، OIS","الواسعة جداً":"50MP","السيلفي":"32MP","البطارية":"8050mAh — 100W سلكي و50W لاسلكي","الحماية":"IP68"},"strengths":["شاشة حتى 185Hz في التطبيقات والألعاب المدعومة","بطارية كبيرة جداً بسعة 8050mAh","معالج رائد مع شريحة رسومية إضافية","نظام صوت 2.1 مضبوط من Bose"],"weaknesses":["وزن يقارب 235 غراماً","185Hz غير متاح في كل التطبيقات والألعاب","الحجم الكبير قد يزعج محبي الأجهزة الصغيرة"]},{"id":"realme-gt8-pro","name":"realme GT8 Pro","model":"realme GT8 Pro","page":"realme-gt8-pro.html","image":"realme-gt8-pro.png","specs":{"المعالج":"Snapdragon 8 Elite Gen 5","الشاشة":"AMOLED — 6.79 بوصة، حتى 144Hz","الدقة":"3136 × 1440","الذاكرة":"حتى 16GB RAM","التخزين":"حتى 512GB (تختلف النسخ حسب السوق)","الكاميرا الرئيسية":"50MP — نظام تصوير RICOH GR","التقريب":"200MP بيريسكوب — 65mm، OIS","الواسعة جداً":"50MP","السيلفي":"راجع مواصفات النسخة الإقليمية","البطارية":"7000mAh — 120W سلكي و50W لاسلكي","الحماية":"راجع شهادة الحماية للنسخة المحلية"},"strengths":["معالج رائد قوي","شاشة QHD+ بتردد 144Hz","بطارية 7000mAh وشحن 120W","كاميرا تقريب 200MP مع OIS"],"weaknesses":["قد يكون كبير الحجم للاستخدام بيد واحدة","سرعة الشحن الفعلية تختلف حسب الظروف","التوفر والذاكرة يختلفان بين الأسواق"]},{"id":"xiaomi-14t","brand":"Xiaomi","model":"14T","name":"Xiaomi 14T","aliases":["شاومي 14t","شاومي14تي","xiaomi14t"],"page":"xiaomi-14t.html","image":"xiaomi-14t.png","specs":{"المعالج":"MediaTek Dimensity 8300-Ultra — 4nm","الشاشة":"AMOLED — 6.67 إنچ — 144Hz","الدقة":"2712 × 1220","الذاكرة":"12GB RAM — LPDDR5X","التخزين":"256GB / 512GB — UFS 4.0","الكاميرا الرئيسية":"50MP — Sony IMX906 — OIS","التقريب":"50MP Telephoto — 2x بصري","الواسعة جداً":"12MP Ultra-wide","السيلفي":"32MP","البطارية":"5000mAh — شحن سلكي 67W","الحماية":"IP68 لمقاومة الماء والغبار"},"price_iqd":null,"price_note":"لم يُضف السعر بعد"},{"id":"samsung-s25-ultra","brand":"Samsung","model":"Galaxy S25 Ultra","name":"Samsung Galaxy S25 Ultra","aliases":["سامسونج s25 ultra","اس 25 الترا","s25ultra","galaxy s25 ultra"],"page":"samsung-s25-ultra.html","image":"samsung-s25-ultra.png","specs":{"المعالج":"Snapdragon 8 Elite for Galaxy — 3nm","الشاشة":"Dynamic AMOLED 2X — 6.9 إنچ — 120Hz","الدقة":"1440 × 3120","الذاكرة":"12GB RAM","التخزين":"256GB / 512GB / 1TB — UFS 4.0","الكاميرا الرئيسية":"200MP — OIS","التقريب":"10MP — 3x / 50MP — 5x","الواسعة جداً":"50MP Ultra-wide","السيلفي":"12MP","البطارية":"5000mAh — شحن سلكي 45W","الحماية":"IP68 لمقاومة الماء والغبار"},"price_iqd":null,"price_note":"لم يُضف السعر بعد"},{"id":"iphone-17-pro-max","brand":"Apple","model":"iPhone 17 Pro Max","name":"iPhone 17 Pro Max","aliases":["ايفون 17 برو ماكس","آيفون 17 برو ماكس","iphone17promax","17promax"],"page":"iphone-17-pro-max.html","image":"iphone-17-pro-max.png","specs":{"المعالج":"A19PRO 3nm","الشاشة":"LTPO Super retina XDR OLED 120hz","الدقة":"2868 x 1320 p 6.9","الذاكرة":"RAM:12GB","التخزين":"2TB-1TB-512GB","الكاميرا الرئيسية":"48MP","التقريب":"48MP - بيرسكوب 4X","الواسعة جداً":"48MP","السيلفي":"18MP","البطارية":"4823mah-5088mah-45w سلكي و 25wلا سلكي","الحماية":"IP68 -مع مقاومه ماء تحت عمق 6 امتار لمده 30 دقيقة"},"price_iqd":null,"price_note":"لم يُضف السعر بعد"}];
-phones=phonesData;msg.textContent='متوفر '+phones.length+' هواتف. اختَر هاتفين للبدء.';
+result.replaceChildren(table);
+result.hidden = false;
+renderInsights(a,b);
+}
 
+button.addEventListener('click', () => {
+  compare();
+
+  if (!result.hidden) {
+    document.querySelector('.pickers').hidden = true;
+    button.hidden = true;
+    newCompare.hidden = false;
+    msg.hidden = true;
+
+    result.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+});const phonesData=[{"id":"xiaomi-17-ultra","name":"Xiaomi 17 Ultra","model":"Xiaomi 17 Ultra","page":"xiaomi-17-ultra.html","image":"https://i02.appmifile.com/453_operator_sg/07/02/2026/4a46977e59ecd24fd3dc96de5a681a8a.png","specs":{"المعالج":"Snapdragon 8 Elite Gen 5 — 3nm","الشاشة":"Xiaomi HyperRGB OLED — 6.9 بوصة، 1–120Hz","الدقة":"2608 × 1200","الذاكرة":"16GB LPDDR5X","التخزين":"512GB / 1TB — UFS 4.1","الكاميرا الرئيسية":"50MP — Light Fusion 1050L، مستشعر 1 بوصة، OIS","التقريب":"200MP Leica — بعد بؤري 75–100mm، OIS","الواسعة جداً":"50MP — زاوية 115°","السيلفي":"50MP — تركيز تلقائي","البطارية":"6000mAh — شحن 90W سلكي و50W لاسلكي","الحماية":"IP68"},"strengths":["مستشعر رئيسي كبير بقياس بوصة واحدة","تقريب بصري مرن وكاميرا تقريب 200MP","معالج رائد وذاكرة UFS 4.1","تصوير فيديو متقدم بدعم 4K و8K"],"weaknesses":["حجم الشاشة الكبير لا يناسب الجميع","دقة الشاشة أقل رقمياً من بعض المنافسين QHD+","الشاحن غير مرفق في بعض الأسواق"]},{"id":"vivo-x300-ultra","name":"vivo X300 Ultra","model":"vivo X300 Ultra","page":"vivo-x300-ultra.html","image":"https://vivoonlinestore.com/cdn/shop/files/vivo-x300-ultra-procesador-qualcomm-snapdragon-8-elite-gen-5.png?v=1779968519&width=2000","specs":{"المعالج":"Snapdragon 8 Elite Gen 5 — 3nm","الشاشة":"AMOLED — 6.82 بوصة، 1–144Hz","الدقة":"3168 × 1440","الذاكرة":"16GB LPDDR5X Ultra Pro","التخزين":"512GB / 1TB — UFS 4.1","الكاميرا الرئيسية":"200MP — عدسة 35mm، OIS","التقريب":"200MP ZEISS APO — عدسة 85mm","الواسعة جداً":"50MP — عدسة واسعة جداً 14mm","السيلفي":"50MP","البطارية":"6600mAh — 100W سلكي و40W لاسلكي","الحماية":"IP68 / IP69"},"strengths":["كاميرا رئيسية 200MP مع عدسات ZEISS","كاميرا تقريب 200MP بتركيز على التصوير البعيد","شاشة عالية الدقة وتردد 144Hz","بطارية 6600mAh وشحن 100W"],"weaknesses":["الوزن يصل إلى 237 غراماً حسب اللون","وحدة الكاميرات الكبيرة قد لا تناسب بعض المستخدمين","سعة التخزين غير قابلة للتوسعة ببطاقة ذاكرة"]},{"id":"honor-magic8-pro","name":"HONOR Magic8 Pro","model":"HONOR Magic8 Pro","page":"honor-magic8-pro.html","image":"https://www-file.honor.com/content/dam/honor/common/tech/honor-ai/2025/imgs/1205/honormagic8pro.png","specs":{"المعالج":"Snapdragon 8 Elite Gen 5","الشاشة":"شاشة OLED — راجع اختلاف الحجم حسب المنطقة","الدقة":"تختلف الدقة حسب الإصدار والسوق","الذاكرة":"12GB RAM (نسخة الموقع البريطاني)","التخزين":"512GB (نسخة الموقع البريطاني)","الكاميرا الرئيسية":"50MP — مستشعر 1/1.3 بوصة، OIS","التقريب":"200MP — تقريب بصري 3.7×، OIS","الواسعة جداً":"50MP — زاوية 122°","السيلفي":"يرجى الرجوع لصفحة المواصفات الإقليمية","البطارية":"تختلف سعة البطارية والشحن حسب السوق؛ راجع النسخة المحلية","الحماية":"راجع شهادة الحماية للنسخة المحلية"},"strengths":["معالج رائد Snapdragon 8 Elite Gen 5","تقريب بصري 3.7× مع OIS","كاميرا رئيسية 50MP بمستشعر كبير","كاميرا واسعة جداً بزاوية 122°"],"weaknesses":["المواصفات الإقليمية قد تختلف","لا توجد لدينا بيانات موثقة عن سعره العراقي","لا يمكن استنتاج جودة التصوير من الدقة وحدها"]},{"id":"poco-f9-ultra","name":"POCO F9 Ultra","model":"POCO F9 Ultra","page":"poco-f9-ultra.html","image":"https://mstore.ie/wp-content/uploads/2026/10/POCO-F9-Ultra-Dark-Cherry.webp","specs":{"المعالج":"Snapdragon 8 Elite Gen 5 — 3nm + VisionBoost D8","الشاشة":"AMOLED — 6.9 بوصة، حتى 185Hz","الدقة":"2608 × 1200","الذاكرة":"12GB / 16GB LPDDR5X","التخزين":"256GB / 512GB / 1TB — UFS 4.1","الكاميرا الرئيسية":"200MP — OIS","التقريب":"50MP بيريسكوب — تقريب بصري 5×، OIS","الواسعة جداً":"50MP","السيلفي":"32MP","البطارية":"8050mAh — 100W سلكي و50W لاسلكي","الحماية":"IP68"},"strengths":["شاشة حتى 185Hz في التطبيقات والألعاب المدعومة","بطارية كبيرة جداً بسعة 8050mAh","معالج رائد مع شريحة رسومية إضافية","نظام صوت 2.1 مضبوط من Bose"],"weaknesses":["وزن يقارب 235 غراماً","185Hz غير متاح في كل التطبيقات والألعاب","الحجم الكبير قد يزعج محبي الأجهزة الصغيرة"]},{"id":"realme-gt8-pro","name":"realme GT8 Pro","model":"realme GT8 Pro","page":"realme-gt8-pro.html","image":"phone-placeholder.svg","specs":{"المعالج":"Snapdragon 8 Elite Gen 5","الشاشة":"AMOLED — 6.79 بوصة، حتى 144Hz","الدقة":"3136 × 1440","الذاكرة":"حتى 16GB RAM","التخزين":"حتى 512GB (تختلف النسخ حسب السوق)","الكاميرا الرئيسية":"50MP — نظام تصوير RICOH GR","التقريب":"200MP بيريسكوب — 65mm، OIS","الواسعة جداً":"50MP","السيلفي":"راجع مواصفات النسخة الإقليمية","البطارية":"7000mAh — 120W سلكي و50W لاسلكي","الحماية":"راجع شهادة الحماية للنسخة المحلية"},"strengths":["معالج رائد قوي","شاشة QHD+ بتردد 144Hz","بطارية 7000mAh وشحن 120W","كاميرا تقريب 200MP مع OIS"],"weaknesses":["قد يكون كبير الحجم للاستخدام بيد واحدة","سرعة الشحن الفعلية تختلف حسب الظروف","التوفر والذاكرة يختلفان بين الأسواق"]},{"id":"xiaomi-14t","brand":"Xiaomi","model":"14T","name":"Xiaomi 14T","aliases":["شاومي 14t","شاومي14تي","xiaomi14t"],"page":"xiaomi-14t.html","image":"xiaomi-14t.png","specs":{"المعالج":"MediaTek Dimensity 8300-Ultra — 4nm","الشاشة":"AMOLED — 6.67 إنچ — 144Hz","الدقة":"2712 × 1220","الذاكرة":"12GB RAM — LPDDR5X","التخزين":"256GB / 512GB — UFS 4.0","الكاميرا الرئيسية":"50MP — Sony IMX906 — OIS","التقريب":"50MP Telephoto — 2x بصري","الواسعة جداً":"12MP Ultra-wide","السيلفي":"32MP","البطارية":"5000mAh — شحن سلكي 67W","الحماية":"IP68 لمقاومة الماء والغبار"},"price_iqd":null,"price_note":"لم يُضف السعر بعد"},{"id":"samsung-s25-ultra","brand":"Samsung","model":"Galaxy S25 Ultra","name":"Samsung Galaxy S25 Ultra","aliases":["سامسونج s25 ultra","اس 25 الترا","s25ultra","galaxy s25 ultra"],"page":"samsung-s25-ultra.html","image":"samsung-s25-ultra.png","specs":{"المعالج":"Snapdragon 8 Elite for Galaxy — 3nm","الشاشة":"Dynamic AMOLED 2X — 6.9 إنچ — 120Hz","الدقة":"1440 × 3120","الذاكرة":"12GB RAM","التخزين":"256GB / 512GB / 1TB — UFS 4.0","الكاميرا الرئيسية":"200MP — OIS","التقريب":"10MP — 3x / 50MP — 5x","الواسعة جداً":"50MP Ultra-wide","السيلفي":"12MP","البطارية":"5000mAh — شحن سلكي 45W","الحماية":"IP68 لمقاومة الماء والغبار"},"price_iqd":null,"price_note":"لم يُضف السعر بعد"},{"id":"iphone-17-pro-max","brand":"Apple","model":"iPhone 17 Pro Max","name":"iPhone 17 Pro Max","aliases":["ايفون 17 برو ماكس","آيفون 17 برو ماكس","iphone17promax","17promax"],"page":"iphone-17-pro-max.html","image":"iphone-17-pro-max.png","specs":{"المعالج":"A19PRO 3nm","الشاشة":"LTPO Super retina XDR OLED 120hz","الدقة":"2868 x 1320 p 6.9","الذاكرة":"RAM:12GB","التخزين":"2TB-1TB-512GB","الكاميرا الرئيسية":"48MP","التقريب":"48MP - بيرسكوب 4X","الواسعة جداً":"48MP","السيلفي":"18MP","البطارية":"4823mah-5088mah-45w سلكي و 25wلا سلكي","الحماية":"IP68 -مع مقاومه ماء تحت عمق 6 امتار لمده 30 دقيقة"},"price_iqd":null,"price_note":"لم يُضف السعر بعد"}];
+phones=phonesData;msg.textContent='متوفر '+phones.length+' هواتف. اختَر هاتفين للبدء.';
 window.addEventListener("load", () => {
   const phoneId = new URLSearchParams(
     window.location.search
@@ -167,5 +278,34 @@ window.addEventListener("load", () => {
   }
 });
 
+const newCompare = document.getElementById('newCompare');
+
+newCompare.addEventListener('click', () => {
+  document.querySelector('.pickers').hidden = false;
+  button.hidden = false;
+  msg.hidden = false;
+
+  result.hidden = true;
+  document.getElementById('insights').hidden = true;
+  newCompare.hidden = true;
+
+  selected[0] = null;
+  selected[1] = null;
+  button.disabled = true;
+
+  [1, 2].forEach(i => {
+    document.getElementById('search' + i).value = '';
+    document.getElementById('chosen' + i).textContent = '';
+    document.getElementById('options' + i).replaceChildren();
+  });
+
+  msg.textContent = 'اختَر هاتفين للمقارنة الجديدة.';
+
+  document.querySelector('.pickers').scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+});
 </script>
+<script src="theme.js" defer></script>
 </body></html>

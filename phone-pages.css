@@ -1,0 +1,56 @@
+/* اختَر صح — تنسيق مشترك لصفحات الهواتف */
+:root { --ik-accent:#7545ce; --ik-glow:rgba(117,69,206,.13); }
+.ik-motion__point { display:none !important; }
+header .back { display:inline-flex;align-items:center;justify-content:center;padding:9px 17px;border:1px solid rgba(117,69,206,.3);border-radius:12px;background:#fff;font-weight:700;box-shadow:0 0 12px rgba(117,69,206,.1); }
+.phone-actions { width:min(960px,90%);margin:22px auto 28px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:stretch; }
+.phone-actions input { min-width:0;width:100%;flex:auto;border:1px solid rgba(117,69,206,.27);border-radius:15px;padding:13px 16px;outline:none;box-shadow:0 0 12px rgba(117,69,206,.11);font-size:14px; }
+.phone-actions input:focus { border-color:var(--ik-accent);box-shadow:0 0 17px rgba(117,69,206,.2); }
+.phone-actions button { padding:12px 23px;border-radius:15px;box-shadow:0 0 12px rgba(117,69,206,.13); }
+.phone-actions .quick-compare { grid-column:1/-1;justify-self:center;display:inline-flex;align-items:center;justify-content:center;width:190px;max-width:100%;min-height:60px;padding:10px 20px;border:2px solid #8545ff;border-radius:22px;background:linear-gradient(180deg,#fff,#f5efff);color:#8545ff;font-size:22px;font-weight:800;box-shadow:0 0 14px rgba(133,69,255,.18); }
+.phone-actions .quick-compare:hover { background:#f1e7ff;box-shadow:0 0 18px rgba(133,69,255,.23); }
+.chip,.specs,.analysis-card,.verdict { border:1px solid rgba(117,69,206,.22);box-shadow:0 0 14px rgba(117,69,206,.08); }
+.chip { border-radius:16px; }
+.specs,.analysis-card,.verdict { border-radius:22px; }
+@media(max-width:480px) { .phone-actions { grid-template-columns:minmax(0,1fr) auto;gap:10px; } .phone-actions input { min-width:0;flex-basis:auto;padding:12px; } .phone-actions button { flex:initial;padding:12px 19px; } .phone-actions .quick-compare { flex:initial; } }
+/* بطاقات نقاط القوة والضعف */
+.analysis-card {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(117, 69, 206, 0.30);
+  border-radius: 22px;
+  padding: 25px;
+  box-shadow: 0 0 16px rgba(117, 69, 206, 0.12);
+}
+
+/* توهج ناعم عند مرور الماوس */
+.analysis-card:hover {
+  transform: none;
+  box-shadow: 0 0 20px rgba(117, 69, 206, 0.18);
+}
+
+/* الفواصل بين النقاط */
+.analysis-card li {
+  border-bottom: 1px solid rgba(117, 69, 206, 0.10);
+}
+/* توحيد التخطيط النهائي لصفحات الهواتف */
+.phone-actions { display:grid; grid-template-columns:minmax(0,1fr) 100px; gap:14px; align-items:center; width:min(960px,90%); margin:22px auto 35px; padding:0; }
+.phone-actions input { grid-column:1;grid-row:1; width:100%;min-width:0;flex:initial; padding:14px; border:1px solid #ded8e9; border-radius:14px; background:#fff; font:500 15px Cairo,sans-serif; box-shadow:0 0 12px rgba(133,69,255,.12); }
+.phone-actions button { grid-column:2;grid-row:1; width:100%;padding:14px 8px; border:0;border-radius:14px; background:#7545ce;color:white;font:700 15px Cairo,sans-serif;cursor:pointer; }
+.phone-actions .quick-compare { grid-column:1/-1;grid-row:2;justify-self:center;display:flex;align-items:center;justify-content:center; width:130px;max-width:100%;min-height:60px;padding:12px 20px;border:2px solid #8545ff;border-radius:22px;background:linear-gradient(180deg,#fff,#f5efff);color:#8545ff;font:800 24px Cairo,sans-serif;text-decoration:none;text-align:center;box-shadow:0 0 12px rgba(133,69,255,.15); }
+.analysis { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;width:100%;max-width:780px;margin:0 auto;align-items:start; }
+.analysis-card { width:100%;padding:18px 20px;border-radius:20px;border:1px solid rgba(117,69,206,.28);background:#fff;box-shadow:0 0 12px rgba(117,69,206,.10); }
+.analysis-card h3 { font-size:19px;margin:0 0 10px; }
+.analysis-card li { padding:8px 0;font-size:12px;line-height:1.8; }
+.specs { width:100%;max-width:780px;margin:0 auto;border:1px solid rgba(117,69,206,.28);border-radius:20px;background:#fff;box-shadow:0 0 12px rgba(117,69,206,.10);overflow:hidden; }
+.spec-row { padding:12px 18px;gap:12px;font-size:13px;line-height:1.8; }
+.chip { background:linear-gradient(180deg,#fff,#faf7ff);border:1.5px solid rgba(133,69,255,.38);border-radius:16px;box-shadow:0 0 12px rgba(133,69,255,.14);transition:.25s ease; }
+.chip:hover { border-color:#8545ff;box-shadow:0 0 18px rgba(133,69,255,.22); }
+@media(max-width:600px) {
+ .phone-actions { grid-template-columns:minmax(0,1fr) 100px;gap:10px; }
+ .phone-actions input { flex-basis:auto;min-width:0;padding:12px; }
+ .phone-actions button { flex:initial;padding:12px 8px; }
+ .phone-actions .quick-compare { flex:initial; }
+ .analysis { grid-template-columns:1fr;max-width:360px;gap:14px; }
+ .analysis-card { padding:16px 18px; }
+ .specs { max-width:360px; }
+ .spec-row { grid-template-columns:105px minmax(0,1fr);padding:11px 14px;font-size:12px; }
+}

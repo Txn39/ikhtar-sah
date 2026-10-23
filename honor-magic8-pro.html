@@ -3,6 +3,7 @@
 
 <html dir="rtl" lang="ar">
 <head>
+<script>try{const t=localStorage.getItem('siteTheme');document.documentElement.dataset.theme=(t==='dark'||t==='light')?t:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){document.documentElement.dataset.theme='light'}</script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>HONOR Magic8 Pro | اختَر صح</title>
@@ -276,11 +277,18 @@
 body{background:#F3F4F6;color:#21152f}header,footer{background:#fff;border-color:#e5e7eb}.logo,h2{color:#7545ce}a,.label,.spec-name{color:#7545ce}.subtitle,ul,.verdict,footer{color:#5e6070}.chip,.specs,.analysis-card,.verdict{background:#fff;border-color:#e5e7eb;color:#21152f}.spec-row,.analysis-card li{border-color:#ececf2}.analysis-card:hover{box-shadow:0 12px 30px #30244a16}.good h3,.analysis-card.good h3{color:#16865d}.bad h3,.analysis-card.bad h3{color:#bb6538}.verdict{border-right-color:#7545ce}.hero{gap:30px}.phone-photo{width:100%;max-width:350px;height:300px;object-fit:contain}.photo-fallback{display:none;min-height:230px;align-items:center;justify-content:center;flex-direction:column;background:#ede7fb;border:1px dashed #c9b8ee;border-radius:20px;color:#7545ce;gap:12px}.photo-fallback .symbol{font-size:65px}.photo-fallback small{font-size:12px;text-align:center;padding:0 15px}.source-link{font-size:12px;margin-top:12px;display:inline-block}.verdict p{margin-bottom:0}@media(max-width:768px){.phone-photo{height:270px}}
 </style>
 <link rel="stylesheet" href="motion-background.css">
+<link rel="stylesheet" href="theme.css">
 </head>
 <body>
 <div class="ik-motion" aria-hidden="true"><span class="ik-motion__halo ik-motion__halo--one"></span><span class="ik-motion__halo ik-motion__halo--two"></span><span class="ik-motion__point ik-motion__point--1"></span><span class="ik-motion__point ik-motion__point--2"></span><span class="ik-motion__point ik-motion__point--3"></span><span class="ik-motion__point ik-motion__point--4"></span></div>
 <header>
   
+<div class="container nav">
+<div class="logo">✓ اختَر صح</div>
+<a class="back" href="index.html">→ الرئيسية</a>
+<button id="themeToggle" type="button" aria-label="تبديل الوضع الليلي" title="تبديل الوضع">🌙</button>
+</div>
+</header>
 <div class="phone-actions">
   <input
     type="search"
@@ -293,62 +301,8 @@ body{background:#F3F4F6;color:#21152f}header,footer{background:#fff;border-color
     بحث
   </button>
 
-  <a href="compare.html?phone=honor-magic8-pro" class="quick-compare">
-    قارن هذا الهاتف ⇄
-  </a>
+  <a href="compare.html?phone=honor-magic8-pro" class="quick-compare">قارن</a>
 </div>
-
-<style>
-.phone-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin: 22px 0;
-}
-
-.phone-actions input {
-  flex: 1;
-  min-width: 170px;
-  padding: 12px 14px;
-  border: 1px solid #ded8e9;
-  border-radius: 11px;
-  font-family: Cairo, sans-serif;
-  background: #fff;
-  color: #21152f;
-}
-
-.phone-actions button,
-.quick-compare {
-  padding: 12px 18px;
-  border: none;
-  border-radius: 11px;
-  background: #7545ce;
-  color: white;
-  font: 700 13px Cairo, sans-serif;
-  text-decoration: none;
-  cursor: pointer;
-  text-align: center;
-}
-
-.quick-compare {
-  background: #f0e9ff;
-  color: #7545ce;
-  border: 1px solid #d9c7fa;
-}
-
-@media (max-width: 480px) {
-  .phone-actions input {
-    flex-basis: 100%;
-  }
-
-  .phone-actions button,
-  .quick-compare {
-    flex: 1;
-  }
-}
-</style>
-
 <script>
 const quickPhones = {
   "xiaomi 17 ultra": "xiaomi-17-ultra.html",
@@ -386,13 +340,17 @@ document.getElementById("quickPhoneSearch")
     if (event.key === "Enter") quickSearchPhone();
   });
 </script>
+<link rel="stylesheet" href="phone-pages.css">
+<style>
+/* Search controls: one row, compare below */
+.phone-actions { display:grid; grid-template-columns:minmax(0,1fr) 110px; gap:12px; width:min(900px,90%); margin:24px auto 34px; align-items:stretch; direction:rtl; }
+.phone-actions input { grid-column:1; grid-row:1; width:100%; min-width:0; padding:13px 16px; border:1px solid #d9c7fa; border-radius:16px; background:#fff; color:#21152f; font:500 15px Cairo,sans-serif; box-shadow:0 0 12px rgba(133,69,255,.12); }
+.phone-actions button { grid-column:2; grid-row:1; padding:12px; border:0; border-radius:16px; background:#7545ce; color:#fff; font:700 15px Cairo,sans-serif; cursor:pointer; }
+.phone-actions .quick-compare { grid-column:1/-1; grid-row:2; justify-self:center; display:flex; justify-content:center; align-items:center; width:130px; min-height:60px; padding:10px 18px; border:2px solid #8545ff; border-radius:22px; background:linear-gradient(180deg,#fff,#f5efff); color:#8545ff; font:800 24px Cairo,sans-serif; text-decoration:none; box-shadow:0 0 12px rgba(133,69,255,.15); }
+@media(max-width:480px){.phone-actions{grid-template-columns:minmax(0,1fr) 86px;gap:10px}.phone-actions input{font-size:14px}.phone-actions button{font-size:14px}}
+</style>
 
-<div class="container nav">
-<div class="logo">✓ اختَر صح</div>
-<a class="back" href="index.html">→ الرئيسية</a>
-</div>
-</header>
-<main class="container">
+  <main class="container">
 <div class="hero" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center">
 <div>
 <div class="label">هونر / Magic</div>
@@ -613,5 +571,6 @@ document.getElementById("quickPhoneSearch")
       اختَر صح — المواصفات حسب بيانات الشركة المصنعة.
     </div>
 </footer>
+<script src="theme.js" defer></script>
 </body>
 </html>
