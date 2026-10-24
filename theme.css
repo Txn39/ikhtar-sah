@@ -296,3 +296,18 @@ html[data-theme="dark"] header nav a:hover {
     background: #353b58 !important;
     color: #ffffff !important;
 }
+
+/* Unified moving background for light and dark themes */
+html[data-theme="dark"] body, html[data-theme="dark"] main {background-color:transparent !important;}
+html[data-theme="dark"] .ik-motion {display:block !important;opacity:1 !important;background:#0b1024 !important;}
+html[data-theme="dark"] .ik-motion__halo {opacity:1 !important;}
+html[data-theme="dark"] .ik-motion__halo--one {background:radial-gradient(circle,rgba(94,60,174,.36),rgba(62,44,130,.17) 45%,transparent 75%) !important;}
+html[data-theme="dark"] .ik-motion__halo--two {background:radial-gradient(circle,rgba(36,78,153,.36),rgba(49,33,119,.17) 45%,transparent 75%) !important;}
+html[data-theme="dark"] .ik-budget-section,html[data-theme="dark"] .ik-budget-phone,html[data-theme="dark"] .ik-phone-price {background:#202538;color:#f1edfa;border-color:#50416f;}
+html[data-theme="dark"] .ik-price-disclaimer,html[data-theme="dark"] .ik-phone-price span {color:#b5b6c9;}
+html[data-theme="dark"] #ikBudget {background:#171b2b;color:#f1edfa;border-color:#50416f;}
+
+
+
+/* The SVG wave layer is the only animated page background. */
+html body > .ik-motion,html[data-theme="dark"] body > .ik-motion{display:none!important}

@@ -766,7 +766,7 @@ a.compare-card:hover {
   color: #7545ce;
 }
   </style>
-<link rel="stylesheet" href="motion-background.css">
+
 <style>
 /* حدود بنفسجية هادئة ومتوهجة باستمرار */
 .service, .compare-card, .float-card, .note {
@@ -796,15 +796,62 @@ a.compare-card:hover {
   cursor: pointer;
   box-shadow: 0 0 12px rgba(117, 69, 206, 0.15);
 }
+/* ترتيب بطاقات أسعار الهواتف */
+.ik-budget-results {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 25px;
+}
+
+.ik-budget-phone {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #8545ff;
+    border-radius: 16px;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 0 12px rgba(133, 69, 255, 0.12);
+}
+
+.ik-budget-phone strong {
+    color: #21152f;
+    font-size: 15px;
+}
+
+.ik-budget-phone span {
+    color: #7545ce;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* الوضع الليلي */
+html[data-theme="dark"] .ik-budget-phone {
+    background: #202538;
+    border-color: #66508f;
+}
+
+html[data-theme="dark"] .ik-budget-phone strong {
+    color: #f1edfa;
+}
+
+html[data-theme="dark"] .ik-budget-phone span {
+    color: #c5a5ff;
+}
 </style>
 <link rel="stylesheet" href="theme.css">
 
+<link rel="stylesheet" href="wave-background.css">
 </head>
 
 <body>
-<div class="ik-motion" aria-hidden="true"><span class="ik-motion__halo ik-motion__halo--one"></span><span class="ik-motion__halo ik-motion__halo--two"></span></div>
-
-  <header>
+<div class="ik-wave-bg" aria-hidden="true"><div class="ik-wave-bg__light"></div><div class="ik-wave-bg__dark"></div></div>
+<header>
     <div class="container navbar">
 
       <div class="brand">
@@ -883,6 +930,8 @@ a.compare-card:hover {
       </div>
     </section>
 
+
+<section class="ik-budget-section" id="budget" aria-labelledby="budgetHeading"><div class="container"><h2 id="budgetHeading">اختَر حسب الميزانية</h2><p class="ik-price-disclaimer">الأسعار بالدولار الأمريكي، افتراضية لأغراض عرض المشروع فقط وليست أسعار السوق.</p><div class="ik-budget-controls"><label for="ikBudget">أقصى ميزانية (دولار)</label><select id="ikBudget"><option value="0">كل الأسعار</option><option value="500">$500</option><option value="600">$600</option><option value="700">$700</option><option value="800">$800</option><option value="900">$900</option><option value="1000">$1,000</option><option value="1100">$1,100</option><option value="1200">$1,200</option></select></div><div id="ikBudgetResults" class="ik-budget-results" aria-live="polite"></div></div></section>
     <section class="section" id="services">
       <div class="container">
 
@@ -952,14 +1001,14 @@ a.compare-card:hover {
   <script>
     // الهواتف الثمانية المعتمدة في مشروع اختَر صح.
     const phonesDatabase = [
-      { name: "Xiaomi 17 Ultra", model: "17 Ultra", brand: "Xiaomi", page: "xiaomi-17-ultra.html", aliases: ["شاومي 17 الترا", "شاومي 17 الترا"] },
-      { name: "vivo X300 Ultra", model: "X300 Ultra", brand: "vivo", page: "vivo-x300-ultra.html", aliases: ["فيفو اكس 300 الترا", "فيفو x300 ultra"] },
-      { name: "HONOR Magic8 Pro", model: "Magic8 Pro", brand: "HONOR", page: "honor-magic8-pro.html", aliases: ["هونر ماجيك 8 برو", "هونر ماجيك8 برو"] },
-      { name: "POCO F9 Ultra", model: "F9 Ultra", brand: "POCO", page: "poco-f9-ultra.html", aliases: ["بوكو اف 9 الترا", "بوكو f9 ultra"] },
-      { name: "realme GT8 Pro", model: "GT8 Pro", brand: "realme", page: "realme-gt8-pro.html", aliases: ["ريلمي جي تي 8 برو", "ريلمي gt8 pro"] },
-      {"name": "Xiaomi 14T", "model": "14T", "brand": "Xiaomi", "page": "xiaomi-14t.html", "aliases": ["شاومي 14t", "شاومي14تي", "xiaomi14t"]},
-      {"name": "Samsung Galaxy S25 Ultra", "model": "Galaxy S25 Ultra", "brand": "Samsung", "page": "samsung-s25-ultra.html", "aliases": ["سامسونج s25 ultra", "اس 25 الترا", "s25ultra", "galaxy s25 ultra"]},
-      {"name": "iPhone 17 Pro Max", "model": "iPhone 17 Pro Max", "brand": "Apple", "page": "iphone-17-pro-max.html", "aliases": ["ايفون 17 برو ماكس", "آيفون 17 برو ماكس", "iphone17promax", "17promax"]}
+      { name: "Xiaomi 17 Ultra", model: "17 Ultra", brand: "Xiaomi", page: "xiaomi-17-ultra.html", price_usd: 1200, aliases: ["شاومي 17 الترا", "شاومي 17 الترا"] },
+      { name: "vivo X300 Ultra", model: "X300 Ultra", brand: "vivo", page: "vivo-x300-ultra.html", price_usd: 1100, aliases: ["فيفو اكس 300 الترا", "فيفو x300 ultra"] },
+      { name: "HONOR Magic8 Pro", model: "Magic8 Pro", brand: "HONOR", page: "honor-magic8-pro.html", price_usd: 800, aliases: ["هونر ماجيك 8 برو", "هونر ماجيك8 برو"] },
+      { name: "POCO F9 Ultra", model: "F9 Ultra", brand: "POCO", page: "poco-f9-ultra.html", price_usd: 600, aliases: ["بوكو اف 9 الترا", "بوكو f9 ultra"] },
+      { name: "realme GT8 Pro", model: "GT8 Pro", brand: "realme", page: "realme-gt8-pro.html", price_usd: 700, aliases: ["ريلمي جي تي 8 برو", "ريلمي gt8 pro"] },
+      {"name": "Xiaomi 14T", "model": "14T", "brand": "Xiaomi", "page": "xiaomi-14t.html", "price_usd": 500, "aliases": ["شاومي 14t", "شاومي14تي", "xiaomi14t"]},
+      {"name": "Samsung Galaxy S25 Ultra", "model": "Galaxy S25 Ultra", "brand": "Samsung", "page": "samsung-s25-ultra.html", "price_usd": 900, "aliases": ["سامسونج s25 ultra", "اس 25 الترا", "s25ultra", "galaxy s25 ultra"]},
+      {"name": "iPhone 17 Pro Max", "model": "iPhone 17 Pro Max", "brand": "Apple", "page": "iphone-17-pro-max.html", "price_usd": 1000, "aliases": ["ايفون 17 برو ماكس", "آيفون 17 برو ماكس", "iphone17promax", "17promax"]}
     ];
     const resultElement = document.getElementById("result");
     const searchInput = document.getElementById("phoneSearch");
@@ -1001,6 +1050,10 @@ a.compare-card:hover {
       if (event.key === "Enter") searchPhone();
     });
   </script>
+
+<script>
+(()=>{const select=document.getElementById('ikBudget');const results=document.getElementById('ikBudgetResults');if(!select||!results)return;function draw(){const limit=Number(select.value);const matches=phonesDatabase.filter(p=>p.price_usd&&(!limit||p.price_usd<=limit)).sort((a,b)=>a.price_usd-b.price_usd);results.replaceChildren();if(!matches.length){results.textContent='ماكو هواتف ضمن هالميزانية.';return;}matches.forEach(phone=>{const a=document.createElement('a');a.className='ik-budget-phone';a.href=phone.page;const name=document.createElement('strong');name.textContent=phone.name;const price=document.createElement('span');price.textContent='$'+phone.price_usd.toLocaleString('en-US')+' — سعر تجريبي';a.append(name,price);results.append(a);});}select.addEventListener('change',draw);draw();})();
+</script>
 <script src="theme.js" defer></script>
 </body>
 </html>

@@ -21,3 +21,17 @@ body .hero { background: transparent; }
  .ik-motion__point--4 {width:11px;height:11px;}
 }
 @media (prefers-reduced-motion: reduce) { .ik-motion__halo { animation:none !important; will-change:auto; } }
+
+/* Budget section and phone prices */
+.ik-budget-section{position:relative;z-index:1;padding:48px 0 65px;}
+.ik-budget-section h2{font-size:clamp(21px,3vw,28px);margin:0 0 8px;color:inherit;}
+.ik-price-disclaimer{font-size:12px;color:#686076;line-height:1.9;}
+.ik-budget-controls{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:22px 0;}
+.ik-budget-controls label{font-weight:700;}
+#ikBudget{font:inherit;padding:11px 16px;border-radius:12px;border:1px solid #bda9e0;background:#fff;color:#21152f;min-width:175px;}
+.ik-budget-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:14px;}
+.ik-budget-phone{display:flex;flex-direction:column;gap:9px;text-decoration:none;color:#21152f;background:#fff;border:1px solid #e1d9ef;border-radius:16px;padding:19px;box-shadow:0 5px 20px #36215c0a;}
+.ik-budget-phone:hover{border-color:#7545ce;}
+.ik-budget-phone span{font-size:12px;color:#8654cf;}
+.ik-phone-price{position:relative;z-index:1;display:flex;flex-direction:column;gap:4px;width:min(960px,90%);margin:20px auto 0;padding:14px 20px;border:1px solid #d9c7f0;border-radius:15px;background:#fff;color:#21152f;font:700 14px Cairo,sans-serif;}
+.ik-phone-price span{font-size:11px;font-weight:400;color:#6e6578;}

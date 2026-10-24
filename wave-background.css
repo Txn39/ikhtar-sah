@@ -1,0 +1,45 @@
+/* Original Ikhtar Sah wave art, shared by every page. */
+html {min-height:100%;background:#f7f9ff}
+html[data-theme="dark"] {background:#10192e}
+body,html[data-theme="dark"] body {background:transparent!important;isolation:isolate;min-height:100vh}
+body > header,body > main,body > footer,body > section,body > .ik-phone-price,body > .phone-actions {position:relative;z-index:1}
+body .ik-motion {display:none!important}
+.ik-wave-bg {position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;background:#f7f9ff;contain:layout paint style}
+html[data-theme="dark"] .ik-wave-bg {background:#10192e}
+.ik-wave-bg__light,.ik-wave-bg__dark {position:absolute;inset:0;opacity:0;transition:opacity .35s ease}
+.ik-wave-bg__light {opacity:1}
+html[data-theme="dark"] .ik-wave-bg__light {opacity:0}
+html[data-theme="dark"] .ik-wave-bg__dark {opacity:1}
+.ik-wave-bg__light::before,.ik-wave-bg__light::after,.ik-wave-bg__dark::before,.ik-wave-bg__dark::after {content:"";position:absolute;inset:-7%;background-position:center;background-repeat:no-repeat;background-size:cover;backface-visibility:hidden;will-change:transform}
+.ik-wave-bg__light::before,.ik-wave-bg__light::after {background-image:url('ikhtar-wave-light.svg')}
+.ik-wave-bg__dark::before,.ik-wave-bg__dark::after {background-image:url('ikhtar-wave-dark.svg')}
+.ik-wave-bg__light::before,.ik-wave-bg__dark::before {animation:ikWaveA 12s ease-in-out infinite alternate}
+.ik-wave-bg__light::after,.ik-wave-bg__dark::after {opacity:.20;animation:ikWaveB 15s ease-in-out infinite alternate-reverse}
+@keyframes ikWaveA {0%{transform:translate3d(-2%,-1%,0) scale(1.035)}50%{transform:translate3d(2%,1%,0) scale(1.075)}100%{transform:translate3d(-1%,1.5%,0) scale(1.035)}}
+@keyframes ikWaveB {0%{transform:translate3d(2%,1%,0) scale(1.065)}50%{transform:translate3d(-2%,-1.5%,0) scale(1.035)}100%{transform:translate3d(1%,1.5%,0) scale(1.065)}}
+/* Transparent structural sections only: cards stay opaque and readable. */
+main,.hero,.section,.ik-budget-section,html[data-theme="dark"] main,html[data-theme="dark"] .hero {background-color:transparent!important;background-image:none!important}
+@media(prefers-reduced-motion:reduce){.ik-wave-bg__light::before,.ik-wave-bg__dark::before,.ik-wave-bg__light::after,.ik-wave-bg__dark::after {animation:none;will-change:auto}}
+
+/* Fix: older animated halo layer must never cover the SVG waves. */
+html body > .ik-motion, html[data-theme="dark"] body > .ik-motion { display:none !important; visibility:hidden !important; }
+
+/* Dark-wave visibility repair: keep the background behind content but above the page fill. */
+html[data-theme="dark"] body { background: transparent !important; }
+html[data-theme="dark"] body > main,
+html[data-theme="dark"] body > section,
+html[data-theme="dark"] body > .container,
+html[data-theme="dark"] .section,
+html[data-theme="dark"] .hero { background-color: transparent !important; background-image: none !important; }
+.ik-wave-bg { z-index: 0 !important; opacity: 1 !important; visibility: visible !important; }
+html[data-theme="dark"] .ik-wave-bg { display: block !important; background: #10192e !important; }
+html[data-theme="dark"] .ik-wave-bg__dark { display: block !important; opacity: 1 !important; visibility: visible !important; }
+html[data-theme="dark"] .ik-wave-bg__light { opacity: 0 !important; }
+html[data-theme="dark"] .ik-wave-bg__dark::before,
+html[data-theme="dark"] .ik-wave-bg__dark::after { background-image: url('ikhtar-wave-dark.svg') !important; background-size: 115% 115%; }
+/* Make the motion noticeably visible instead of a nearly static 2% drift. */
+.ik-wave-bg__light::before,.ik-wave-bg__dark::before { animation: ikWaveVisibleA 7s ease-in-out infinite alternate !important; }
+.ik-wave-bg__light::after,.ik-wave-bg__dark::after { animation: ikWaveVisibleB 9s ease-in-out infinite alternate-reverse !important; opacity: .42; }
+@keyframes ikWaveVisibleA { 0% { transform: translate3d(-5%,-3%,0) scale(1.08); } 100% { transform: translate3d(6%,4%,0) scale(1.17); } }
+@keyframes ikWaveVisibleB { 0% { transform: translate3d(5%,3%,0) scale(1.17); } 100% { transform: translate3d(-6%,-4%,0) scale(1.08); } }
+@media(prefers-reduced-motion:reduce) { .ik-wave-bg__light::before,.ik-wave-bg__dark::before,.ik-wave-bg__light::after,.ik-wave-bg__dark::after { animation:none !important; } }
