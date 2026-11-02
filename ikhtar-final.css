@@ -42,7 +42,7 @@ html:not(#_):not(#__) body:has(.hero-layout) .hero{padding:clamp(36px,8vw,88px) 
 html:not(#_):not(#__) .finder,html:not(#_):not(#__) .section{padding:clamp(32px,6vw,56px) 0!important}
 
 /* ---------- 3) الهيدر: سطر واحد — الشعار يمين، الأزرار يسار ---------- */
-html:not(#_):not(#__) header{position:sticky!important;top:0;z-index:90!important;background:var(--header-bg)!important;border-bottom:1px solid var(--line)!important;box-shadow:none!important}
+html:not(#_):not(#__) header{position:sticky!important;top:0;z-index:90!important;background:transparent!important;border-bottom:1px solid var(--line)!important;box-shadow:none!important}
 html:not(#_):not(#__) header .navbar,html:not(#_):not(#__) header .nav,html:not(#_):not(#__) header .top{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;justify-content:flex-start!important;gap:8px!important;min-height:64px!important;padding:0!important}
 html:not(#_):not(#__) header .brand,html:not(#_):not(#__) header .logo{margin-inline-end:auto!important;flex:0 1 auto!important;min-width:0!important;white-space:nowrap!important;font-weight:800!important;font-size:19px!important;text-decoration:none!important;color:var(--ink)!important}
 html:not(#_):not(#__) header .brand .brand-name{font-size:19px!important}
@@ -90,8 +90,7 @@ html:not(#_):not(#__) .option{background:var(--card)!important;color:var(--ink)!
 html:not(#_):not(#__) .option:hover{background:var(--accent-soft)!important}
 html:not(#_):not(#__) .finder-controls{padding:20px!important}
 html:not(#_):not(#__) .ik-progress{background:var(--accent)!important;box-shadow:none!important}
-html:not(#_):not(#__) .ik-toast{background:var(--ink)!important;color:var(--card)!important;border-color:var(--line)!important}
-html:not(#_):not(#__) footer{background:var(--card)!important;border-top:1px solid var(--line)!important;color:var(--muted)!important;font-size:12px!important;padding:20px 0!important;box-shadow:none!important}
+html:not(#_):not(#__) footer{background:transparent!important;border-top:1px solid var(--line)!important;color:var(--muted)!important;font-size:12px!important;padding:20px 0!important;box-shadow:none!important}
 html:not(#_):not(#__) footer *{color:inherit!important}
 html:not(#_):not(#__) footer.container{margin-top:32px!important;text-align:center!important;background:transparent!important}
 html:not(#_):not(#__) .ik-phone-price{width:min(780px,calc(100% - 2*var(--ik-pad)))!important;margin:16px auto 0!important}
@@ -178,4 +177,7 @@ html:not(#_):not(#__) body [hidden]{display:none!important}
     padding: 0 !important;
     font-size: 18px !important;
   }
+}
+.ik-toast:not(.is-visible) {
+    display: none !important;
 }

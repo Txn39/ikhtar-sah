@@ -37,9 +37,6 @@ body:has(.comparison) .spec-winner{background:color-mix(in srgb,#188c54 18%,var(
 #content > .hero .chips{display:flex!important;flex-wrap:wrap!important;gap:8px!important}
 #content > .hero .chip{max-width:100%;overflow-wrap:anywhere}
 @media(max-width:800px){
-.ik-wave-bg__light::before,.ik-wave-bg__light::after,.ik-wave-bg__dark::before,.ik-wave-bg__dark::after{animation:none!important;transition:none!important;will-change:auto!important;transform:none!important}
-.ik-wave-bg__light::after,.ik-wave-bg__dark::after{display:none!important}
-.ik-wave-bg__light,.ik-wave-bg__dark{transition:none!important}
 .hero-art .phone,.float-card,.art-glow{animation:none!important;will-change:auto!important}
 .ik-reveal{transition:none!important;opacity:1!important;transform:none!important}
 #content > section.hero{flex-direction:column-reverse!important;padding:22px 16px!important;gap:18px!important}
