@@ -1,6 +1,5 @@
 /* اختَر صح — تنسيق مشترك لصفحات الهواتف */
 :root { --ik-accent:#7545ce; --ik-glow:rgba(117,69,206,.13); }
-.ik-motion__point { display:none !important; }
 header .back { display:inline-flex;align-items:center;justify-content:center;padding:9px 17px;border:1px solid rgba(117,69,206,.3);border-radius:12px;background:#fff;font-weight:700;box-shadow:0 0 12px rgba(117,69,206,.1); }
 .phone-actions { width:min(960px,90%);margin:22px auto 28px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:stretch; }
 .phone-actions input { min-width:0;width:100%;flex:auto;border:1px solid rgba(117,69,206,.27);border-radius:15px;padding:13px 16px;outline:none;box-shadow:0 0 12px rgba(117,69,206,.11);font-size:14px; }

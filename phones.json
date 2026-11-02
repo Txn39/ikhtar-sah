@@ -1,0 +1,288 @@
+{
+  "meta": {
+    "currency": "USD",
+    "price_status": "demo",
+    "prices_updated": null,
+    "price_note": "الأسعار بالدولار الأمريكي، افتراضية لأغراض عرض المشروع فقط وليست أسعار السوق."
+  },
+  "phones": [
+    {
+      "id": "xiaomi-17-ultra",
+      "name": "Xiaomi 17 Ultra",
+      "model": "Xiaomi 17 Ultra",
+      "brand": "Xiaomi",
+      "aliases": [
+        "شاومي 17 الترا",
+        "شاومي17الترا",
+        "xiaomi 17 ultra"
+      ],
+      "page": "phone.html?id=xiaomi-17-ultra",
+      "image": "https://i02.appmifile.com/453_operator_sg/07/02/2026/4a46977e59ecd24fd3dc96de5a681a8a.png",
+      "price_usd": 1200,
+      "price_iqd": null,
+      "specs": {
+        "المعالج": "Snapdragon 8 Elite Gen 5 — 3nm",
+        "الشاشة": "Xiaomi HyperRGB OLED — 6.9 بوصة، 1–120Hz",
+        "الدقة": "2608 × 1200",
+        "الذاكرة": "16GB LPDDR5X",
+        "التخزين": "512GB / 1TB — UFS 4.1",
+        "الكاميرا الرئيسية": "50MP — Light Fusion 1050L، مستشعر 1 بوصة، OIS",
+        "التقريب": "200MP Leica — بعد بؤري 75–100mm، OIS",
+        "الواسعة جداً": "50MP — زاوية 115°",
+        "السيلفي": "50MP — تركيز تلقائي",
+        "البطارية": "6000mAh — شحن 90W سلكي و50W لاسلكي",
+        "الحماية": "IP68"
+      },
+      "strengths": [
+        "مستشعر رئيسي كبير بقياس بوصة واحدة",
+        "تقريب بصري مرن وكاميرا تقريب 200MP",
+        "معالج رائد وذاكرة UFS 4.1",
+        "تصوير فيديو متقدم بدعم 4K و8K"
+      ],
+      "weaknesses": [
+        "حجم الشاشة الكبير لا يناسب الجميع",
+        "دقة الشاشة أقل رقمياً من بعض المنافسين QHD+",
+        "الشاحن غير مرفق في بعض الأسواق"
+      ]
+    },
+    {
+      "id": "vivo-x300-ultra",
+      "name": "vivo X300 Ultra",
+      "model": "vivo X300 Ultra",
+      "brand": "vivo",
+      "aliases": [
+        "فيفو اكس 300 الترا",
+        "فيفو x300 ultra"
+      ],
+      "page": "phone.html?id=vivo-x300-ultra",
+      "image": "https://vivoonlinestore.com/cdn/shop/files/vivo-x300-ultra-procesador-qualcomm-snapdragon-8-elite-gen-5.png?v=1779968519&width=2000",
+      "price_usd": 1100,
+      "price_iqd": null,
+      "specs": {
+        "المعالج": "Snapdragon 8 Elite Gen 5 — 3nm",
+        "الشاشة": "AMOLED — 6.82 بوصة، 1–144Hz",
+        "الدقة": "3168 × 1440",
+        "الذاكرة": "16GB LPDDR5X Ultra Pro",
+        "التخزين": "512GB / 1TB — UFS 4.1",
+        "الكاميرا الرئيسية": "200MP — عدسة 35mm، OIS",
+        "التقريب": "200MP ZEISS APO — عدسة 85mm",
+        "الواسعة جداً": "50MP — عدسة واسعة جداً 14mm",
+        "السيلفي": "50MP",
+        "البطارية": "6600mAh — 100W سلكي و40W لاسلكي",
+        "الحماية": "IP68 / IP69"
+      },
+      "strengths": [
+        "كاميرا رئيسية 200MP مع عدسات ZEISS",
+        "كاميرا تقريب 200MP بتركيز على التصوير البعيد",
+        "شاشة عالية الدقة وتردد 144Hz",
+        "بطارية 6600mAh وشحن 100W"
+      ],
+      "weaknesses": [
+        "الوزن يصل إلى 237 غراماً حسب اللون",
+        "وحدة الكاميرات الكبيرة قد لا تناسب بعض المستخدمين",
+        "سعة التخزين غير قابلة للتوسعة ببطاقة ذاكرة"
+      ]
+    },
+    {
+      "id": "honor-magic8-pro",
+      "name": "HONOR Magic8 Pro",
+      "model": "HONOR Magic8 Pro",
+      "brand": "HONOR",
+      "aliases": [
+        "هونر ماجيك 8 برو",
+        "هونر ماجيك8 برو"
+      ],
+      "page": "phone.html?id=honor-magic8-pro",
+      "image": "https://www-file.honor.com/content/dam/honor/common/tech/honor-ai/2025/imgs/1205/honormagic8pro.png",
+      "price_usd": 800,
+      "price_iqd": null,
+      "specs": {
+        "المعالج": "Snapdragon 8 Elite Gen 5",
+        "الشاشة": "شاشة OLED — راجع اختلاف الحجم حسب المنطقة",
+        "الدقة": "تختلف الدقة حسب الإصدار والسوق",
+        "الذاكرة": "12GB RAM (نسخة الموقع البريطاني)",
+        "التخزين": "512GB (نسخة الموقع البريطاني)",
+        "الكاميرا الرئيسية": "50MP — مستشعر 1/1.3 بوصة، OIS",
+        "التقريب": "200MP — تقريب بصري 3.7×، OIS",
+        "الواسعة جداً": "50MP — زاوية 122°",
+        "السيلفي": "يرجى الرجوع لصفحة المواصفات الإقليمية",
+        "البطارية": "تختلف سعة البطارية والشحن حسب السوق؛ راجع النسخة المحلية",
+        "الحماية": "راجع شهادة الحماية للنسخة المحلية"
+      },
+      "strengths": [
+        "معالج رائد Snapdragon 8 Elite Gen 5",
+        "تقريب بصري 3.7× مع OIS",
+        "كاميرا رئيسية 50MP بمستشعر كبير",
+        "كاميرا واسعة جداً بزاوية 122°"
+      ],
+      "weaknesses": [
+        "المواصفات الإقليمية قد تختلف",
+        "لا توجد لدينا بيانات موثقة عن سعره العراقي",
+        "لا يمكن استنتاج جودة التصوير من الدقة وحدها"
+      ]
+    },
+    {
+      "id": "poco-f9-ultra",
+      "name": "POCO F9 Ultra",
+      "model": "POCO F9 Ultra",
+      "brand": "POCO",
+      "aliases": [
+        "بوكو اف 9 الترا",
+        "بوكو f9 ultra"
+      ],
+      "page": "phone.html?id=poco-f9-ultra",
+      "image": "poco-images.png",
+      "price_usd": 600,
+      "price_iqd": null,
+      "specs": {
+        "المعالج": "Snapdragon 8 Elite Gen 5 — 3nm + VisionBoost D8",
+        "الشاشة": "AMOLED — 6.9 بوصة، حتى 185Hz",
+        "الدقة": "2608 × 1200",
+        "الذاكرة": "12GB / 16GB LPDDR5X",
+        "التخزين": "256GB / 512GB / 1TB — UFS 4.1",
+        "الكاميرا الرئيسية": "200MP — OIS",
+        "التقريب": "50MP بيريسكوب — تقريب بصري 5×، OIS",
+        "الواسعة جداً": "50MP",
+        "السيلفي": "32MP",
+        "البطارية": "8050mAh — 100W سلكي و50W لاسلكي",
+        "الحماية": "IP68"
+      },
+      "strengths": [
+        "شاشة حتى 185Hz في التطبيقات والألعاب المدعومة",
+        "بطارية كبيرة جداً بسعة 8050mAh",
+        "معالج رائد مع شريحة رسومية إضافية",
+        "نظام صوت 2.1 مضبوط من Bose"
+      ],
+      "weaknesses": [
+        "وزن يقارب 235 غراماً",
+        "185Hz غير متاح في كل التطبيقات والألعاب",
+        "الحجم الكبير قد يزعج محبي الأجهزة الصغيرة"
+      ]
+    },
+    {
+      "id": "realme-gt8-pro",
+      "name": "realme GT8 Pro",
+      "model": "realme GT8 Pro",
+      "brand": "realme",
+      "aliases": [
+        "ريلمي جي تي 8 برو",
+        "ريلمي gt8 pro"
+      ],
+      "page": "phone.html?id=realme-gt8-pro",
+      "image": "phone-placeholder.svg",
+      "price_usd": 700,
+      "price_iqd": null,
+      "specs": {
+        "المعالج": "Snapdragon 8 Elite Gen 5",
+        "الشاشة": "AMOLED — 6.79 بوصة، حتى 144Hz",
+        "الدقة": "3136 × 1440",
+        "الذاكرة": "حتى 16GB RAM",
+        "التخزين": "حتى 512GB (تختلف النسخ حسب السوق)",
+        "الكاميرا الرئيسية": "50MP — نظام تصوير RICOH GR",
+        "التقريب": "200MP بيريسكوب — 65mm، OIS",
+        "الواسعة جداً": "50MP",
+        "السيلفي": null,
+        "البطارية": "7000mAh — 120W سلكي و50W لاسلكي",
+        "الحماية": null
+      },
+      "strengths": [
+        "معالج رائد قوي",
+        "شاشة QHD+ بتردد 144Hz",
+        "بطارية 7000mAh وشحن 120W",
+        "كاميرا تقريب 200MP مع OIS"
+      ],
+      "weaknesses": [
+        "قد يكون كبير الحجم للاستخدام بيد واحدة",
+        "سرعة الشحن الفعلية تختلف حسب الظروف",
+        "التوفر والذاكرة يختلفان بين الأسواق"
+      ]
+    },
+    {
+      "id": "xiaomi-14t",
+      "name": "Xiaomi 14T",
+      "model": "14T",
+      "brand": "Xiaomi",
+      "aliases": [
+        "شاومي 14t",
+        "شاومي14تي",
+        "xiaomi14t"
+      ],
+      "page": "phone.html?id=xiaomi-14t",
+      "image": "xiaomi-14t.webp",
+      "price_usd": 500,
+      "price_iqd": null,
+      "specs": {
+        "المعالج": "MediaTek Dimensity 8300-Ultra — 4nm",
+        "الشاشة": "AMOLED — 6.67 إنچ — 144Hz",
+        "الدقة": "2712 × 1220",
+        "الذاكرة": "12GB RAM — LPDDR5X",
+        "التخزين": "256GB / 512GB — UFS 4.0",
+        "الكاميرا الرئيسية": "50MP — Sony IMX906 — OIS",
+        "التقريب": "50MP Telephoto — 2x بصري",
+        "الواسعة جداً": "12MP Ultra-wide",
+        "السيلفي": "32MP",
+        "البطارية": "5000mAh — شحن سلكي 67W",
+        "الحماية": "IP68 لمقاومة الماء والغبار"
+      }
+    },
+    {
+      "id": "samsung-s25-ultra",
+      "name": "Samsung Galaxy S25 Ultra",
+      "model": "Galaxy S25 Ultra",
+      "brand": "Samsung",
+      "aliases": [
+        "سامسونج s25 ultra",
+        "اس 25 الترا",
+        "s25ultra",
+        "galaxy s25 ultra",
+        "samsung galaxy s25 ultra"
+      ],
+      "page": "phone.html?id=samsung-s25-ultra",
+      "image": "samsung-s25-ultra.png",
+      "price_usd": 900,
+      "price_iqd": null,
+      "specs": {
+        "المعالج": "Snapdragon 8 Elite for Galaxy — 3nm",
+        "الشاشة": "Dynamic AMOLED 2X — 6.9 إنچ — 120Hz",
+        "الدقة": "1440 × 3120",
+        "الذاكرة": "12GB RAM",
+        "التخزين": "256GB / 512GB / 1TB — UFS 4.0",
+        "الكاميرا الرئيسية": "200MP — OIS",
+        "التقريب": "10MP — 3x / 50MP — 5x",
+        "الواسعة جداً": "50MP Ultra-wide",
+        "السيلفي": "12MP",
+        "البطارية": "5000mAh — شحن سلكي 45W",
+        "الحماية": "IP68 لمقاومة الماء والغبار"
+      }
+    },
+    {
+      "id": "iphone-17-pro-max",
+      "name": "iPhone 17 Pro Max",
+      "model": "iPhone 17 Pro Max",
+      "brand": "Apple",
+      "aliases": [
+        "ايفون 17 برو ماكس",
+        "آيفون 17 برو ماكس",
+        "iphone17promax",
+        "17promax"
+      ],
+      "page": "phone.html?id=iphone-17-pro-max",
+      "image": "iphone-17-pro-max.png",
+      "price_usd": 1000,
+      "price_iqd": null,
+      "specs": {
+        "المعالج": "A19PRO 3nm",
+        "الشاشة": "LTPO Super retina XDR OLED 120hz",
+        "الدقة": "2868 x 1320 p 6.9",
+        "الذاكرة": "RAM:12GB",
+        "التخزين": "2TB-1TB-512GB",
+        "الكاميرا الرئيسية": "48MP",
+        "التقريب": "48MP - بيرسكوب 4X",
+        "الواسعة جداً": "48MP",
+        "السيلفي": "18MP",
+        "البطارية": "4823mah-5088mah-45w سلكي و 25wلا سلكي",
+        "الحماية": "IP68 -مع مقاومه ماء تحت عمق 6 امتار لمده 30 دقيقة"
+      }
+    }
+  ]
+}

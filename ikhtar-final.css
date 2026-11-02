@@ -1,0 +1,181 @@
+/* ===================================================================
+   اختَر صح — الطبقة النهائية (تُحمَّل آخر ملف بكل الصفحات)
+   مصدر واحد للألوان + هيدر بسطر واحد + قياسات موحّدة + موبايل.
+   (html:not(#_):not(#__) يُستبدل وقت البناء بمحدِّد عالي الأولوية حتى ما تتصارع الطبقات القديمة)
+   =================================================================== */
+
+/* ---------- 1) الألوان: لكل ثيم لونان (فاتح / ليلي) ---------- */
+html:not(#_):not(#__)[data-palette=violet]  {--ik-a:#6941c6;--ik-ad:#a78bfa;--ik-hl:#8965d4;--ik-ink:#241536;--ik-mu:#6b7280;--ik-ln:#e5e7eb}
+html:not(#_):not(#__)[data-palette=pine]    {--ik-a:#0e4027;--ik-ad:#83cba6;--ik-hl:#397b59;--ik-ink:#0e4027;--ik-mu:#64756b;--ik-ln:#d8dfd3}
+html:not(#_):not(#__)[data-palette=burgundy]{--ik-a:#5c022b;--ik-ad:#e8a0bc;--ik-hl:#a33e68;--ik-ink:#5c022b;--ik-mu:#876574;--ik-ln:#eed2dc}
+html:not(#_):not(#__)[data-palette=copper]  {--ik-a:#9f420b;--ik-ad:#e5a06b;--ik-hl:#c47743;--ik-ink:#71310c;--ik-mu:#687270;--ik-ln:#c8d2d0}
+
+html:not(#_):not(#__) {
+  --ik-pad:16px; --ik-h:44px; --ik-r:12px; --ik-rc:18px;
+  --ik-shadow:0 6px 22px rgba(0,0,0,.06);
+  --card:#fff; --ink:var(--ik-ink); --muted:var(--ik-mu); --line:var(--ik-ln); --ring:var(--ik-ln);
+  --accent:var(--ik-a); --accent-strong:var(--ik-a); --purple:var(--ik-a); --on-accent:#fff;
+  --accent-soft:color-mix(in srgb,var(--ik-a) 9%,#fff); --glow:transparent; --header-bg:#fff; --bg:transparent;
+  --theme-accent:var(--ik-a); --theme-surface:#fff; --theme-text:var(--ik-ink); --theme-muted:var(--ik-mu); --theme-border:var(--ik-ln);
+  --ik-border:var(--ik-ln); --ik-hl-c:var(--ik-hl);
+}
+html:not(#_):not(#__)[data-theme=dark] {
+  --ik-shadow:none;
+  --card:#0a0a0a; --ink:#f5f5f7; --muted:#a8a8b3; --line:#2a2a2a; --ring:#2a2a2a;
+  --accent:var(--ik-ad); --accent-strong:var(--ik-ad); --purple:var(--ik-ad); --on-accent:#0c0614;
+  --accent-soft:color-mix(in srgb,var(--ik-ad) 14%,#0a0a0a); --header-bg:#0a0a0a;
+  --theme-accent:var(--ik-ad); --theme-surface:#0a0a0a; --theme-text:#f5f5f7; --theme-muted:#a8a8b3; --theme-border:#2a2a2a;
+  --ik-border:#2a2a2a; --ik-hl-c:var(--ik-ad);
+}
+html:not(#_):not(#__) ::selection{background:var(--accent);color:var(--on-accent)}
+
+/* ---------- 2) الحاويات والخطوط: قياس واحد ---------- */
+html:not(#_):not(#__) .container,html:not(#_):not(#__) .wrap{width:min(1040px,calc(100% - 2*var(--ik-pad)))!important;max-width:none!important;margin-inline:auto!important}
+html:not(#_):not(#__) body{font-family:Cairo,Tahoma,sans-serif!important;font-size:14px!important;color:var(--ink)!important}
+html:not(#_):not(#__) h1,html:not(#_):not(#__) h2,html:not(#_):not(#__) h3,html:not(#_):not(#__) .brand-name,html:not(#_):not(#__) .logo,html:not(#_):not(#__) .service h3,html:not(#_):not(#__) .compare-info h3{color:var(--ink)!important}
+html:not(#_):not(#__) .hero-content h1{font-size:clamp(28px,7vw,50px)!important;line-height:1.5!important;letter-spacing:0!important}
+html:not(#_):not(#__) .hero h1 span{background:none!important;-webkit-text-fill-color:var(--ik-hl-c)!important;color:var(--ik-hl-c)!important}
+html:not(#_):not(#__) h2{font-size:clamp(22px,4.6vw,30px)!important;letter-spacing:0!important}
+html:not(#_):not(#__) .hero-description,html:not(#_):not(#__) .price-note,html:not(#_):not(#__) .finder-foot,html:not(#_):not(#__) .service p,html:not(#_):not(#__) .note p,html:not(#_):not(#__) .compare-info p,html:not(#_):not(#__) .hint,html:not(#_):not(#__) .message,html:not(#_):not(#__) .subtitle,html:not(#_):not(#__) .ik-price-disclaimer,html:not(#_):not(#__) .brand-caption,html:not(#_):not(#__) .insights p{color:var(--muted)!important}
+html:not(#_):not(#__) .eyebrow,html:not(#_):not(#__) .section-label,html:not(#_):not(#__) .note-tag,html:not(#_):not(#__) .hero .label,html:not(#_):not(#__) #content a,html:not(#_):not(#__) .phone-link,html:not(#_):not(#__) .chosen{color:var(--accent)!important}
+html:not(#_):not(#__) body:has(.hero-layout) .hero{padding:clamp(36px,8vw,88px) 0 clamp(36px,7vw,72px)!important}
+html:not(#_):not(#__) .finder,html:not(#_):not(#__) .section{padding:clamp(32px,6vw,56px) 0!important}
+
+/* ---------- 3) الهيدر: سطر واحد — الشعار يمين، الأزرار يسار ---------- */
+html:not(#_):not(#__) header{position:sticky!important;top:0;z-index:90!important;background:var(--header-bg)!important;border-bottom:1px solid var(--line)!important;box-shadow:none!important}
+html:not(#_):not(#__) header .navbar,html:not(#_):not(#__) header .nav,html:not(#_):not(#__) header .top{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;justify-content:flex-start!important;gap:8px!important;min-height:64px!important;padding:0!important}
+html:not(#_):not(#__) header .brand,html:not(#_):not(#__) header .logo{margin-inline-end:auto!important;flex:0 1 auto!important;min-width:0!important;white-space:nowrap!important;font-weight:800!important;font-size:19px!important;text-decoration:none!important;color:var(--ink)!important}
+html:not(#_):not(#__) header .brand .brand-name{font-size:19px!important}
+html:not(#_):not(#__) .brand-icon{background:var(--accent)!important;color:var(--on-accent)!important;box-shadow:none!important;transform:none!important}
+html:not(#_):not(#__) header nav{display:flex!important;flex-wrap:nowrap!important;align-items:center!important;gap:8px!important;margin:0!important;flex:0 0 auto!important}
+html:not(#_):not(#__) header nav>a{display:inline-flex!important;align-items:center!important;height:40px!important;padding:0 12px!important;border:0!important;border-radius:var(--ik-r)!important;background:transparent!important;color:var(--muted)!important;font-size:13px!important;font-weight:700!important;text-decoration:none!important;transform:none!important;box-shadow:none!important}
+html:not(#_):not(#__) header nav>a:hover{background:var(--accent-soft)!important;color:var(--accent)!important}
+/* الأزرار الثلاثة: نفس الارتفاع والشكل */
+html:not(#_):not(#__) #paletteSelect,html:not(#_):not(#__) #themeToggle,html:not(#_):not(#__) header .back{box-sizing:border-box!important;height:40px!important;min-height:40px!important;margin:0!important;border:1px solid var(--line)!important;border-radius:var(--ik-r)!important;background-color:var(--card)!important;color:var(--ink)!important;box-shadow:none!important;transform:none!important;font:700 12px/1 Cairo,Tahoma,sans-serif!important;cursor:pointer}
+html:not(#_):not(#__) #paletteSelect:hover,html:not(#_):not(#__) #themeToggle:hover,html:not(#_):not(#__) header .back:hover,html:not(#_):not(#__) #paletteSelect:focus-visible{border-color:var(--accent)!important;box-shadow:none!important}
+html:not(#_):not(#__) #themeToggle{display:inline-grid!important;place-items:center!important;width:40px!important;min-width:40px!important;padding:0!important;font-size:18px!important;flex:0 0 40px!important}
+html:not(#_):not(#__) #paletteSelect{appearance:none!important;-webkit-appearance:none!important;width:auto!important;min-width:100px!important;max-width:130px!important;flex:0 0 auto!important;padding:0 12px 0 28px!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23888' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:left 10px center!important;background-size:10px 6px!important}
+html:not(#_):not(#__) #paletteSelect option{background:var(--card);color:var(--ink)}
+html:not(#_):not(#__) header .back{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;padding:0 14px!important;text-decoration:none!important;white-space:nowrap!important;flex:0 0 auto!important}
+
+/* ---------- 4) الأزرار والحقول: قياس موحّد (ارتفاع 44) ---------- */
+html:not(#_):not(#__) .search-box{display:flex!important;flex-wrap:nowrap!important;align-items:center!important;gap:8px!important;max-width:520px!important;padding:6px!important;border-radius:16px!important;background:var(--card)!important;border:1px solid var(--line)!important;box-shadow:var(--ik-shadow)!important}
+html:not(#_):not(#__) .search-box input,html:not(#_):not(#__) .phone-actions input,html:not(#_):not(#__) .picker input,html:not(#_):not(#__) #budget{height:var(--ik-h)!important;min-height:var(--ik-h)!important;padding:0 14px!important;border:1px solid var(--line)!important;border-radius:var(--ik-r)!important;background:var(--card)!important;color:var(--ink)!important;font:500 14px Cairo,Tahoma,sans-serif!important;box-shadow:none!important}
+html:not(#_):not(#__) .search-box input{flex:1 1 0!important;min-width:0!important;width:auto!important;border-color:transparent!important;background:transparent!important}
+html:not(#_):not(#__) .search-box input:focus,html:not(#_):not(#__) .phone-actions input:focus,html:not(#_):not(#__) .picker input:focus,html:not(#_):not(#__) #budget:focus{border-color:var(--accent)!important;outline:none!important}
+html:not(#_):not(#__) .search-box button,html:not(#_):not(#__) .phone-actions button,html:not(#_):not(#__) .action,html:not(#_):not(#__) .compare-button{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 auto!important;height:var(--ik-h)!important;min-height:var(--ik-h)!important;padding:0 20px!important;border:1px solid var(--accent)!important;border-radius:var(--ik-r)!important;background:var(--accent)!important;background-image:none!important;color:var(--on-accent)!important;font:800 14px Cairo,Tahoma,sans-serif!important;box-shadow:none!important;transform:none!important;white-space:nowrap!important;cursor:pointer}
+html:not(#_):not(#__) .action:disabled{opacity:.45!important;cursor:not-allowed!important}
+html:not(#_):not(#__) .compare-button{display:flex!important;width:100%!important}
+/* صفحة الهاتف: بحث + بحث + قارن بسطر واحد */
+html:not(#_):not(#__) .phone-actions{display:flex!important;flex-wrap:nowrap!important;align-items:center!important;gap:8px!important;width:min(780px,calc(100% - 2*var(--ik-pad)))!important;max-width:none!important;margin:16px auto 20px!important;padding:0!important}
+html:not(#_):not(#__) .phone-actions input{flex:1 1 0!important;min-width:0!important;width:auto!important;grid-area:auto!important}
+html:not(#_):not(#__) .phone-actions button,html:not(#_):not(#__) .phone-actions .quick-compare{grid-area:auto!important;width:auto!important;min-width:64px!important;padding:0 18px!important}
+html:not(#_):not(#__) .phone-actions .quick-compare{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 auto!important;height:var(--ik-h)!important;min-height:var(--ik-h)!important;border:1px solid var(--accent)!important;border-radius:var(--ik-r)!important;background:var(--accent-soft)!important;background-image:none!important;color:var(--accent)!important;font:800 14px Cairo,Tahoma,sans-serif!important;text-decoration:none!important;box-shadow:none!important}
+html:not(#_):not(#__) .action{margin:16px 0 18px!important}
+/* فلاتر "شنو يهمك" */
+html:not(#_):not(#__) .need{height:40px!important;padding:0 16px!important;border:1px solid var(--line)!important;border-radius:999px!important;background:var(--card)!important;color:var(--ink)!important;font:700 12px Cairo,Tahoma,sans-serif!important;box-shadow:none!important;transform:none!important}
+html:not(#_):not(#__) .need[aria-checked=true]{background:var(--accent)!important;border-color:var(--accent)!important;color:var(--on-accent)!important}
+
+/* ---------- 5) البطاقات: نفس الحدود والزوايا بكل الصفحات ---------- */
+html:not(#_):not(#__) .phone-card,html:not(#_):not(#__) .service,html:not(#_):not(#__) .note,html:not(#_):not(#__) .compare-card,html:not(#_):not(#__) .float-card,html:not(#_):not(#__) .picker,html:not(#_):not(#__) .comparison,html:not(#_):not(#__) .insights,html:not(#_):not(#__) .specs,html:not(#_):not(#__) .verdict,html:not(#_):not(#__) .analysis-card,html:not(#_):not(#__) .ik-phone-price,html:not(#_):not(#__) .finder-controls,html:not(#_):not(#__) #content .hero,html:not(#_):not(#__) #content .specs,html:not(#_):not(#__) #content .analysis-card,html:not(#_):not(#__) #content .verdict,html:not(#_):not(#__) body:has(.comparison) .picker,html:not(#_):not(#__) body:has(.comparison) .comparison,html:not(#_):not(#__) body:has(.comparison) .insights,html:not(#_):not(#__) body:has(.comparison) .analysis-card{background:var(--card)!important;color:var(--ink)!important;border:1px solid var(--line)!important;border-radius:var(--ik-rc)!important;box-shadow:var(--ik-shadow)!important}
+html:not(#_):not(#__) .phone-card:hover,html:not(#_):not(#__) .service:hover,html:not(#_):not(#__) .note:hover,html:not(#_):not(#__) .compare-card:hover{border-color:var(--accent)!important;box-shadow:var(--ik-shadow)!important}
+html:not(#_):not(#__) .compare-icon,html:not(#_):not(#__) .service-icon{background:var(--accent-soft)!important;color:var(--accent)!important;box-shadow:none!important}
+html:not(#_):not(#__) .phone-card .price,html:not(#_):not(#__) .float-card b,html:not(#_):not(#__) .ik-phone-price strong{color:var(--accent)!important}
+html:not(#_):not(#__) .phone-card .bar{background:var(--accent-soft)!important}
+html:not(#_):not(#__) .phone-card .bar i{background:var(--accent)!important}
+html:not(#_):not(#__) .chip,html:not(#_):not(#__) #content .chip{background:var(--accent-soft)!important;color:var(--accent)!important;border:1px solid var(--line)!important;border-radius:999px!important;box-shadow:none!important}
+html:not(#_):not(#__) .spec-row,html:not(#_):not(#__) .analysis-card li,html:not(#_):not(#__) .comparison th,html:not(#_):not(#__) .comparison td{border-color:var(--line)!important}
+html:not(#_):not(#__) .comparison th,html:not(#_):not(#__) .phone-placeholder{background:var(--accent-soft)!important;color:var(--ink)!important}
+html:not(#_):not(#__) .option{background:var(--card)!important;color:var(--ink)!important;border-color:var(--line)!important}
+html:not(#_):not(#__) .option:hover{background:var(--accent-soft)!important}
+html:not(#_):not(#__) .finder-controls{padding:20px!important}
+html:not(#_):not(#__) .ik-progress{background:var(--accent)!important;box-shadow:none!important}
+html:not(#_):not(#__) .ik-toast{background:var(--ink)!important;color:var(--card)!important;border-color:var(--line)!important}
+html:not(#_):not(#__) footer{background:var(--card)!important;border-top:1px solid var(--line)!important;color:var(--muted)!important;font-size:12px!important;padding:20px 0!important;box-shadow:none!important}
+html:not(#_):not(#__) footer *{color:inherit!important}
+html:not(#_):not(#__) footer.container{margin-top:32px!important;text-align:center!important;background:transparent!important}
+html:not(#_):not(#__) .ik-phone-price{width:min(780px,calc(100% - 2*var(--ik-pad)))!important;margin:16px auto 0!important}
+
+/* ---------- 6) تابلت/موبايل ---------- */
+@media(min-width:801px){html:not(#_):not(#__) {--ik-pad:24px}}
+@media(max-width:800px){
+  html:not(#_):not(#__) header{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  html:not(#_):not(#__) .search-box input,html:not(#_):not(#__) .phone-actions input,html:not(#_):not(#__) .picker input,html:not(#_):not(#__) #budget{font-size:16px!important}
+  html:not(#_):not(#__) .finder-controls{padding:16px!important}
+  html:not(#_):not(#__) #budget{width:100%!important}
+}
+@media(max-width:720px){html:not(#_):not(#__) header nav>a{display:none!important}}
+@media(max-width:640px){
+  html:not(#_):not(#__) header .navbar,html:not(#_):not(#__) header .nav,html:not(#_):not(#__) header .top{min-height:56px!important;gap:6px!important}
+  html:not(#_):not(#__) header .brand,html:not(#_):not(#__) header .logo,html:not(#_):not(#__) header .brand .brand-name{font-size:17px!important}
+  html:not(#_):not(#__) .brand-caption{display:none!important}
+  html:not(#_):not(#__) .brand-icon{width:34px!important;height:34px!important;font-size:19px!important}
+  html:not(#_):not(#__) #paletteSelect{min-width:84px!important;max-width:104px!important;padding:0 8px 0 24px!important;font-size:11.5px!important;background-position:left 8px center!important}
+  html:not(#_):not(#__) .needs{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+  html:not(#_):not(#__) .need{width:100%!important;padding:0 8px!important;text-align:center!important;justify-content:center!important}
+  html:not(#_):not(#__) .need:last-child:nth-child(odd){grid-column:1/-1!important}
+  html:not(#_):not(#__) .action{width:100%!important}
+  html:not(#_):not(#__) .search-box button,html:not(#_):not(#__) .phone-actions button,html:not(#_):not(#__) .phone-actions .quick-compare{padding:0 14px!important}
+  html:not(#_):not(#__) .phone-actions button,html:not(#_):not(#__) .phone-actions .quick-compare{min-width:56px!important}
+}
+@media(max-width:420px){
+  html:not(#_):not(#__) .back-text{display:none!important}
+  html:not(#_):not(#__) header .back{width:40px!important;padding:0!important;font-size:16px!important}
+}
+
+/* دائماً آخر شي: العناصر المخفية تبقى مخفية */
+html:not(#_):not(#__) body [hidden]{display:none!important}
+
+/* =============================================================
+   7) MOBILE HEADER — عدّل هذا القسم فقط لترتيب الأزرار
+   اسم الموقع يمين، ثم الرئيسية، اختيار الثيم، وزر الليل يسار.
+   ============================================================= */
+@media (max-width: 800px) {
+  html body header .container.nav,
+  html body header .wrap.top {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 6px !important;
+    padding: 10px 0 !important;
+  }
+  html body header .container.nav > .brand,
+  html body header .wrap.top > .logo {
+    flex: 0 0 auto !important;
+    font-size: 15px !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+  }
+  html body header .container.nav > .back,
+  html body header .wrap.top > .back {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 8px 6px !important;
+    font-size: 11px !important;
+    white-space: nowrap !important;
+  }
+  html body header .container.nav > #paletteSelect,
+  html body header .wrap.top > #paletteSelect {
+    flex: 1 1 auto !important;
+    width: 0 !important;
+    min-width: 72px !important;
+    max-width: 150px !important;
+    padding: 6px 3px !important;
+    font-size: 10px !important;
+    margin: 0 !important;
+  }
+  html body header .container.nav > #themeToggle,
+  html body header .wrap.top > #themeToggle {
+    flex: 0 0 36px !important;
+    width: 36px !important;
+    min-width: 36px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 18px !important;
+  }
+}

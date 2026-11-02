@@ -1,1059 +1,406 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<script>try{const p=localStorage.getItem('sitePalette');document.documentElement.dataset.palette=['violet','pine','burgundy','copper'].includes(p)?p:'violet'}catch(e){document.documentElement.dataset.palette='violet'}</script>
 <script>try{const t=localStorage.getItem('siteTheme');document.documentElement.dataset.theme=(t==='dark'||t==='light')?t:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){document.documentElement.dataset.theme='light'}</script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>اختَر صح | دليلك لاختيار الهاتف</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #0b0d15;
-      --surface: #141824;
-      --border: #6a2ae0;
-      --text: #e0ec36;
-      --muted: #a4a9bb;
-      --blue: #29a5c7;
-      --purple: #c8c3d8;
-      --orange: #896613;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-background: #0e2546;
-      color: var(--text);
-      font-family: "Cairo", sans-serif;
-      font-size: 14px;
-    }
-
-    button, input {
-      font-family: inherit;
-    }
-
-    .container {
-      width: min(960px, 90%);
-      margin: auto;
-    }
-
-    header {
-      border-bottom: 1px solid var(--border);
-      background: rgba(11, 13, 21, .95);
-    }
-
-    .navbar {
-      min-height: 76px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-    }
-
-    .brand-icon {
-      width: 39px;
-      height: 39px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #4bc8ec, #8863df);
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-size: 23px;
-      font-weight: 800;
-    }
-
-    .brand-name {
-      font-size: 20px;
-      font-weight: 800;
-      line-height: 1.2;
-    }
-
-    .brand-caption {
-      font-size: 10px;
-      color: var(--muted);
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-    }
-
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 12px;
-      transition: color .2s;
-    }
-
-    nav a:hover {
-      color: var(--blue);
-    }
-
-    .hero {
-      position: relative;
-      padding: 88px 0 76px;
-      overflow: hidden;
-      border-bottom: 1px solid var(--border);
-      background:
-        radial-gradient(circle at 15% 30%, rgba(102, 74, 175, .14), transparent 38%),
-        radial-gradient(circle at 85% 65%, rgba(55, 149, 204, .10), transparent 40%);
-    }
-
-    .hero-layout {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      align-items: center;
-      gap: 50px;
-    }
-
-    .eyebrow {
-      color: var(--blue);
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      font-size: clamp(24px, 3vw, 34px);
-      line-height: 1.65;
-      letter-spacing: -.5px;
-      margin: 0 0 16px;
-      font-weight: 800;
-    }
-
-    h1 span {
-      color: var(--blue);
-    }
-
-    .hero-description {
-      color: var(--muted);
-      line-height: 2.1;
-      max-width: 490px;
-      margin: 0;
-      font-size: 13px;
-    }
-
-    .search-box {
-      display: flex;
-      gap: 9px;
-      margin-top: 27px;
-      max-width: 490px;
-    }
-
-    .search-box input {
-      flex: 1;
-      min-width: 0;
-      background: #191e2c;
-      border: 1px solid #353b50;
-      border-radius: 10px;
-      padding: 12px 15px;
-      color: #fff;
-      outline: none;
-      font-size: 12px;
-    }
-
-    .search-box input:focus {
-      border-color: var(--blue);
-    }
-
-    .search-box button {
-      border: none;
-      background: var(--blue);
-      color: #0b1720;
-      border-radius: 10px;
-      padding: 10px 23px;
-      font-weight: 800;
-      cursor: pointer;
-      font-size: 12px;
-    }
-
-    .search-box button:hover {
-      background: #8ee4f8;
-    }
-
-    #result {
-      color: var(--blue);
-      font-size: 12px;
-      margin-top: 12px;
-    }
-
-    .hero-art {
-      position: relative;
-      min-height: 320px;
-      display: grid;
-      place-items: center;
-    }
-
-    .art-glow {
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: #6856d7;
-      opacity: .14;
-      filter: blur(65px);
-    }
-
-    .phone {
-      width: 160px;
-      height: 290px;
-      border-radius: 29px;
-      border: 6px solid #353a4c;
-      background: linear-gradient(155deg, #253f6b, #28204b 65%, #141a2a);
-      box-shadow: 18px 25px 55px rgba(0, 0, 0, .4);
-      transform: rotate(-10deg);
-      position: relative;
-    }
-
-    .phone::before {
-      content: "";
-      position: absolute;
-      top: 9px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 42px;
-      height: 11px;
-      background: #080a10;
-      border-radius: 20px;
-    }
-
-    .phone::after {
-      content: "";
-      position: absolute;
-      width: 95px;
-      height: 95px;
-      border-radius: 50%;
-      border: 1px solid rgba(140, 210, 255, .3);
-      top: 85px;
-      left: 25px;
-      box-shadow:
-        0 0 0 22px rgba(120, 130, 240, .08),
-        0 0 0 48px rgba(120, 130, 240, .04);
-    }
-
-    .float-card {
-      position: absolute;
-      background: rgba(27, 32, 49, .95);
-      border: 1px solid #42475f;
-      border-radius: 12px;
-      padding: 12px 16px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, .2);
-      font-size: 11px;
-      font-weight: 700;
-      z-index: 2;
-    }
-
-    .float-card small {
-      display: block;
-      color: var(--muted);
-      font-size: 10px;
-      font-weight: 400;
-    }
-
-    .float-one {
-      top: 45px;
-      right: 0;
-    }
-
-    .float-two {
-      bottom: 45px;
-      left: 0;
-    }
-
-    .float-one b {
-      color: var(--blue);
-    }
-
-    .float-two b {
-      color: var(--orange);
-    }
-
-    .section {
-      padding: 70px 0;
-    }
-
-    .section-heading {
-      margin-bottom: 28px;
-    }
-
-    .section-label {
-      font-size: 11px;
-      color: var(--purple);
-      font-weight: 700;
-    }
-
-    h2 {
-      margin: 7px 0 5px;
-      font-size: 25px;
-      font-weight: 800;
-    }
-
-    .section-heading p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .service {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 25px 22px;
-      transition: border-color .2s, transform .2s;
-    }
-
-    .service:hover {
-      border-color: #555b80;
-      transform: translateY(-3px);
-    }
-
-    .service-icon {
-      width: 43px;
-      height: 43px;
-      display: grid;
-      place-items: center;
-      border-radius: 11px;
-      margin-bottom: 17px;
-      font-size: 21px;
-      font-weight: 800;
-    }
-
-    .icon-blue {
-      background: rgba(81, 201, 237, .12);
-      color: var(--blue);
-    }
-
-    .icon-purple {
-      background: rgba(165, 139, 250, .12);
-      color: var(--purple);
-    }
-
-    .icon-orange {
-      background: rgba(246, 161, 110, .12);
-      color: var(--orange);
-    }
-
-    .service h3 {
-      margin: 0 0 8px;
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .service p {
-      margin: 0;
-      font-size: 12px;
-      line-height: 2;
-      color: var(--muted);
-    }
-
-    .service-number {
-      display: block;
-      margin-top: 18px;
-      color: #697088;
-      font-size: 10px;
-    }
-
-    .note {
-      margin-top: 35px;
-      background: #121725;
-      border: 1px solid #28334a;
-      border-right: 3px solid var(--blue);
-      border-radius: 10px;
-      padding: 20px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .note strong {
-      font-size: 13px;
-    }
-
-    .note p {
-      margin: 4px 0 0;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .note-tag {
-      color: var(--blue);
-      font-size: 11px;
-      white-space: nowrap;
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 23px 0;
-      color: #82899e;
-      font-size: 11px;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-    }
-
-    @media (max-width: 800px) {
-      .hero-layout {
-        grid-template-columns: 1fr;
-        gap: 15px;
-      }
-
-      .hero {
-        padding: 55px 0;
-      }
-
-      .hero-art {
-        min-height: 260px;
-      }
-
-      .phone {
-        transform: rotate(-7deg) scale(.8);
-      }
-
-      .float-one {
-        right: 10%;
-      }
-
-      .float-two {
-        left: 10%;
-      }
-
-      .services {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 480px) {
-      nav {
-        gap: 12px;
-      }
-
-      nav a {
-        font-size: 10px;
-      }
-
-      .brand-name {
-        font-size: 17px;
-      }
-
-      .brand-caption {
-        font-size: 9px;
-      }
-
-      h1 {
-        font-size: 29px;
-      }
-
-      .search-box {
-        flex-direction: column;
-      }
-
-      .search-box button {
-        padding: 12px;
-      }
-
-      .note {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-      }
-    }
-    .compare-card {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 15px;
-  padding: 16px;
-  max-width: 400px;
-width: 100%;
-box-sizing: border-box;
-  background: #3e8ab0;
-  border: 1px solid #6c85b6;
-  border-radius: 13px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.compare-card:hover {
-  border-color: #7545ce;
-  transform: translateY(-3px);
-}
-
-.compare-icon {
-  font-size: 30px;
-  background: #e2dfdc;
-  padding: 12px;
-  border-radius: 12px;
-}
-
-.compare-info {
-  flex: 1;
-}
-
-.compare-info h3 {
-  color: #eaf133;
-  margin: 0 0 6px;
-}
-
-.compare-info p {
-  color: #fcfbfa;
-  font-size: 13px;
-  margin: 0;
-}
-
-.compare-arrow {
-  color: #7545ce;
-  font-size: 25px;
-}
-
-/* اختَر صح — الهوية الفاتحة للصفحة الرئيسية */
-:root {
-  --bg: #F3F4F6;
-  --surface: #FFFFFF;
-  --border: #E5E7EB;
-  --text: #21152F;
-  --muted: #65616F;
-  --blue: #7545CE;
-  --purple: #7545CE;
-  --orange: #C48B18;
-}
-body { background: var(--bg); color: var(--text); }
-header { background: #FFFFFF; border-bottom-color: var(--border); }
-.brand-icon { background: linear-gradient(135deg, #7545CE, #9B79E2); }
-nav a:hover { color: var(--blue); }
-.hero {
-  background: radial-gradient(circle at 15% 30%, rgba(117,69,206,.07), transparent 40%),
-              radial-gradient(circle at 85% 65%, rgba(117,69,206,.05), transparent 42%);
-  border-bottom-color: var(--border);
-}
-h1 span { color: var(--blue); }
-.search-box input { background: #FFFFFF; border-color: #DADCE3; color: var(--text); }
-.search-box input::placeholder { color: #898595; }
-.search-box button { background: var(--blue); color: #FFFFFF; }
-.search-box button:hover { background: #6036B6; }
-#result a { color: var(--blue) !important; }
-.art-glow { background: #A78BFA; opacity: .15; }
-.phone { border-color: #A39AB9; box-shadow: 18px 25px 55px rgba(41,25,78,.12); }
-.float-card { background: #FFFFFF; border-color: var(--border); box-shadow: 0 12px 28px rgba(41,25,78,.09); }
-.float-one b, .float-two b { color: var(--blue); }
-.service { background: #FFFFFF; border-color: var(--border); box-shadow: 0 6px 24px rgba(41,25,78,.035); }
-.service:hover { border-color: #A78BFA; }
-.service-number { color: #777184; }
-.note { background: #FFFFFF; border-color: var(--border); border-right: 3px solid var(--blue); }
-footer { border-top-color: var(--border); color: var(--muted); }
-.compare-card {
-  background: #FFFFFF;
-  border: 1px solid #E5E7EB;
-  border-radius: 18px;
-  max-width: 490px;
-  width: 100%;
-  margin: 20px 0 0;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 13px;
-  box-shadow: 0 8px 26px rgba(41,25,78,.06);
-}
-.compare-content { display: flex; align-items: center; gap: 13px; }
-.compare-icon { display: grid; place-items: center; flex: 0 0 48px; width: 48px; height: 48px; background: #F0E9FF; color: #7545CE; font-size: 25px; border-radius: 13px; padding: 0; }
-.compare-info { flex: 1; min-width: 0; }
-.compare-info h3 { color: #21152F; margin: 0 0 4px; font-size: 16px; }
-.compare-info p { color: #65616F; font-size: 12px; line-height: 1.8; margin: 0; }
-.compare-button { display: block; background: #7545CE; color: #FFFFFF; text-align: center; padding: 10px 14px; border-radius: 11px; font-weight: 800; font-size: 14px; }
-.compare-card:hover { border-color: #7545CE; transform: translateY(-2px); }
-.compare-card:hover .compare-button { background: #6036B6; }
-@media (max-width: 480px) {
-  .compare-card { max-width: 100%; }
-  .hero { padding: 45px 0; }
-}
-
-
-/* واجهة هاتف واحدة، محسّنة ومرتّبة */
-.hero-art { width:100%; max-width:390px; min-height:370px; margin-inline:auto; isolation:isolate; }
-.art-glow { width:235px; height:265px; opacity:.13; }
-.phone { width:178px; height:322px; border:5px solid #30254e; border-radius:33px; transform:rotate(-7deg); background:linear-gradient(150deg,#181e3c 5%,#373075 49%,#10162d 100%); box-shadow:12px 20px 35px rgba(39,25,83,.18), inset 0 0 0 2px #8378a7; overflow:hidden; z-index:1; }
-.phone::before { top:13px; width:56px; height:15px; border-radius:12px; background:#080d20; box-shadow:0 0 0 2px rgba(255,255,255,.08); z-index:2; }
-.phone::after { width:145px; height:145px; top:93px; left:11px; border-radius:50%; border:1px solid rgba(206,189,255,.65); background:radial-gradient(circle at 36% 35%,rgba(183,150,255,.55),rgba(125,87,216,.22) 45%,transparent 73%); box-shadow:0 0 0 23px rgba(165,134,247,.09),0 0 0 50px rgba(165,134,247,.035); }
-.float-card { background:#fff; border:1px solid #e9e3f3; box-shadow:0 9px 25px rgba(41,25,78,.09); padding:12px 15px; min-width:125px; }
-.float-one { top:78px; right:0; }
-.float-two { bottom:73px; left:0; }
-@media(max-width:800px){.hero-art{max-width:350px;min-height:340px}.phone{transform:rotate(-7deg) scale(.9)}.float-one{right:0;top:70px}.float-two{left:0;bottom:62px}}
-@media(max-width:400px){.hero-art{max-width:300px}.float-card{min-width:108px;padding:10px;font-size:10px}.float-one{right:0}.float-two{left:0}}
-
-/* أزرار القائمة العلوية */
-nav a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px 18px;
-  border: 1px solid rgba(117, 69, 206, 0.28);
-  border-radius: 12px;
-  background: #fff;
-  color: #7545CE;
-  font-weight: 700;
-  box-shadow: 0 0 12px rgba(117, 69, 206, 0.10);
-  transition: all 0.25s ease;
-}
-
-nav a:hover {
-  background: #F3EDFF;
-  border-color: #7545CE;
-  box-shadow: 0 0 16px rgba(117, 69, 206, 0.18);
-}
-
-@media (max-width: 480px) {
-  nav a {
-    padding: 8px 11px;
-    font-size: 10px;
-  }
-
-  nav {
-    gap: 7px;
-  }
-}
-/* خانة البحث والزر بسطر واحد */
-.search-box {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  gap: 10px;
-  width: 100%;
-  box-shadow: 0 0 12px rgba(133, 69, 255, 0.12);
-}
-
-.search-box input {
-  flex: 1;
-  min-width: 0;
-}
-
-.search-box button {
-  flex-shrink: 0;
-  white-space: nowrap;
-  padding: 10px 18px;
-}
-
-@media (max-width: 480px) {
-  .search-box {
-    flex-direction: row;
-  }
-
-  .search-box button {
-    padding: 10px 14px;
-  }
-}
-/* تصميم مستطيلات قسم شنو نقدم */
-.services {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 18px;
-}
-
-.service,
-.note {
-  width: 100%;
-  max-width: 440px;
-  min-height: 155px;
-  margin: 0;
-  padding: 22px 25px;
-  border: 1px solid rgba(117, 69, 206, 0.3);
-  border-radius: 22px;
-  background: #FFFFFF;
-  box-shadow: 0 0 16px rgba(117, 69, 206, 0.10);
-  text-align: center;
-  transition: 0.25s ease;
-}
-
-.service {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.note {
-  margin: 18px auto 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-right: 1px solid rgba(117, 69, 206, 0.3);
-}
-
-.service:hover,
-.note:hover {
-  border-color: #7545CE;
-  box-shadow: 0 0 20px rgba(117, 69, 206, 0.16);
-}
-
-.service-icon {
-  margin: 0 auto 12px;
-}
-
-.service h3,
-.service p,
-.note strong,
-.note p {
-  text-align: center;
-}
-
-.note-tag {
-  margin-top: 10px;
-  white-space: normal;
-}
-
-@media (max-width: 480px) {
-  .service,
-  .note {
-    max-width: 100%;
-    min-height: 145px;
-    padding: 20px;
-  }
-}
-/* زر المقارنة الجديد */
-a.compare-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 80px;
-  max-width: 100%;
-  min-height: 20px;
-  padding: 10px 20px;
-  margin: 24px auto;
-
-  background: linear-gradient(180deg, #fff, #f5efff);
-  border: 2px solid #8545ff;
-  border-radius: 22px;
-
-  color: #8545ff;
-  font-size: 20px;
-  font-weight: 800;
-  text-decoration: none;
-
-  box-shadow: 0 0 12px rgba(133, 69, 255, 0.22);
-}
-
-a.compare-card:hover {
-  background: #f1e7ff;
-  color: #7545ce;
-}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اختَر صح | دليلك لاختيار الهاتف</title>
+<meta name="description" content="اختَر صح: قارن مواصفات الهواتف، اعرف نقاط القوة والضعف، واختر الهاتف المناسب لميزانيتك واحتياجك بدون مبالغة أو تطبيل.">
+<meta name="theme-color" content="#7545ce">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_IQ">
+<meta property="og:title" content="اختَر صح | دليلك لاختيار الهاتف">
+<meta property="og:description" content="قارن الهواتف واعرف نقاط القوة والضعف قبل ما تصرف فلوسك.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237545ce'/%3E%3Cpath d='M18 33l10 10 18-22' fill='none' stroke='%23fff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-/* حدود بنفسجية هادئة ومتوهجة باستمرار */
-.service, .compare-card, .float-card, .note {
-  border: 1px solid rgba(117, 69, 206, .24);
-  box-shadow: 0 0 0 1px rgba(117, 69, 206, .035),
-              0 0 18px rgba(117, 69, 206, .095),
-              0 10px 28px rgba(41, 25, 78, .045);
-}
-.service:hover, .compare-card:hover {
-  border-color: rgba(117, 69, 206, .38);
-  box-shadow: 0 0 22px rgba(117, 69, 206, .14),
-              0 12px 30px rgba(41, 25, 78, .07);
-}
-.search-box input:focus {
-  box-shadow: 0 0 0 3px rgba(117, 69, 206, .10);
-}
-.search-box input:focus {
-  border-color: #8545ff;
-  box-shadow: 0 0 17px rgba(133, 69, 255, 0.22);
-}
-#themeToggle {
-  background: #f5efff;
-  border: 1.5px solid #a77ae8;
-  border-radius: 14px;
-  padding: 8px 13px;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 0 12px rgba(117, 69, 206, 0.15);
-}
-/* ترتيب بطاقات أسعار الهواتف */
-.ik-budget-results {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
-    margin-top: 25px;
-}
+  /* ===== المتغيرات: فاتح / ليلي ===== */
+  :root {
+    --card: #ffffff;
+    --ink: #21152f;
+    --muted: #65616f;
+    --line: #e5e7eb;
+    --accent: #7545ce;
+    --accent-strong: #6036b6;
+    --accent-soft: #f0e9ff;
+    --header-bg: #ffffff;
+    --glow: rgba(117, 69, 206, .10);
+    --ring: rgba(117, 69, 206, .24);
+  }
+  html[data-theme="dark"] {
+    --card: #202538;
+    --ink: #f1edfa;
+    --muted: #b5b6c9;
+    --line: #50416f;
+    --accent: #b18aff;
+    --accent-strong: #c9b0ff;
+    --accent-soft: #2c2748;
+    --header-bg: #171b2b;
+    --glow: rgba(150, 100, 255, .09);
+    --ring: #50416f;
+  }
 
-.ik-budget-phone {
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
-    background: #ffffff;
-    border: 1px solid #8545ff;
-    border-radius: 16px;
-    text-decoration: none;
-    text-align: center;
-    box-shadow: 0 0 12px rgba(133, 69, 255, 0.12);
-}
+  * { box-sizing: border-box; }
+  body { margin: 0; color: var(--ink); font-family: "Cairo", Tahoma, sans-serif; font-size: 14px; }
+  button, input, select { font-family: inherit; }
+  a { color: inherit; }
+  .container { width: min(960px, 90%); margin: auto; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
-.ik-budget-phone strong {
-    color: #21152f;
-    font-size: 15px;
-}
+  /* ===== الهيدر ===== */
+  header { background: var(--header-bg); border-bottom: 1px solid var(--line); }
+  .navbar { min-height: 76px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+  .brand { display: flex; align-items: center; gap: 11px; }
+  .brand-icon { width: 39px; height: 39px; border-radius: 12px; background: linear-gradient(135deg, #7545ce, #9b79e2); display: grid; place-items: center; color: #fff; font-size: 23px; font-weight: 800; }
+  .brand-name { font-size: 20px; font-weight: 800; line-height: 1.2; white-space: nowrap; }
+  .brand-caption { font-size: 10px; color: var(--muted); }
+  nav { display: flex; align-items: center; gap: 22px; }
+  nav a { color: var(--muted); text-decoration: none; font-size: 12px; transition: color .2s; white-space: nowrap; }
+  nav a:hover { color: var(--accent); }
+  #themeToggle { background: var(--accent-soft); border: 1.5px solid var(--ring); border-radius: 14px; cursor: pointer; box-shadow: 0 0 12px var(--glow); }
 
-.ik-budget-phone span {
-    color: #7545ce;
-    font-size: 14px;
-    font-weight: 700;
-}
+  /* ===== الواجهة الرئيسية ===== */
+  .hero { position: relative; padding: 80px 0 64px; border-bottom: 1px solid var(--line); }
+  .hero-layout { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 50px; }
+  .eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; margin-bottom: 16px; }
+  h1 { font-size: clamp(26px, 3vw, 34px); line-height: 1.65; letter-spacing: -.5px; margin: 0 0 16px; font-weight: 800; }
+  h1 span { color: var(--accent); }
+  .hero-description { color: var(--muted); line-height: 2.1; max-width: 490px; margin: 0; font-size: 13px; }
 
-/* الوضع الليلي */
-html[data-theme="dark"] .ik-budget-phone {
-    background: #202538;
-    border-color: #66508f;
-}
+  .search-box { display: flex; gap: 10px; margin-top: 27px; max-width: 490px; }
+  .search-box input { flex: 1; min-width: 0; background: var(--card); color: var(--ink); border: 1px solid var(--ring); border-radius: 10px; padding: 12px 15px; font-size: 13px; box-shadow: 0 0 12px rgba(133, 69, 255, .12); }
+  .search-box input::placeholder { color: #898595; }
+  .search-box input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 17px rgba(133, 69, 255, .22); }
+  .search-box button { flex-shrink: 0; border: 0; background: #7545ce; color: #fff; border-radius: 10px; padding: 10px 22px; font-weight: 800; font-size: 13px; cursor: pointer; }
+  .search-box button:hover { background: #6036b6; }
+  #result { color: var(--accent); font-size: 12px; margin-top: 12px; min-height: 20px; }
 
-html[data-theme="dark"] .ik-budget-phone strong {
-    color: #f1edfa;
-}
+  /* زر المقارنة: بطاقة واضحة بدل زر صغير */
+  .compare-card { display: flex; flex-direction: column; gap: 13px; max-width: 490px; width: 100%; margin: 20px 0 0; padding: 16px; text-decoration: none; background: var(--card); border: 1px solid var(--ring); border-radius: 18px; box-shadow: 0 8px 26px rgba(41, 25, 78, .06), 0 0 18px var(--glow); transition: border-color .2s, transform .2s; }
+  .compare-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .compare-content { display: flex; align-items: center; gap: 13px; }
+  .compare-icon { display: grid; place-items: center; flex: 0 0 48px; width: 48px; height: 48px; background: var(--accent-soft); color: var(--accent); font-size: 25px; border-radius: 13px; }
+  .compare-info h3 { margin: 0 0 4px; font-size: 16px; }
+  .compare-info p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
+  .compare-button { display: block; background: #7545ce; color: #fff; text-align: center; padding: 10px 14px; border-radius: 11px; font-weight: 800; font-size: 14px; }
+  .compare-card:hover .compare-button { background: #6036b6; }
 
-html[data-theme="dark"] .ik-budget-phone span {
-    color: #c5a5ff;
-}
+  /* رسمة الهاتف */
+  .hero-art { position: relative; width: 100%; max-width: 390px; min-height: 370px; margin-inline: auto; display: grid; place-items: center; isolation: isolate; }
+  .art-glow { position: absolute; width: 235px; height: 265px; border-radius: 50%; background: #a78bfa; opacity: .15; filter: blur(65px); }
+  .phone { position: relative; width: 178px; height: 322px; border: 5px solid #30254e; border-radius: 33px; transform: rotate(-7deg); background: linear-gradient(150deg, #181e3c 5%, #373075 49%, #10162d 100%); box-shadow: 12px 20px 35px rgba(39, 25, 83, .18), inset 0 0 0 2px #8378a7; overflow: hidden; z-index: 1; }
+  .phone::before { content: ""; position: absolute; top: 13px; left: 50%; transform: translateX(-50%); width: 56px; height: 15px; border-radius: 12px; background: #080d20; z-index: 2; }
+  .phone::after { content: ""; position: absolute; width: 145px; height: 145px; top: 93px; left: 11px; border-radius: 50%; border: 1px solid rgba(206, 189, 255, .65); background: radial-gradient(circle at 36% 35%, rgba(183, 150, 255, .55), rgba(125, 87, 216, .22) 45%, transparent 73%); box-shadow: 0 0 0 23px rgba(165, 134, 247, .09), 0 0 0 50px rgba(165, 134, 247, .035); }
+  .float-card { position: absolute; z-index: 2; min-width: 125px; padding: 12px 15px; background: var(--card); border: 1px solid var(--ring); border-radius: 12px; box-shadow: 0 9px 25px rgba(41, 25, 78, .09), 0 0 18px var(--glow); font-size: 11px; font-weight: 700; }
+  .float-card b { color: var(--accent); }
+  .float-card small { display: block; color: var(--muted); font-size: 10px; font-weight: 400; }
+  .float-one { top: 78px; right: 0; }
+  .float-two { bottom: 73px; left: 0; }
+
+  /* ===== قسم الاختيار حسب الميزانية والاحتياج ===== */
+  .finder { padding: 56px 0 20px; }
+  .section-label { font-size: 11px; color: var(--accent); font-weight: 700; }
+  h2 { margin: 7px 0 6px; font-size: 25px; font-weight: 800; }
+  .price-note { margin: 0 0 18px; color: var(--muted); font-size: 12px; line-height: 1.9; }
+  .finder-controls { display: flex; flex-wrap: wrap; gap: 18px 28px; align-items: flex-end; margin-bottom: 22px; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field > label, .field > span { font-weight: 700; font-size: 13px; }
+  #budget { min-width: 180px; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--ring); background: var(--card); color: var(--ink); font-size: 13px; }
+  .needs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .need { padding: 9px 15px; border-radius: 999px; border: 1.5px solid var(--ring); background: var(--card); color: var(--ink); font-size: 12px; font-weight: 700; cursor: pointer; transition: .2s; }
+  .need:hover { border-color: var(--accent); }
+  .need[aria-checked="true"] { background: #7545ce; border-color: #7545ce; color: #fff; }
+  .finder-results { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 14px; }
+  .phone-card { display: flex; flex-direction: column; gap: 8px; padding: 18px; text-decoration: none; background: var(--card); border: 1px solid var(--ring); border-radius: 18px; box-shadow: 0 0 16px var(--glow); transition: .2s; }
+  .phone-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .phone-card strong { font-size: 15px; }
+  .phone-card .price { color: var(--accent); font-size: 13px; font-weight: 700; }
+  .phone-card .score { font-size: 12px; color: var(--muted); }
+  .phone-card .bar { height: 6px; border-radius: 6px; background: var(--accent-soft); overflow: hidden; }
+  .phone-card .bar i { display: block; height: 100%; background: linear-gradient(90deg, #7545ce, #9b79e2); border-radius: 6px; }
+  .finder-foot { margin-top: 14px; color: var(--muted); font-size: 11px; line-height: 1.9; }
+  .state { grid-column: 1 / -1; padding: 22px; border: 1px dashed var(--ring); border-radius: 16px; color: var(--muted); background: var(--card); line-height: 1.9; }
+
+  /* ===== شنو نقدم ===== */
+  .section { padding: 56px 0 70px; }
+  .section-heading { margin-bottom: 28px; }
+  .section-heading p { margin: 0; color: var(--muted); font-size: 12px; }
+  .services { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; }
+  .service, .note { width: 100%; max-width: 440px; min-height: 155px; padding: 22px 25px; border: 1px solid var(--ring); border-radius: 22px; background: var(--card); box-shadow: 0 0 18px var(--glow); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: .25s ease; }
+  .service:hover, .note:hover { border-color: var(--accent); }
+  .service-icon { width: 43px; height: 43px; display: grid; place-items: center; border-radius: 11px; margin: 0 auto 12px; font-size: 21px; font-weight: 800; background: var(--accent-soft); color: var(--accent); }
+  .service h3 { margin: 0 0 8px; font-size: 15px; }
+  .service p, .note p { margin: 0; font-size: 12px; line-height: 2; color: var(--muted); }
+  .service-number { display: block; margin-top: 14px; color: var(--muted); font-size: 10px; }
+  .note { margin: 18px auto 0; }
+  .note strong { font-size: 13px; }
+  .note-tag { margin-top: 10px; color: var(--accent); font-size: 11px; }
+
+  footer { border-top: 1px solid var(--line); padding: 23px 0; color: var(--muted); font-size: 11px; background: var(--header-bg); }
+  .footer-inner { display: flex; justify-content: space-between; gap: 15px; }
+
+  /* ===== الموبايل ===== */
+  @media (max-width: 800px) {
+    .hero { padding: 48px 0; }
+    .hero-layout { grid-template-columns: 1fr; gap: 15px; }
+    .hero-art { max-width: 340px; min-height: 330px; }
+  }
+  @media (max-width: 480px) {
+    nav { gap: 12px; }
+    nav a { font-size: 11px; }
+    nav a[href="#home"] { display: none; }
+    .navbar { gap: 10px; }
+    #themeToggle { width: 42px; height: 42px; font-size: 18px; }
+    .brand-name { font-size: 17px; }
+    .brand-caption { display: none; }
+    .search-box button { padding: 10px 14px; }
+    .compare-card, .service, .note { max-width: 100%; }
+    .footer-inner { flex-direction: column; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 <link rel="stylesheet" href="theme.css">
-
 <link rel="stylesheet" href="wave-background.css">
+<link rel="stylesheet" href="premium-studio.css">
+<link rel="stylesheet" href="mobile.css" media="(max-width:800px)">
+<link rel="stylesheet" href="themes.css">
+<link rel="stylesheet" href="site-final-fixes.css">
+<link rel="stylesheet" href="ikhtar-final.css">
 </head>
-
 <body>
 <div class="ik-wave-bg" aria-hidden="true"><div class="ik-wave-bg__light"></div><div class="ik-wave-bg__dark"></div></div>
+
 <header>
-    <div class="container navbar">
-
-      <div class="brand">
-        <div class="brand-icon">✓</div>
-        <div>
-          <div class="brand-name">اختَر صح</div>
-          <div class="brand-caption">قرارك يبدأ بالمعلومة</div>
-        </div>
+  <div class="container navbar">
+    <div class="brand">
+      <div class="brand-icon" aria-hidden="true">✓</div>
+      <div>
+        <div class="brand-name">اختَر صح</div>
+        <div class="brand-caption">قرارك يبدأ بالمعلومة</div>
       </div>
-
-      <nav>
-        <a href="#home">الرئيسية</a>
-        <button id="themeToggle" type="button" aria-label="تبديل الوضع الليلي">
-  🌙
-</button>
-        <a href="#services">عن الموقع</a>
-      </nav>
-
     </div>
-  </header>
+    <nav aria-label="التنقل الرئيسي">
+      <a href="#home">الرئيسية</a>
+      <a href="#finder">اختَر حسب احتياجك</a>
+      <a href="#services">عن الموقع</a>
+      <select id="paletteSelect" aria-label="اختيار لون الموقع">
+  <option value="violet">🟣 بنفسجي</option>
+  <option value="pine">🟢 صنوبري</option>
+  <option value="burgundy">🔴 عنابي</option>
+  <option value="copper">🟠 نحاسي</option>
+</select>
+      <button id="themeToggle" type="button" aria-label="تبديل الوضع الليلي">🌙</button>
+    </nav>
+  </div>
+</header>
 
-  <main>
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-layout">
+      <div class="hero-content">
+        <div class="eyebrow">دليلك لاختيار الهاتف المناسب</div>
+        <h1>مو كل هاتف غالي<br>يعني هو <span>الأفضل إلك.</span></h1>
+        <p class="hero-description">
+          نساعدك تفهم مواصفات الهواتف، وتقارن بين الخيارات،
+          وتعرف نقاط القوة والضعف قبل ما تصرف فلوسك.
+          بدون مبالغة أو تطبيل.
+        </p>
 
-    <section class="hero" id="home">
-      <div class="container hero-layout">
-
-        <div class="hero-content">
-
-          <div class="eyebrow">
-            دليلك لاختيار الهاتف المناسب
-          </div>
-
-          <h1>
-            مو كل هاتف غالي<br>
-            يعني هو <span>الأفضل إلك.</span>
-          </h1>
-
-          <p class="hero-description">
-            نساعدك تفهم مواصفات الهواتف، وتقارن بين الخيارات،
-            وتعرف نقاط القوة والضعف قبل ما تصرف فلوسك.
-            بدون مبالغة أو تطبيل.
-          </p>
-
-          <div class="search-box">
-            <input
-              id="phoneSearch"
-              type="text"
-              placeholder="ابحث عن هاتف..."
-            >
-            <button onclick="searchPhone()">بحث</button>
-          </div>
-
-          <div id="result" aria-live="polite"></div>
-
-          <a href="compare.html" class="compare-card">قارن</a>
+        <div class="search-box" role="search">
+          <input id="phoneSearch" type="search" autocomplete="off" placeholder="ابحث عن هاتف... مثال: S25 Ultra" aria-label="ابحث عن هاتف">
+          <button id="searchBtn" type="button">بحث</button>
         </div>
+        <div id="result" aria-live="polite"></div>
 
-        <div class="hero-art">
-
-          <div class="art-glow"></div>
-
-          <div class="phone"></div>
-
-          <div class="float-card float-one">
-            <b>مواصفات واضحة</b>
-            <small>اعرف التفاصيل المهمة</small>
+        <a href="compare.html" class="compare-card">
+          <div class="compare-content">
+            <div class="compare-icon" aria-hidden="true">⇄</div>
+            <div class="compare-info">
+              <h3>قارن بين هاتفين</h3>
+              <p>اختَر هاتفين وشوف الفروقات بالمواصفات مع درجات تقديرية لكل جانب.</p>
+            </div>
           </div>
-
-          <div class="float-card float-two">
-            <b>قرار أذكى</b>
-            <small>اختار حسب احتياجك</small>
-          </div>
-
-        </div>
-
+          <span class="compare-button">ابدأ المقارنة</span>
+        </a>
       </div>
-    </section>
 
-
-<section class="ik-budget-section" id="budget" aria-labelledby="budgetHeading"><div class="container"><h2 id="budgetHeading">اختَر حسب الميزانية</h2><p class="ik-price-disclaimer">الأسعار بالدولار الأمريكي، افتراضية لأغراض عرض المشروع فقط وليست أسعار السوق.</p><div class="ik-budget-controls"><label for="ikBudget">أقصى ميزانية (دولار)</label><select id="ikBudget"><option value="0">كل الأسعار</option><option value="500">$500</option><option value="600">$600</option><option value="700">$700</option><option value="800">$800</option><option value="900">$900</option><option value="1000">$1,000</option><option value="1100">$1,100</option><option value="1200">$1,200</option></select></div><div id="ikBudgetResults" class="ik-budget-results" aria-live="polite"></div></div></section>
-    <section class="section" id="services">
-      <div class="container">
-
-        <div class="section-heading">
-          <div class="section-label">شنو نقدم؟</div>
-          <h2>المعلومة قبل قرار الشراء</h2>
-          <p>ثلاث خطوات تساعدك توصل للهاتف المناسب.</p>
-        </div>
-
-        <div class="services">
-
-          <article class="service">
-            <div class="service-icon icon-blue">▤</div>
-            <h3>مواصفات مفهومة</h3>
-            <p>
-              مو مجرد أرقام بجدول. نشرحلك شنو تعني
-              المواصفات، وشنو تأثيرها على استخدامك اليومي.
-            </p>
-            <span class="service-number">01 — افهم</span>
-          </article>
-
-          <article class="service">
-            <div class="service-icon icon-purple">⇄</div>
-            <h3>مقارنات عادلة</h3>
-            <p>
-              نقارن الهواتف من ناحية الأداء والكاميرات
-              والبطارية والسعر، حسب احتياجك الفعلي.
-            </p>
-            <span class="service-number">02 — قارن</span>
-          </article>
-
-          <article class="service">
-            <div class="service-icon icon-orange">✓</div>
-            <h3>قرار بدون ندم</h3>
-            <p>
-              نوضحلك لمن يناسب الهاتف، ولمن ما يناسب،
-              حتى تعرف إذا يستحق سعره فعلًا.
-            </p>
-            <span class="service-number">03 — قرر</span>
-          </article>
-
-        </div>
-
-        <div class="note">
-          <div>
-            <strong>ليش اختَر صح؟</strong>
-            <p>
-              لأن الهاتف الأفضل بالمواصفات مو بالضرورة
-              يكون الأفضل بالنسبة إلك.
-            </p>
-          </div>
-          <span class="note-tag">اختيار مبني على احتياجك ←</span>
-        </div>
-
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-glow"></div>
+        <div class="phone"></div>
+        <div class="float-card float-one"><b>مواصفات واضحة</b><small>اعرف التفاصيل المهمة</small></div>
+        <div class="float-card float-two"><b>قرار أذكى</b><small>اختار حسب احتياجك</small></div>
       </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <span>© اختَر صح — دليلك للهواتف</span>
-      <span>المعلومة الواضحة تصنع قرار أفضل.</span>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    // الهواتف الثمانية المعتمدة في مشروع اختَر صح.
-    const phonesDatabase = [
-      { name: "Xiaomi 17 Ultra", model: "17 Ultra", brand: "Xiaomi", page: "xiaomi-17-ultra.html", price_usd: 1200, aliases: ["شاومي 17 الترا", "شاومي 17 الترا"] },
-      { name: "vivo X300 Ultra", model: "X300 Ultra", brand: "vivo", page: "vivo-x300-ultra.html", price_usd: 1100, aliases: ["فيفو اكس 300 الترا", "فيفو x300 ultra"] },
-      { name: "HONOR Magic8 Pro", model: "Magic8 Pro", brand: "HONOR", page: "honor-magic8-pro.html", price_usd: 800, aliases: ["هونر ماجيك 8 برو", "هونر ماجيك8 برو"] },
-      { name: "POCO F9 Ultra", model: "F9 Ultra", brand: "POCO", page: "poco-f9-ultra.html", price_usd: 600, aliases: ["بوكو اف 9 الترا", "بوكو f9 ultra"] },
-      { name: "realme GT8 Pro", model: "GT8 Pro", brand: "realme", page: "realme-gt8-pro.html", price_usd: 700, aliases: ["ريلمي جي تي 8 برو", "ريلمي gt8 pro"] },
-      {"name": "Xiaomi 14T", "model": "14T", "brand": "Xiaomi", "page": "xiaomi-14t.html", "price_usd": 500, "aliases": ["شاومي 14t", "شاومي14تي", "xiaomi14t"]},
-      {"name": "Samsung Galaxy S25 Ultra", "model": "Galaxy S25 Ultra", "brand": "Samsung", "page": "samsung-s25-ultra.html", "price_usd": 900, "aliases": ["سامسونج s25 ultra", "اس 25 الترا", "s25ultra", "galaxy s25 ultra"]},
-      {"name": "iPhone 17 Pro Max", "model": "iPhone 17 Pro Max", "brand": "Apple", "page": "iphone-17-pro-max.html", "price_usd": 1000, "aliases": ["ايفون 17 برو ماكس", "آيفون 17 برو ماكس", "iphone17promax", "17promax"]}
-    ];
-    const resultElement = document.getElementById("result");
-    const searchInput = document.getElementById("phoneSearch");
+  <section class="finder" id="finder" aria-labelledby="finderTitle">
+    <div class="container">
+      <div class="section-label">ما تدري شنو تختار؟</div>
+      <h2 id="finderTitle">اختَر حسب ميزانيتك واحتياجك</h2>
+      <p class="price-note" id="priceNote"></p>
 
-    function normalizePhoneName(value) {
-      return value.toLocaleLowerCase().replace(/[\s\-_]+/g, "")
-        .replace(/[أإآ]/g, "ا").replace(/ى/g, "ي");
-    }
+      <div class="finder-controls">
+        <div class="field">
+          <label for="budget">أقصى ميزانية</label>
+          <select id="budget"><option value="0">كل الأسعار</option></select>
+        </div>
+        <div class="field">
+          <span id="needLabel">شنو يهمك أكثر؟</span>
+          <div class="needs" role="radiogroup" aria-labelledby="needLabel" id="needs"></div>
+        </div>
+      </div>
 
-    function searchPhone() {
-      const query = normalizePhoneName(searchInput.value.trim());
-      if (!query) {
-        resultElement.textContent = "اكتب اسم الهاتف أولاً.";
-        return;
-      }
-      const matches = phonesDatabase.filter(phone =>
-        [phone.name, phone.model, phone.brand + ' ' + phone.model, ...(phone.aliases || [])]
-          .some(label => normalizePhoneName(label).includes(query))
-      );
-      if (matches.length === 1 && matches[0].page) {
-        window.location.href = matches[0].page;
-        return;
-      }
-      if (!matches.length) {
-        resultElement.textContent = "ما لقينا هذا الهاتف حالياً، راح نضيفه قريباً.";
-        return;
-      }
-      resultElement.replaceChildren();
-      matches.forEach(phone => {
-        const link = document.createElement("a");
-        link.href = phone.page;
-        link.textContent = phone.name;
-        link.style.cssText = "display:block;color:#7545CE;padding:7px;text-decoration:underline";
-        resultElement.appendChild(link);
-      });
-    }
+      <div id="finderResults" class="finder-results" aria-live="polite">
+        <div class="state">جاري تحميل الهواتف...</div>
+      </div>
+      <p class="finder-foot" id="finderFoot" hidden>
+        الترتيب حسب درجات تقديرية محسوبة من المواصفات المعلنة (فئة المعالج، السعة، التردد...)، وليست اختبارات فعلية.
+        الهاتف الذي لا تتوفر مواصفته يظهر بدون درجة بدل اختراع رقم.
+      </p>
+    </div>
+  </section>
 
-    searchInput.addEventListener("keydown", event => {
-      if (event.key === "Enter") searchPhone();
-    });
-  </script>
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-heading">
+        <div class="section-label">شنو نقدم؟</div>
+        <h2>المعلومة قبل قرار الشراء</h2>
+        <p>ثلاث خطوات تساعدك توصل للهاتف المناسب.</p>
+      </div>
+      <div class="services">
+        <article class="service">
+          <div class="service-icon" aria-hidden="true">▤</div>
+          <h3>مواصفات مفهومة</h3>
+          <p>مو مجرد أرقام بجدول. نشرحلك شنو تعني المواصفات، وشنو تأثيرها على استخدامك اليومي.</p>
+          <span class="service-number">01 — افهم</span>
+        </article>
+        <article class="service">
+          <div class="service-icon" aria-hidden="true">⇄</div>
+          <h3>مقارنات عادلة</h3>
+          <p>نقارن الهواتف من ناحية الأداء والكاميرات والبطارية والسعر، حسب احتياجك الفعلي.</p>
+          <span class="service-number">02 — قارن</span>
+        </article>
+        <article class="service">
+          <div class="service-icon" aria-hidden="true">✓</div>
+          <h3>قرار بدون ندم</h3>
+          <p>نوضحلك لمن يناسب الهاتف، ولمن ما يناسب، حتى تعرف إذا يستحق سعره فعلًا.</p>
+          <span class="service-number">03 — قرر</span>
+        </article>
+      </div>
+      <div class="note">
+        <strong>ليش اختَر صح؟</strong>
+        <p>لأن الهاتف الأفضل بالمواصفات مو بالضرورة يكون الأفضل بالنسبة إلك.</p>
+        <span class="note-tag">اختيار مبني على احتياجك ←</span>
+      </div>
+    </div>
+  </section>
+</main>
 
+<footer>
+  <div class="container footer-inner">
+    <span>© اختَر صح — دليلك للهواتف</span>
+    <span>المعلومة الواضحة تصنع قرار أفضل.</span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
 <script>
-(()=>{const select=document.getElementById('ikBudget');const results=document.getElementById('ikBudgetResults');if(!select||!results)return;function draw(){const limit=Number(select.value);const matches=phonesDatabase.filter(p=>p.price_usd&&(!limit||p.price_usd<=limit)).sort((a,b)=>a.price_usd-b.price_usd);results.replaceChildren();if(!matches.length){results.textContent='ماكو هواتف ضمن هالميزانية.';return;}matches.forEach(phone=>{const a=document.createElement('a');a.className='ik-budget-phone';a.href=phone.page;const name=document.createElement('strong');name.textContent=phone.name;const price=document.createElement('span');price.textContent='$'+phone.price_usd.toLocaleString('en-US')+' — سعر تجريبي';a.append(name,price);results.append(a);});}select.addEventListener('change',draw);draw();})();
+(() => {
+  const NEEDS = [
+    { key: 'all', label: 'الكل (الأرخص أولاً)' },
+    { key: 'الأداء', label: 'الأداء والألعاب' },
+    { key: 'الكاميرات', label: 'الكاميرا' },
+    { key: 'البطارية', label: 'البطارية' },
+    { key: 'الشحن', label: 'الشحن السريع' },
+    { key: 'الشاشة', label: 'الشاشة' }
+  ];
+  const $ = id => document.getElementById(id);
+  const input = $('phoneSearch'), result = $('result');
+  const budget = $('budget'), needsBox = $('needs'), out = $('finderResults'), foot = $('finderFoot');
+  let phones = [], need = 'all';
+
+  const state = text => { out.replaceChildren(); const d = document.createElement('div'); d.className = 'state'; d.textContent = text; out.appendChild(d); foot.hidden = true; };
+
+  function draw() {
+    const limit = Number(budget.value);
+    let list = phones.filter(p => p.price_usd && (!limit || p.price_usd <= limit));
+    if (!list.length) { state('ماكو هواتف ضمن هالميزانية حالياً.'); return; }
+    list = need === 'all'
+      ? list.sort((a, b) => a.price_usd - b.price_usd)
+      : list.sort((a, b) => (b.scores[need] ?? -1) - (a.scores[need] ?? -1) || a.price_usd - b.price_usd);
+
+    out.replaceChildren();
+    list.forEach(p => {
+      const a = document.createElement('a'); a.className = 'phone-card'; a.href = p.page;
+      const name = document.createElement('strong'); name.textContent = p.name;
+      const price = document.createElement('span'); price.className = 'price'; price.textContent = IK.price(p);
+      a.append(name, price);
+      if (need !== 'all') {
+        const v = p.scores[need];
+        const score = document.createElement('span'); score.className = 'score';
+        score.textContent = v == null ? need + ': غير مصنّف (مواصفة ناقصة)' : need + ': ' + v.toFixed(1) + ' / 10 (تقدير)';
+        a.appendChild(score);
+        if (v != null) { const bar = document.createElement('div'); bar.className = 'bar'; const i = document.createElement('i'); i.style.width = (v * 10) + '%'; bar.appendChild(i); a.appendChild(bar); }
+      }
+      out.appendChild(a);
+    });
+    foot.hidden = need === 'all';
+  }
+
+  function setupControls(data) {
+    $('priceNote').textContent = data.meta.price_note || '';
+    const steps = [...new Set(phones.map(p => p.price_usd).filter(Boolean).map(v => Math.ceil(v / 100) * 100))].sort((a, b) => a - b);
+    steps.forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = 'حتى $' + v.toLocaleString('en-US'); budget.appendChild(o); });
+    budget.addEventListener('change', draw);
+    NEEDS.forEach(n => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'need'; b.setAttribute('role', 'radio');
+      b.setAttribute('aria-checked', String(n.key === need)); b.textContent = n.label;
+      b.addEventListener('click', () => {
+        need = n.key;
+        needsBox.querySelectorAll('.need').forEach(x => x.setAttribute('aria-checked', String(x === b)));
+        draw();
+      });
+      needsBox.appendChild(b);
+    });
+  }
+
+  function search() {
+    const q = input.value.trim();
+    if (!q) { result.textContent = 'اكتب اسم الهاتف أولاً.'; return; }
+    if (!phones.length) { result.textContent = IK.loadError(); return; }
+    const m = IK.find(phones, q);
+    if (m.length === 1) { IK.go(m[0]); return; }
+    result.textContent = m.length ? 'اختَر من القائمة:' : 'ما لقينا هالهاتف حالياً، راح نضيفه قريباً.';
+    if (m.length) input.dispatchEvent(new Event('input'));
+  }
+
+  IK.load().then(data => {
+    phones = data.phones;
+    setupControls(data);
+    draw();
+    const s = IK.suggest(input, () => phones, IK.go);
+    input.addEventListener('keydown', e => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      const a = s.active();
+      if (a) IK.go(a); else search();
+    });
+    input.addEventListener('input', () => { result.textContent = ''; });
+  }).catch(() => {
+    state(IK.loadError());
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') search(); });
+  });
+  $('searchBtn').addEventListener('click', search);
+})();
 </script>
 <script src="theme.js" defer></script>
+<script src="premium-studio.js" defer></script>
+<script src="premium-navigation.js" defer></script>
+<script src="mobile.js" defer></script>
 </body>
 </html>

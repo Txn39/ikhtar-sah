@@ -2,10 +2,19 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<script>location.replace("phone.html?id=iphone-17-pro-max"+location.hash)</script>
 <script>try{const t=localStorage.getItem('siteTheme');document.documentElement.dataset.theme=(t==='dark'||t==='light')?t:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){document.documentElement.dataset.theme='light'}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> iphon 17 pro max | اختَر صح</title>
+  <title>iPhone 17 Pro Max | اختَر صح</title>
+<meta name="description" content="iPhone 17 Pro Max: المواصفات ونقاط القوة والضعف وبيانات المعالج والشاشة والكاميرا والبطارية على اختَر صح.">
+<meta name="theme-color" content="#7545ce">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ar_IQ">
+<meta property="og:title" content="iPhone 17 Pro Max | اختَر صح">
+<meta property="og:description" content="iPhone 17 Pro Max: المواصفات ونقاط القوة والضعف وبيانات المعالج والشاشة والكاميرا والبطارية على اختَر صح.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237545ce'/%3E%3Cpath d='M18 33l10 10 18-22' fill='none' stroke='%23fff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
 
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -288,6 +297,8 @@ body{background:#F3F4F6;color:#21152f}header,footer{background:#fff;border-color
 
 <link rel="stylesheet" href="theme.css">
 <link rel="stylesheet" href="wave-background.css">
+<link rel="stylesheet" href="premium-studio.css">
+<link rel="stylesheet" href="mobile.css" media="(max-width:800px)">
 </head>
 
 <body>
@@ -366,43 +377,7 @@ body{background:#F3F4F6;color:#21152f}header,footer{background:#fff;border-color
 }
 </style>
 
-<script>
-const quickPhones = {
-  "xiaomi 17 ultra": "xiaomi-17-ultra.html",
-  "vivo x300 ultra": "vivo-x300-ultra.html",
-  "honor magic8 pro": "honor-magic8-pro.html",
-  "poco f9 ultra": "poco-f9-ultra.html",
-  "realme gt8 pro": "realme-gt8-pro.html",
-  "xiaomi 14t": "xiaomi-14t.html",
-  "samsung s25 ultra": "samsung-s25-ultra.html",
-  "iphone 17 pro max": "iphone-17-pro-max.html"
-};
-
-function quickSearchPhone() {
-  const input = document.getElementById("quickPhoneSearch");
-  const query = input.value.trim().toLowerCase();
-
-  if (!query) {
-    alert("اكتب اسم الهاتف أولاً");
-    return;
-  }
-
-  const match = Object.entries(quickPhones).find(
-    ([name]) => name.includes(query)
-  );
-
-  if (match) {
-    window.location.href = match[1];
-  } else {
-    alert("هذا الهاتف غير موجود حالياً");
-  }
-}
-
-document.getElementById("quickPhoneSearch")
-  .addEventListener("keydown", function(event) {
-    if (event.key === "Enter") quickSearchPhone();
-  });
-</script>
+<script src="app.js"></script>
 
   <link rel="stylesheet" href="phone-pages.css">
 
@@ -640,5 +615,8 @@ Galaxy S26 Ultra.
   </footer>
 
 <script src="theme.js" defer></script>
+<script src="premium-studio.js" defer></script>
+<script src="premium-navigation.js" defer></script>
+<script src="mobile.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<script>try{const p=localStorage.getItem('sitePalette');document.documentElement.dataset.palette=['violet','pine','burgundy','copper'].includes(p)?p:'violet'}catch(e){document.documentElement.dataset.palette='violet'}</script>
+<script>try{const t=localStorage.getItem('siteTheme');document.documentElement.dataset.theme=(t==='dark'||t==='light')?t:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){document.documentElement.dataset.theme='light'}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>الهاتف | اختَر صح</title>
+<meta name="description" content="مواصفات الهاتف ونقاط القوة والضعف على اختَر صح.">
+<meta name="theme-color" content="#7545ce">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ar_IQ">
+<meta property="og:title" content="الهاتف | اختَر صح">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237545ce'/%3E%3Cpath d='M18 33l10 10 18-22' fill='none' stroke='%23fff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="phone-pages.css">
+<link rel="stylesheet" href="theme.css">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{font-family:Cairo,Tahoma,sans-serif;margin:0;color:var(--ink,#21152f)}
+.container{width:min(94%,1000px);margin:auto}
+.nav{display:flex;align-items:center;gap:12px;min-height:76px}
+.brand{font-weight:800;font-size:22px}
+.back{text-decoration:none;font-weight:700}
+.hero{display:flex;gap:30px;align-items:center;justify-content:space-between;margin:32px 0;padding:28px;border-radius:22px;background:var(--card,#fff)}
+.hero img{width:200px;max-width:40%;height:220px;object-fit:contain}
+.hero .label{font-size:12px;font-weight:700;color:var(--purple,#7545ce);margin-bottom:6px}
+.hero h1{margin:0 0 10px}
+.hero p{margin:0 0 14px;line-height:2;color:var(--muted,#65616f)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:7px 13px;font-size:12px;font-weight:700;background:#fff;color:#21152f}
+.specs,.analysis-card,.verdict{padding:24px;border:1px solid var(--line,#e4ddef);border-radius:20px;background:var(--card,#fff)}
+.hero,.specs,.analysis,.verdict{max-width:780px;margin-inline:auto}
+.specs,.verdict{margin-block:18px}
+.specs h2,.verdict-h{margin-top:0}
+.spec-row{display:flex;justify-content:space-between;gap:24px;padding:13px 0;border-bottom:1px solid var(--line,#e4ddef)}
+.spec-row span{text-align:left}
+.spec-row .na{opacity:.6}
+.analysis{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-block:18px}
+.analysis-card{margin:0;width:auto}
+li{line-height:2}
+a{color:var(--purple,#7545ce)}
+.ik-phone-price{display:flex;flex-direction:column;gap:4px;width:min(960px,90%);margin:20px auto 0;padding:14px 20px;border:1px solid #d9c7f0;border-radius:15px;background:#fff;color:#21152f;font:700 14px Cairo,sans-serif}
+.ik-phone-price span{font-size:11px;font-weight:400;color:#6e6578}
+.state{padding:40px 24px;text-align:center;line-height:2;border:1px dashed rgba(117,69,206,.4);border-radius:20px;margin:40px 0;background:var(--card,#fff)}
+@media(max-width:650px){.hero{flex-direction:column-reverse;text-align:center}.chips{justify-content:center}.hero img{max-width:75%}.analysis{grid-template-columns:1fr}.spec-row{flex-direction:column;gap:3px}.spec-row span{text-align:right}}
+</style>
+<link rel="stylesheet" href="wave-background.css">
+<link rel="stylesheet" href="mobile.css" media="(max-width:800px)">
+<link rel="stylesheet" href="themes.css">
+<link rel="stylesheet" href="site-final-fixes.css">
+<link rel="stylesheet" href="ikhtar-final.css">
+</head>
+<body>
+<div class="ik-wave-bg" aria-hidden="true"><div class="ik-wave-bg__light"></div><div class="ik-wave-bg__dark"></div></div>
+<header>
+  <div class="container nav">
+    <div class="brand">✓ اختَر صح</div>
+    <a class="back" href="index.html" aria-label="الرئيسية"><span aria-hidden="true">→</span><span class="back-text">الرئيسية</span></a>
+   <select id="paletteSelect" aria-label="اختيار لون الموقع">
+  <option value="violet">🟣 بنفسجي</option>
+  <option value="pine">🟢 صنوبري</option>
+  <option value="burgundy">🔴 عنابي</option>
+  <option value="copper">🟠 نحاسي</option>
+</select>
+   <button id="themeToggle" type="button" aria-label="تبديل الوضع">🌙</button>
+  </div>
+</header>
+
+<div class="ik-phone-price" role="note" id="priceBox" hidden>
+  <strong id="priceText"></strong>
+  <span id="priceNote"></span>
+</div>
+
+<div class="phone-actions">
+  <input type="search" id="quickPhoneSearch" placeholder="ابحث عن هاتف..." aria-label="ابحث عن هاتف" autocomplete="off">
+  <button type="button" onclick="quickSearchPhone()">بحث</button>
+  <a href="compare.html" id="compareLink" class="quick-compare">قارن</a>
+</div>
+
+<main class="container" id="content">
+  <div class="state">جاري تحميل بيانات الهاتف...</div>
+</main>
+
+<footer class="container">© اختَر صح — المواصفات حسب بيانات المشروع، وقد تختلف حسب السوق.</footer>
+
+<script src="app.js"></script>
+<script>
+(() => {
+  const content = document.getElementById('content');
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const setMeta = (sel, v) => { const m = document.querySelector(sel); if (m) m.setAttribute('content', v); };
+
+  function message(text) {
+    content.replaceChildren();
+    const s = el('div', 'state', text);
+    const back = el('p'); const a = el('a', null, 'ارجع للرئيسية'); a.href = 'index.html'; back.appendChild(a); s.appendChild(back);
+    content.appendChild(s);
+  }
+
+  function render(p, meta) {
+    document.title = p.name + ' | اختَر صح';
+    const cpu = String((p.specs && p.specs['المعالج']) || '').split('—')[0].trim();
+    const desc = p.name + ': مواصفات ونقاط القوة والضعف' + (cpu ? ' — ' + cpu : '') + '. بيانات مبدئية على اختَر صح.';
+    setMeta('meta[name="description"]', desc);
+    setMeta('meta[property="og:title"]', p.name + ' | اختَر صح');
+    document.getElementById('compareLink').href = 'compare.html?phone=' + encodeURIComponent(p.id);
+
+    if (p.price_usd) {
+      document.getElementById('priceBox').hidden = false;
+      document.getElementById('priceText').textContent = 'السعر التجريبي: ' + IK.price(p);
+      document.getElementById('priceNote').textContent = meta.price_note || '';
+    }
+
+    content.replaceChildren();
+
+    const hero = el('section', 'hero');
+    const info = el('div');
+    info.appendChild(el('div', 'label', (p.brand || '').toUpperCase()));
+    info.appendChild(el('h1', null, p.name));
+    const chips = el('div', 'chips');
+    const batt = String((p.specs && p.specs['البطارية']) || '');
+    const mah = (batt.replace(/,/g, '').match(/(\d{4,5})\s*mah/i) || [])[1];
+    [cpu, mah ? mah + 'mAh' : '', p.specs && p.specs['الذاكرة']].filter(Boolean).forEach(t => chips.appendChild(el('div', 'chip', t)));
+    info.appendChild(chips);
+    const img = el('img'); img.src = p.image || 'phone-placeholder.svg'; img.alt = 'صورة ' + p.name;
+    img.addEventListener('error', () => { img.src = 'phone-placeholder.svg'; img.alt = 'رسم توضيحي للهاتف، الصورة الفعلية غير متوفرة'; }, { once: true });
+    hero.append(info, img);
+    content.appendChild(hero);
+
+    const specs = el('section', 'specs');
+    specs.appendChild(el('h2', null, 'المواصفات'));
+    Object.entries(p.specs || {}).forEach(([k, v]) => {
+      const row = el('div', 'spec-row');
+      row.appendChild(el('strong', null, k));
+      const val = el('span', v ? '' : 'na', v || 'غير متوفر حالياً');
+      row.appendChild(val);
+      specs.appendChild(row);
+    });
+    content.appendChild(specs);
+
+    if ((p.strengths && p.strengths.length) || (p.weaknesses && p.weaknesses.length)) {
+      const an = el('section', 'analysis');
+      [['نقاط القوة', p.strengths], ['نقاط الضعف', p.weaknesses]].forEach(([title, items]) => {
+        if (!items || !items.length) return;
+        const card = el('div', 'analysis-card'); card.appendChild(el('h2', null, title));
+        const ul = el('ul'); items.forEach(t => ul.appendChild(el('li', null, t))); card.appendChild(ul);
+        an.appendChild(card);
+      });
+      content.appendChild(an);
+    }
+
+    const verdict = el('section', 'verdict');
+    verdict.appendChild(el('p', null, (p.verdict || 'هذي الصفحة مبنية على بيانات المشروع المتاحة حالياً. قارن السعر الفعلي بالسوق المحلي وتأكد من مواصفات النسخة المتوفرة عندك قبل الشراء.')
+      + (/phone-placeholder/.test(p.image || 'phone-placeholder') ? ' الصورة توضيحية وليست صورة فعلية للجهاز.' : '')));
+    content.appendChild(verdict);
+  }
+
+  const id = new URLSearchParams(location.search).get('id');
+  IK.load().then(({ meta, phones }) => {
+    if (!id) { message('ما حددت أي هاتف. اختَر هاتف من الرئيسية.'); return; }
+    const p = phones.find(x => x.id === id);
+    if (!p) { message('ما لقينا هذا الهاتف. تأكد من الرابط أو ابحث عنه من الأعلى.'); return; }
+    render(p, meta);
+  }).catch(() => message(IK.loadError()));
+})();
+</script>
+<script src="theme.js" defer></script>
+<script src="premium-studio.js" defer></script>
+<script src="premium-navigation.js" defer></script>
+<script src="mobile.js" defer></script>
+</body>
+</html>

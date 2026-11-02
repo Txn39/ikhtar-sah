@@ -13,21 +13,10 @@ html[data-theme="dark"] {
   --line: #45405d;
 }
 
-/* Page background, without flattening every content container */
+/* لون النص فقط؛ الخلفية تأتي من wave-background.css */
 html[data-theme="dark"] body,
 html[data-theme="dark"] main {
-  background-color: #10121e !important;
   color: #f1edfa !important;
-}
-
-/* توهجات الخلفية */
-html[data-theme="dark"] .ik-motion {
-  opacity: .13 !important;
-}
-
-html[data-theme="dark"] .ik-motion__halo,
-html[data-theme="dark"] .ik-motion__point {
-  opacity: .08 !important;
 }
 
 /* الهيدر */
@@ -204,10 +193,6 @@ html[data-theme="dark"] body:has(.phone-actions) .hero {
   border-radius: 24px !important;
 }
 
-/* إخفاء التدرجات الفاتحة بالخلفية */
-html[data-theme="dark"] .ik-motion {
-  display: none !important;
-}
 /* تذييل الصفحة بالوضع الليلي */
 html[data-theme="dark"] footer {
   background: #10121e !important;
@@ -297,17 +282,120 @@ html[data-theme="dark"] header nav a:hover {
     color: #ffffff !important;
 }
 
-/* Unified moving background for light and dark themes */
-html[data-theme="dark"] body, html[data-theme="dark"] main {background-color:transparent !important;}
-html[data-theme="dark"] .ik-motion {display:block !important;opacity:1 !important;background:#0b1024 !important;}
-html[data-theme="dark"] .ik-motion__halo {opacity:1 !important;}
-html[data-theme="dark"] .ik-motion__halo--one {background:radial-gradient(circle,rgba(94,60,174,.36),rgba(62,44,130,.17) 45%,transparent 75%) !important;}
-html[data-theme="dark"] .ik-motion__halo--two {background:radial-gradient(circle,rgba(36,78,153,.36),rgba(49,33,119,.17) 45%,transparent 75%) !important;}
 html[data-theme="dark"] .ik-budget-section,html[data-theme="dark"] .ik-budget-phone,html[data-theme="dark"] .ik-phone-price {background:#202538;color:#f1edfa;border-color:#50416f;}
 html[data-theme="dark"] .ik-price-disclaimer,html[data-theme="dark"] .ik-phone-price span {color:#b5b6c9;}
 html[data-theme="dark"] #ikBudget {background:#171b2b;color:#f1edfa;border-color:#50416f;}
 
 
 
-/* The SVG wave layer is the only animated page background. */
-html body > .ik-motion,html[data-theme="dark"] body > .ik-motion{display:none!important}
+
+/* Ikhtar Sah — understated premium interactions (v3 enhancement) */
+@media (prefers-reduced-motion: no-preference) {
+  :root { --ik-ease: cubic-bezier(.22,1,.36,1); }
+  button, .compare-button, a.compare-card, .search-box button, .nav a, .back, .ik-budget-phone, .finder-results a {
+    transition: transform .24s var(--ik-ease), box-shadow .28s ease, border-color .25s ease, background-color .25s ease, color .25s ease;
+  }
+  button:not(:disabled):active, a.compare-card:active, .compare-button:active, .nav a:active {
+    transform: scale(.97);
+  }
+  @media (hover:hover) and (pointer:fine) {
+    button:not(:disabled):hover, .compare-button:hover, .nav a:hover {
+      transform: translateY(-2px);
+    }
+    a.compare-card:hover, .ik-budget-phone:hover, .finder-results a:hover, .compare-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(86,48,145,.10);
+    }
+  }
+  .ik-pressed { animation: ik-press .28s var(--ik-ease); }
+  @keyframes ik-press { 0% { filter:brightness(1); } 45% { filter:brightness(1.10); } 100% { filter:brightness(1); } }
+  .ik-enter { animation: ik-enter .36s var(--ik-ease) both; }
+  @keyframes ik-enter { from { opacity:.65; transform:translateY(7px); } to { opacity:1; transform:translateY(0); } }
+}
+:where(a, button, input, select):focus-visible {
+  outline: 2px solid #9466d4;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ik-pressed, .ik-enter { animation:none !important; }
+}
+
+/* Accessibility: readable available-colors label in dark theme. */
+html[data-theme="dark"] .phone-colors p {
+  color: #f4efff !important;
+}
+html[data-theme="dark"] .phone-colors #selectedColor {
+  color: #c7a8ff !important;
+}
+/* Palette-specific glow colors */
+html[data-palette="violet"] {
+  --palette-glow: 105, 65, 198;
+}
+
+html[data-palette="pine"] {
+  --palette-glow: 14, 64, 39;
+}
+
+html[data-palette="burgundy"] {
+  --palette-glow: 92, 2, 43;
+}
+
+html[data-palette="copper"] {
+  --palette-glow: 159, 66, 11;
+}
+
+/* Remove old purple glow in AMOLED mode */
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] .finder,
+html[data-theme="dark"] .ik-budget-section {
+  filter: none;
+}
+
+html[data-theme="dark"] button:hover,
+html[data-theme="dark"] a:hover {
+  box-shadow: 0 0 16px rgba(var(--palette-glow), 0.18);
+}
+@media (max-width: 800px) {
+  header .container.nav,
+  header .wrap.top {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 6px !important;
+    padding: 10px 0 !important;
+  }
+
+  header .brand,
+  header .logo {
+    flex: 0 0 auto !important;
+    font-size: 16px !important;
+    white-space: nowrap !important;
+  }
+
+  header .back {
+    flex: 0 0 auto !important;
+    padding: 8px !important;
+    font-size: 11px !important;
+    white-space: nowrap !important;
+  }
+
+  header #paletteSelect {
+    flex: 1 1 auto !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    font-size: 10px !important;
+    padding: 6px 3px !important;
+  }
+
+  header #themeToggle {
+    flex: 0 0 36px !important;
+    width: 36px !important;
+    min-width: 36px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    font-size: 18px !important;
+    padding: 0 !important;
+  }
+}
