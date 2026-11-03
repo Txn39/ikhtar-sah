@@ -1,0 +1,76 @@
+/* Theme + mobile refinements. Built on the existing unified theme, no old stylesheets. */
+:root[data-theme=light]{
+  --page:#f4f1ea;--ink:#201e29;--muted:#666274;--soft:#373343;
+  --line:rgba(47,39,72,.16);--glass:rgba(255,255,255,.49);
+  --glass-soft:rgba(255,255,255,.56);--card-top:rgba(255,255,255,.67);
+  --shadow:rgba(53,38,83,.19);
+}
+/* Always keep animated CSS lights under the WebGL canvas. Android browsers may
+   discard a full-screen WebGL drawing surface during a tap or GPU context loss;
+   the backstop prevents the background from going blank. */
+.ambient .ambient-pools{display:block;z-index:0;opacity:.8}
+.ambient #ambientCanvas,.ambient #fogCanvas{z-index:2}
+.ambient .fog-fallback{z-index:1}
+:root[data-theme=light] .ambient .ambient-pools{display:none!important}
+/* Exactly one ambient canvas is displayed for each theme. */
+.ambient #ambientCanvas{opacity:1;visibility:visible}
+.ambient #fogCanvas{opacity:0;visibility:hidden}
+:root[data-theme=light] .ambient #ambientCanvas{opacity:0;visibility:hidden}
+:root[data-theme=light] .ambient #fogCanvas{opacity:1;visibility:visible}
+:root[data-theme=light] .ambient{background:#f4f1ea}
+:root[data-theme=light] .ambient .ambient-pools{display:none!important}
+/* The animated fallback retains the three original colours when WebGL isn't available. */
+.ambient .fog-fallback{display:none;position:absolute;inset:0;overflow:hidden;pointer-events:none;background:#f4f1ea}
+:root[data-theme=light] .ambient .fog-fallback{display:block}
+.fog-fallback i{position:absolute;left:0;top:0;width:75vmax;height:75vmax;border-radius:50%;filter:blur(26px);opacity:.58;will-change:transform;mix-blend-mode:multiply;background:radial-gradient(circle at 50% 50%,var(--fog-colour),transparent 70%)}
+.fog-fallback i:nth-child(1){--fog-colour:#f5ae8a}
+.fog-fallback i:nth-child(2){--fog-colour:#a8b6f2}
+.fog-fallback i:nth-child(3){--fog-colour:#f1d79c}
+:root[data-theme=light] .glass-card, :root[data-theme=light] .floating-chip{backdrop-filter:blur(16px) saturate(118%);-webkit-backdrop-filter:blur(16px) saturate(118%)}
+:root[data-theme=light] .site-footer{background:rgba(255,255,255,.42)}
+/* Mouse light travels with the finger on cards as well; do not make links depend on hover. */
+.glass-card.interactive.touch-lit{border-color:color-mix(in srgb,var(--accent) 55%,var(--line));transform:scale(.985);box-shadow:inset 0 1px rgba(255,255,255,.18),0 12px 38px -22px var(--shadow),0 0 22px -15px var(--accent)}
+.glass-card.interactive.touch-lit::before{opacity:1;background:radial-gradient(200px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--accent) 25%,transparent),transparent 75%)}
+/* Both desktop and mobile filters use strict two-column/two-block layout. */
+.filter-panel{display:grid;grid-template-columns:minmax(215px,260px) minmax(0,1fr);align-items:end;gap:22px;}
+.filter-group{min-width:0}
+.filter-group select{width:100%;max-width:100%;min-width:0}
+.filter-needs{min-width:0;flex:none}
+.needs{display:flex;align-items:center;justify-content:flex-start;gap:8px;min-width:0}
+.need{min-height:42px;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;line-height:1.4}
+@media(max-width:820px){
+ .filter-panel{display:grid;grid-template-columns:minmax(0,1fr);align-items:stretch;gap:18px;padding:20px;border-radius:22px}
+ .filter-panel .filter-needs{order:0}
+ .filter-panel .filter-group:not(.filter-needs){order:1}
+ .filter-group{width:100%;gap:10px}
+ .filter-group>span,.filter-group>label{display:block;font-size:13px;line-height:1.65}
+ .needs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%}
+ .need{width:100%;min-width:0;min-height:45px;padding:9px 7px;border-radius:13px;white-space:normal;text-align:center;font-size:12px;line-height:1.5;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+ .needs .need:last-child:nth-child(odd){grid-column:1 / -1}
+ .filter-group select{min-height:48px;font-size:13px;padding:9px 13px}
+}
+@media(max-width:390px){
+ .filter-panel{padding:16px;gap:15px}
+ .needs{gap:8px}
+ .need{font-size:11.5px;min-height:44px}
+}
+@media(hover:none){
+ .glass-card.interactive:hover{transform:none;border-color:var(--line);box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 2px 4px -3px var(--shadow),0 18px 34px -16px var(--shadow),0 35px 70px -38px var(--shadow)}
+ .glass-card.interactive.touch-lit{transform:scale(.985);border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}
+}
+@media(prefers-reduced-motion:reduce){.glass-card.interactive.touch-lit{transform:none}}
+
+/* Tapping a card triggers a short physical spring + light bloom; hover is optional. */
+.glass-card.interactive{touch-action:pan-y; -webkit-tap-highlight-color:transparent}
+@media (hover:none),(pointer:coarse){
+  .glass-card.interactive.touch-lit{animation:ik-touch-spring .68s cubic-bezier(.19,1,.32,1) both}
+  .glass-card.interactive.touch-lit::before{opacity:1}
+  .need:active,.site-nav .act:active{transform:scale(.96)}
+  @keyframes ik-touch-spring{
+    0%{transform:scale(1)}
+    23%{transform:scale(.976)}
+    66%{transform:scale(1.014)}
+    100%{transform:scale(1)}
+  }
+}
+@media (prefers-reduced-motion:reduce){.glass-card.interactive.touch-lit{animation:none!important}}
